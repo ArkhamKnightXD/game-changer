@@ -18,6 +18,9 @@ public class ConsoleController {
     @RequestMapping("/")
     public String login(Model model){
 
-        return "/freemarker/login";
+        model.addAttribute("title","Welcome to the game store");
+        model.addAttribute("consoles",consoleServices.listAllConsoles());
+
+        return "/freemarker/consoles";
     }
 }

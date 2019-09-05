@@ -16,13 +16,14 @@ public class VideoGame implements Serializable {
     private String developer;
     private Date releasedDate;
     private String genre;
-    private Long unitsSold;
+    private Double unitsSold;
     private String gameModes;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
     private List<Console> platformsList;
 
-    public VideoGame(String name, String developer, Date releasedDate, String genre, Long unitsSold, String gameModes, List<Console> platformsList) {
+
+    public VideoGame(String name, String developer, Date releasedDate, String genre, Double unitsSold, String gameModes, List<Console> platformsList) {
         this.name = name;
         this.developer = developer;
         this.releasedDate = releasedDate;
@@ -30,6 +31,15 @@ public class VideoGame implements Serializable {
         this.unitsSold = unitsSold;
         this.gameModes = gameModes;
         this.platformsList = platformsList;
+    }
+
+    public VideoGame(String name, String developer, Date releasedDate, String genre, Double unitsSold, String gameModes) {
+        this.name = name;
+        this.developer = developer;
+        this.releasedDate = releasedDate;
+        this.genre = genre;
+        this.unitsSold = unitsSold;
+        this.gameModes = gameModes;
     }
 
     public VideoGame() {
@@ -75,11 +85,12 @@ public class VideoGame implements Serializable {
         this.genre = genre;
     }
 
-    public Long getUnitsSold() {
+
+    public Double getUnitsSold() {
         return unitsSold;
     }
 
-    public void setUnitsSold(Long unitsSold) {
+    public void setUnitsSold(Double unitsSold) {
         this.unitsSold = unitsSold;
     }
 
