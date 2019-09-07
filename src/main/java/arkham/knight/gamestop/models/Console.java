@@ -19,17 +19,25 @@ public class Console implements Serializable {
     private Date releasedDate;
     private Date discontinuedDate;
     private int lifespan;
-    private long unitsSold;
-    private String bestSellingGame;
-    private String predecessor;
-    private String  successor;
-    private String backwardCompatibility;
+    private Double unitsSold;
+
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
+    private VideoGame bestSellingGame;
+
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
+    private Console predecessor;
+
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
+    private Console successor;
+
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
+    private Console backwardCompatibility;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
     private List<VideoGame> videoGameList;
 
 
-    public Console(String name, String developer, String consoleType, String generation, Date releasedDate, Date discontinuedDate, int lifespan, long unitsSold, String bestSellingGame, String predecessor, String successor, String backwardCompatibility, List<VideoGame> videoGameList) {
+    public Console(String name, String developer, String consoleType, String generation, Date releasedDate, Date discontinuedDate, int lifespan, Double unitsSold, VideoGame bestSellingGame, Console predecessor, Console successor, Console backwardCompatibility, List<VideoGame> videoGameList) {
         this.name = name;
         this.developer = developer;
         this.consoleType = consoleType;
@@ -44,6 +52,19 @@ public class Console implements Serializable {
         this.backwardCompatibility = backwardCompatibility;
         this.videoGameList = videoGameList;
     }
+
+
+    public Console(String name, String developer, String consoleType, String generation, Date releasedDate, Date discontinuedDate, int lifespan, Double unitsSold) {
+        this.name = name;
+        this.developer = developer;
+        this.consoleType = consoleType;
+        this.generation = generation;
+        this.releasedDate = releasedDate;
+        this.discontinuedDate = discontinuedDate;
+        this.lifespan = lifespan;
+        this.unitsSold = unitsSold;
+    }
+
 
     public Console() {
     }
@@ -113,44 +134,43 @@ public class Console implements Serializable {
         this.lifespan = lifespan;
     }
 
-    public long getUnitsSold() {
+    public Double getUnitsSold() {
         return unitsSold;
     }
 
-    public void setUnitsSold(long unitsSold) {
+    public void setUnitsSold(Double unitsSold) {
         this.unitsSold = unitsSold;
     }
 
-    public String getBestSellingGame() {
+    public VideoGame getBestSellingGame() {
         return bestSellingGame;
     }
 
-    public void setBestSellingGame(String bestSellingGame) {
+    public void setBestSellingGame(VideoGame bestSellingGame) {
         this.bestSellingGame = bestSellingGame;
     }
 
-    public String getPredecessor() {
+    public Console getPredecessor() {
         return predecessor;
     }
 
-    public void setPredecessor(String predecessor) {
+    public void setPredecessor(Console predecessor) {
         this.predecessor = predecessor;
     }
 
-
-    public String getSuccessor() {
+    public Console getSuccessor() {
         return successor;
     }
 
-    public void setSuccessor(String successor) {
+    public void setSuccessor(Console successor) {
         this.successor = successor;
     }
 
-    public String getBackwardCompatibility() {
+    public Console getBackwardCompatibility() {
         return backwardCompatibility;
     }
 
-    public void setBackwardCompatibility(String backwardCompatibility) {
+    public void setBackwardCompatibility(Console backwardCompatibility) {
         this.backwardCompatibility = backwardCompatibility;
     }
 

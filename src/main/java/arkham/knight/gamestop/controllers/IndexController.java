@@ -10,10 +10,10 @@ public class IndexController {
 
 
     @RequestMapping("/")
-    public String login(Model model){
+    public String index(Model model){
 
         model.addAttribute("title","Welcome to the game store");
 
-        return "/freemarker/starter";
+        return "/freemarker/index";
     }
 }
