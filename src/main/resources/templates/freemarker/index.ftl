@@ -73,7 +73,7 @@
   <div class="jumbotron">
     <div class="container">
       <h1>Welcome to the best library of consoles and videogames</h1>
-      <p>This pages is going to be dedicated to work with video game consoles and video games in general. So here is a short description of what the consoles and video games are</p>
+      <p>This pages is going to be dedicated to everything related with video game consoles and video games in general. So here is a short description of what the consoles and video games are</p>
       <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
     </div>
   </div>

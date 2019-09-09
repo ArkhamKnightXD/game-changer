@@ -1,5 +1,4 @@
 package arkham.knight.gamestop.models;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;

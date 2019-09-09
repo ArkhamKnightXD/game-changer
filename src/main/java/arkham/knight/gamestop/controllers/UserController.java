@@ -1,5 +1,4 @@
 package arkham.knight.gamestop.controllers;
-
 import arkham.knight.gamestop.models.User;
 import arkham.knight.gamestop.services.UserServices;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +21,7 @@ public class UserController {
 
         model.addAttribute("title","Welcome to the game store");
 
-        return "/freemarker/Users";
+        return "/freemarker/users";
     }
 
     @RequestMapping("/creation")

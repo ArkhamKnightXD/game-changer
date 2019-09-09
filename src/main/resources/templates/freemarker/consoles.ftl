@@ -46,7 +46,7 @@
           </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
-          <a class="btn btn-outline-success my-2 my-sm-0" href="/consoles/creation" role="button">Add a new Video game</a>
+          <a class="btn btn-outline-success my-2 my-sm-0" href="/consoles/creation" role="button">Add a new Console</a>
         </form>
       </div>
     </nav>

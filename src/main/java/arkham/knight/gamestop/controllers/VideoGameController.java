@@ -1,14 +1,13 @@
 package arkham.knight.gamestop.controllers;
-
 import arkham.knight.gamestop.models.VideoGame;
 import arkham.knight.gamestop.services.VideoGameServices;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import java.util.Date;
 
 @Controller
@@ -42,7 +41,11 @@ public class VideoGameController {
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public String create(){
+    public String create(@RequestParam(name = "name") String name,@RequestParam(name = "developer") String developer, @RequestParam(name = "genre") String genre,@RequestParam(name = "gameModes") String gameModes,@RequestParam(name = "unitsSold") Double unitsSold, @RequestParam(name = "releasedDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date releasedDate){
+
+        VideoGame videoGameToCreate =new VideoGame(name,developer,releasedDate,genre,unitsSold,gameModes);
+
+        videoGameServices.createVideoGame(videoGameToCreate);
 
         return "redirect:/videogames/";
     }

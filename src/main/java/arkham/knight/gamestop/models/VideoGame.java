@@ -1,5 +1,4 @@
 package arkham.knight.gamestop.models;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -110,17 +109,4 @@ public class VideoGame implements Serializable {
         this.platformsList = platformsList;
     }
 
-    @Override
-    public String toString() {
-        return "VideoGame{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", developer='" + developer + '\'' +
-                ", releasedDate=" + releasedDate +
-                ", genre='" + genre + '\'' +
-                ", unitsSold=" + unitsSold +
-                ", gameModes='" + gameModes + '\'' +
-                ", platformsList=" + platformsList +
-                '}';
-    }
 }

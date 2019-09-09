@@ -30,14 +30,17 @@
         }
     </style>
     <!-- Custom styles for this template -->
-    <link href="../../bootstrap-4.3.1/style/form-validation.css" rel="stylesheet">
+    <link href="../../bootstrap-4.3.1/style/creation-form.css" rel="stylesheet">
 </head>
 <body class="bg-light">
 <div class="container">
     <div class="py-5 text-center">
-        <img class="d-block mx-auto mb-4" src="../../bootstrap-4.3.1/assets/img/arkham.jpg" alt="" width="72" height="72">
-        <h2>Console Form</h2>
+        <h1>Console Form</h1>
     </div>
+
+
+  <div class="center-container">
+
 
     <div class="row">
 
@@ -110,9 +113,12 @@
 
                 <hr class="mb-4">
                 <button class="btn btn-primary btn-lg btn-block" type="submit">Save console</button>
+                <hr class="mb-4">
+                <a class="btn btn-danger btn-lg btn-block" href="/consoles/" role="button">Cancel</a>
             </form>
         </div>
     </div>
+  </div>
 
     <footer class="my-5 pt-5 text-muted text-center text-small">
         <p class="mb-1">&copy; 2019 Arkham-Store</p>

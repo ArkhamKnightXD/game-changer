@@ -1,10 +1,8 @@
 package arkham.knight.gamestop.services;
-
 import arkham.knight.gamestop.models.VideoGame;
 import arkham.knight.gamestop.repositories.VideoGameRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 @Service

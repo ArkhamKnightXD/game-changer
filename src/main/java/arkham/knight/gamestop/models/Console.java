@@ -1,5 +1,4 @@
 package arkham.knight.gamestop.models;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -53,7 +52,6 @@ public class Console implements Serializable {
         this.videoGameList = videoGameList;
     }
 
-
     public Console(String name, String developer, String consoleType, String generation, Date releasedDate, Date discontinuedDate, int lifespan, Double unitsSold) {
         this.name = name;
         this.developer = developer;
@@ -64,7 +62,6 @@ public class Console implements Serializable {
         this.lifespan = lifespan;
         this.unitsSold = unitsSold;
     }
-
 
     public Console() {
     }
@@ -180,24 +177,5 @@ public class Console implements Serializable {
 
     public void setVideoGameList(List<VideoGame> videoGameList) {
         this.videoGameList = videoGameList;
-    }
-
-    @Override
-    public String toString() {
-        return "Console{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", developer='" + developer + '\'' +
-                ", consoleType='" + consoleType + '\'' +
-                ", generation='" + generation + '\'' +
-                ", releasedDate=" + releasedDate +
-                ", discontinuedDate=" + discontinuedDate +
-                ", lifespan=" + lifespan +
-                ", unitsSold=" + unitsSold +
-                ", bestSellingGame='" + bestSellingGame + '\'' +
-                ", predecessor='" + predecessor + '\'' +
-                ", successor='" + successor + '\'' +
-                ", backwardCompatibility='" + backwardCompatibility + '\'' +
-                '}';
     }
 }
