@@ -84,17 +84,17 @@
       <div class="col-md-4">
         <h2>Home console</h2>
         <p>A home video game console, or simply home console, is a video game device that is primarily used for home gamers, as opposed to in arcades or some other commercial establishment. Home consoles are one type of video game consoles, in contrast to the handheld game consoles which are smaller and portable, allowing people to carry them and play them at any time or place, along with microconsoles and dedicated consoles.  </p>
-        <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+        <p><a class="btn btn-secondary" href="/showHomeConsole" role="button">Learn more &raquo;</a></p>
       </div>
       <div class="col-md-4">
         <h2>Handheld console</h2>
         <p>A handheld game console, or simply handheld console, is a small, portable self-contained video game console with a built-in screen, game controls, and speakers.[1] Handheld game consoles are smaller than home video game consoles and contain the console, screen, speakers, and controls in one unit, allowing people to carry them and play them at any time or place. </p>
-        <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+        <p><a class="btn btn-secondary" href="/showHandheldConsole" role="button">Learn more &raquo;</a></p>
       </div>
       <div class="col-md-4">
         <h2>Video game</h2>
         <p>A video game is an electronic game that involves interaction with a user interface to generate visual feedback on a two- or three-dimensional video display device such as a TV screen, virtual reality headset or computer monitor. Since the 1980s, video games have become an increasingly important part of the entertainment industry, and whether they are also a form of art is a matter of dispute. .</p>
-        <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+        <p><a class="btn btn-secondary" href="/showVideogame" role="button">Learn more &raquo;</a></p>
       </div>
     </div>
 

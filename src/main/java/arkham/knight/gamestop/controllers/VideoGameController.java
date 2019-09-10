@@ -22,7 +22,7 @@ public class VideoGameController {
     public String index(Model model){
 
         Date date = new Date();
-        VideoGame videoGame = new VideoGame("Kingdom Hears 2","Square Enix",date,"Jrpg",45.44,"1 player");
+        VideoGame videoGame = new VideoGame("Kingdom Hears 2","Square Enix",date,"Jrpg",4500000.0,"1 player");
 
         videoGameServices.createVideoGame(videoGame);
 
