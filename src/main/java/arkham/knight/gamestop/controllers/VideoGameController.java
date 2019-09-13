@@ -1,5 +1,6 @@
 package arkham.knight.gamestop.controllers;
 import arkham.knight.gamestop.models.VideoGame;
+import arkham.knight.gamestop.services.FileUploadServices;
 import arkham.knight.gamestop.services.VideoGameServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -8,6 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+
 import java.util.Date;
 
 @Controller
@@ -17,14 +20,14 @@ public class VideoGameController {
     @Autowired
     private VideoGameServices videoGameServices;
 
+    @Autowired
+    private FileUploadServices fileUploadServices;
+
+    public static String uploadDirectory = System.getProperty("user.dir")+"/src/main/resources/static/bootstrap-4.3.1/assets/img";
+
 
     @RequestMapping("/")
     public String index(Model model){
-
-        Date date = new Date();
-        VideoGame videoGame = new VideoGame("Kingdom Hears 2","Square Enix",date,"Jrpg",4500000.0,"1 player");
-
-        videoGameServices.createVideoGame(videoGame);
 
         model.addAttribute("title","Welcome to the game store");
         model.addAttribute("videogames",videoGameServices.listAllVideoGames());
@@ -41,9 +44,11 @@ public class VideoGameController {
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public String create(@RequestParam(name = "name") String name,@RequestParam(name = "developer") String developer, @RequestParam(name = "genre") String genre,@RequestParam(name = "gameModes") String gameModes,@RequestParam(name = "unitsSold") Double unitsSold, @RequestParam(name = "releasedDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date releasedDate){
+    public String create(@RequestParam(name = "name") String name,@RequestParam(name = "developer") String developer, @RequestParam(name = "genre") String genre,@RequestParam(name = "gameModes") String gameModes,@RequestParam(name = "unitsSold") Double unitsSold, @RequestParam(name = "releasedDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date releasedDate,@RequestParam(name = "image") MultipartFile[] image){
 
-        VideoGame videoGameToCreate =new VideoGame(name,developer,releasedDate,genre,unitsSold,gameModes);
+        String imageName = fileUploadServices.almacenarAndDepurarImagen(image,uploadDirectory);
+
+        VideoGame videoGameToCreate =new VideoGame(name,developer,releasedDate,genre,unitsSold,gameModes,imageName);
 
         videoGameServices.createVideoGame(videoGameToCreate);
 
@@ -72,6 +77,16 @@ public class VideoGameController {
         model.addAttribute("title","Welcome to the game store");
 
         return "/freemarker/showVideoGame";
+    }
+
+    @RequestMapping("/showVideogame")
+    public String showVideogameDescription(Model model){
+
+        model.addAttribute("title","Welcome to the game store");
+
+        model.addAttribute("videogames",videoGameServices.listAllVideoGames());
+
+        return "/freemarker/videogameInfo";
     }
 
 

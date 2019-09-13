@@ -47,7 +47,7 @@
         <div class="col-md-8 order-md-1">
             <h4 class="mb-3">Write the information of the console</h4>
 
-            <form method="post" action="/consoles/create" class="needs-validation" novalidate>
+            <form method="post" action="/consoles/create" class="needs-validation" enctype="multipart/form-data" novalidate>
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <label for="name">Console name</label>
@@ -107,6 +107,14 @@
                     <label for="unitsSold">Units sold</label>
                     <div class="input-group">
                         <input type="number" class="form-control" id="unitsSold" name="unitsSold" placeholder="Units sold" required>
+
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="unitsSold">Picture of the console</label>
+                    <div class="input-group">
+                        <input type="file" class="form-control" id="image" name="image" placeholder="Picture of the console" required>
 
                     </div>
                 </div>

@@ -1,12 +1,14 @@
 package arkham.knight.gamestop.controllers;
 import arkham.knight.gamestop.models.Console;
 import arkham.knight.gamestop.services.ConsoleServices;
+import arkham.knight.gamestop.services.FileUploadServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Date;
 
@@ -18,14 +20,15 @@ public class ConsoleController {
     @Autowired
     private ConsoleServices consoleServices;
 
+    @Autowired
+    private FileUploadServices fileUploadServices;
+
+    public static String uploadDirectory = System.getProperty("user.dir")+"/src/main/resources/static/bootstrap-4.3.1/assets/img";
+
+
+
     @RequestMapping("/")
     public String index(Model model){
-
-        Date releasedDate = new Date();
-        Date discontinueddDate = new Date();
-
-        Console consoleTest = new Console("PlayStation 2","Sony","Home console","6th generation",releasedDate,discontinueddDate,15,150000000.0);
-        consoleServices.createConsole(consoleTest);
 
         model.addAttribute("title","Welcome to the game store");
         model.addAttribute("consoles",consoleServices.listAllConsoles());
@@ -42,9 +45,11 @@ public class ConsoleController {
     }
 
     @RequestMapping("/create")
-    public String create(@RequestParam(name = "name") String name, @RequestParam(name = "developer") String developer, @RequestParam(name = "consoleType") String consoleType, @RequestParam(name = "generation") String generation, @RequestParam(name = "unitsSold") Double unitsSold, @RequestParam(name = "releasedDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date releasedDate, @RequestParam(name = "discontinuedDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date discontinuedDate){
+    public String create(@RequestParam(name = "name") String name, @RequestParam(name = "developer") String developer, @RequestParam(name = "consoleType") String consoleType, @RequestParam(name = "generation") String generation, @RequestParam(name = "unitsSold") Double unitsSold, @RequestParam(name = "releasedDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date releasedDate, @RequestParam(name = "discontinuedDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date discontinuedDate, @RequestParam(name = "image") MultipartFile[] image){
 
-        Console consoleToCreate = new Console(name,developer,consoleType,generation,releasedDate,discontinuedDate,10,unitsSold);
+        String imageName = fileUploadServices.almacenarAndDepurarImagen(image,uploadDirectory);
+
+        Console consoleToCreate = new Console(name,developer,consoleType,generation,releasedDate,discontinuedDate,10,unitsSold,imageName);
 
         consoleServices.createConsole(consoleToCreate);
 
@@ -74,6 +79,24 @@ public class ConsoleController {
         model.addAttribute("title","Welcome to the game store");
 
         return "/freemarker/showConsole";
+    }
+
+    @RequestMapping("/showHomeConsole")
+    public String showHomeConsoleDescription(Model model){
+
+        model.addAttribute("title","Welcome to the game store");
+
+        model.addAttribute("consoles",consoleServices.listAllConsoles());
+
+        return "/freemarker/homeConsoleInfo";
+    }
+
+    @RequestMapping("/showHandheldConsole")
+    public String showHandheldConsoleDescription(Model model){
+
+        model.addAttribute("title","Welcome to the game store");
+
+        return "/freemarker/handheldConsoleInfo";
     }
 
 

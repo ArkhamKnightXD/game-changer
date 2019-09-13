@@ -17,6 +17,7 @@ public class VideoGame implements Serializable {
     private String genre;
     private Double unitsSold;
     private String gameModes;
+    private String image;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
     private List<Console> platformsList;
@@ -32,13 +33,14 @@ public class VideoGame implements Serializable {
         this.platformsList = platformsList;
     }
 
-    public VideoGame(String name, String developer, Date releasedDate, String genre, Double unitsSold, String gameModes) {
+    public VideoGame(String name, String developer, Date releasedDate, String genre, Double unitsSold, String gameModes, String image) {
         this.name = name;
         this.developer = developer;
         this.releasedDate = releasedDate;
         this.genre = genre;
         this.unitsSold = unitsSold;
         this.gameModes = gameModes;
+        this.image = image;
     }
 
     public VideoGame() {
@@ -109,4 +111,11 @@ public class VideoGame implements Serializable {
         this.platformsList = platformsList;
     }
 
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
 }

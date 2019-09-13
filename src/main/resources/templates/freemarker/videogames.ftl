@@ -39,9 +39,9 @@
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sort by</a>
         <div class="dropdown-menu" aria-labelledby="dropdown01">
-          <a class="dropdown-item" href="#">Best selling game</a>
+          <a class="dropdown-item" href="/videogames/showVideogame">Best selling games</a>
           <a class="dropdown-item" href="#">Games by year</a>
-          <a class="dropdown-item" href="#">Consoles by units sold</a>
+          <a class="dropdown-item" href="/consoles/showHomeConsole">Consoles by units sold</a>
         </div>
       </li>
     </ul>

@@ -19,6 +19,7 @@ public class Console implements Serializable {
     private Date discontinuedDate;
     private int lifespan;
     private Double unitsSold;
+    private String image;
 
     @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
     private VideoGame bestSellingGame;
@@ -52,7 +53,7 @@ public class Console implements Serializable {
         this.videoGameList = videoGameList;
     }
 
-    public Console(String name, String developer, String consoleType, String generation, Date releasedDate, Date discontinuedDate, int lifespan, Double unitsSold) {
+    public Console(String name, String developer, String consoleType, String generation, Date releasedDate, Date discontinuedDate, int lifespan, Double unitsSold, String image) {
         this.name = name;
         this.developer = developer;
         this.consoleType = consoleType;
@@ -61,6 +62,7 @@ public class Console implements Serializable {
         this.discontinuedDate = discontinuedDate;
         this.lifespan = lifespan;
         this.unitsSold = unitsSold;
+        this.image = image;
     }
 
     public Console() {
@@ -177,5 +179,13 @@ public class Console implements Serializable {
 
     public void setVideoGameList(List<VideoGame> videoGameList) {
         this.videoGameList = videoGameList;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }
