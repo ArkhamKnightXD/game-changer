@@ -47,25 +47,25 @@
             <div class="col-md-8 order-md-1">
                 <h4 class="mb-3">Write the information of the console</h4>
 
-                <form method="post" action="/consoles/create" class="needs-validation" novalidate>
+                <form method="post" action="/consoles/edit/?id=${console.id}" class="needs-validation" enctype="multipart/form-data" novalidate>
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label for="name">Console name</label>
-                            <input type="text" class="form-control" id="name" name="name" placeholder="Console name"  required>
+                            <input type="text" class="form-control" value="${console.name}" id="name" name="name" placeholder="Console name"  required>
 
                         </div>
 
                         <div class="col-md-6 mb-3">
                             <label for="developer">Developer</label>
-                            <input type="text" class="form-control" id="developer" name="developer" placeholder="Developer"  required>
+                            <input type="text" class="form-control" value="${console.developer}" id="developer" name="developer" placeholder="Developer"  required>
 
                         </div>
                     </div>
 
                     <div class="mb-3">
                         <label for="consoleType">Console type</label>
-                        <select class="custom-select d-block w-100" id="consoleType" name="consoleType" required>
-                            <option value="">Choose...</option>
+                        <select class="custom-select d-block w-100"  id="consoleType" name="consoleType" required>
+                            <option value="${console.consoleType}">${console.consoleType}</option>
                             <option value="Home Console">Home console</option>
                             <option value="Handheld Console">Handheld console</option>
                         </select>
@@ -75,7 +75,7 @@
                     <div class="mb-3">
                         <label for="generation">Generation</label>
                         <select class="custom-select d-block w-100" id="generation" name="generation" required>
-                            <option value="">Choose...</option>
+                            <option value="${console.generation}">${console.generation}</option>
                             <option value="3rd generation">3rd generation</option>
                             <option value="4th generation">4th generation</option>
                             <option value="5th generation">5th generation</option>
@@ -90,7 +90,7 @@
                     <div class="mb-3">
                         <label for="releasedDate">Released date</label>
                         <div class="input-group">
-                            <input type="date" class="form-control" id="releasedDate" name="releasedDate" placeholder="Released date" required>
+                            <input type="date" class="form-control" value="${console.releasedDate}" id="releasedDate" name="releasedDate" placeholder="Released date" required>
 
                         </div>
                     </div>
@@ -98,7 +98,7 @@
                     <div class="mb-3">
                         <label for="discontinuedDate">Discontinued date</label>
                         <div class="input-group">
-                            <input type="date" class="form-control" id="discontinuedDate" name="discontinuedDate" placeholder="Discontinued date" required>
+                            <input type="date" class="form-control" value="${console.discontinuedDate}" id="discontinuedDate" name="discontinuedDate" placeholder="Discontinued date" required>
 
                         </div>
                     </div>
@@ -106,7 +106,15 @@
                     <div class="mb-3">
                         <label for="unitsSold">Units sold</label>
                         <div class="input-group">
-                            <input type="number" class="form-control" id="unitsSold" name="unitsSold" placeholder="Units sold" required>
+                            <input type="number" class="form-control" value="${console.unitsSold}" id="unitsSold" name="unitsSold" placeholder="Units sold" required>
+
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="image">Picture of the console</label>
+                        <div class="input-group">
+                            <input type="file" class="form-control" value="${console.image}" id="image" name="image" placeholder="Picture of the console" required>
 
                         </div>
                     </div>

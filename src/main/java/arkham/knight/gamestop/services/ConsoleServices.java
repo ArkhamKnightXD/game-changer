@@ -23,6 +23,19 @@ public class ConsoleServices {
         return consoleRepository.findAll();
     }
 
+    public List<Console> listConsolesByType(String consoleType){
+
+        return consoleRepository.findAllByConsoleType(consoleType);
+
+    }
+
+    public List<Console> listConsolesByGeneration(String generation){
+
+        return consoleRepository.findAllByGeneration(generation);
+
+    }
+
+
     public Console findConsoleById(long id){
 
         return consoleRepository.findConsoleById(id);

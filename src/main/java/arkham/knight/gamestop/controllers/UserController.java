@@ -20,6 +20,7 @@ public class UserController {
     public String index(Model model){
 
         model.addAttribute("title","Welcome to the game store");
+        model.addAttribute("users",userServices.listAllUsers());
 
         return "/freemarker/users";
     }
@@ -33,7 +34,9 @@ public class UserController {
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public String create(){
+    public String create(Model model){
+
+        model.addAttribute("title","Welcome to the game store");
 
         return "redirect:/users/";
     }
@@ -54,11 +57,10 @@ public class UserController {
     }
 
 
-
     @RequestMapping("/delete")
-    public String delete(@RequestParam(name = "idUser") Long idUser){
+    public String delete(@RequestParam(name = "id") Long id){
 
-        User userToDelete = userServices.findUserById(idUser);
+        User userToDelete = userServices.findUserById(id);
 
         userServices.deleteUser(userToDelete);
 

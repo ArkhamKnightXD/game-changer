@@ -112,7 +112,7 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="unitsSold">Picture of the console</label>
+                    <label for="image">Picture of the console</label>
                     <div class="input-group">
                         <input type="file" class="form-control" id="image" name="image" placeholder="Picture of the console" required>
 

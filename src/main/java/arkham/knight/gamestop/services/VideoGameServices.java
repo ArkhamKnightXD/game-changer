@@ -22,6 +22,11 @@ public class VideoGameServices {
         return videoGameRepository.findAll();
     }
 
+    public List<VideoGame> listAllVideoGamesByGenre(String genre){
+
+        return videoGameRepository.findAllByGenre(genre);
+    }
+
     public VideoGame findVideoGameById(long id){
 
         return videoGameRepository.findVideoGameById(id);

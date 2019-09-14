@@ -77,7 +77,7 @@
             <p class="lead text-muted">In this gallery, i'm going to show pictures of the top 9 best handheld console, also i'm going to put a short description of each one of these.</p>
             <p>
                 <a href="/consoles/showHomeConsole" class="btn btn-primary my-2">Go to the top console page</a>
-                <a href="/consoles/showHandheldConsole/" class="btn btn-secondary my-2">Go to top handheld console page</a>
+                <a href="/videogames/showVideogame" class="btn btn-secondary my-2">Go to the top videogames page</a>
             </p>
         </div>
     </section>
@@ -89,6 +89,7 @@
 
             <div class="row">
 
+                <#list consoles as console >
                     <div class="col-md-4">
                         <div class="card mb-4 shadow-sm">
                             <img src="../../bootstrap-4.3.1/assets/img/${console.image}" width="100%" height="400">
@@ -96,15 +97,15 @@
                                 <p class="card-text">${console.name}</p>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                                        <a class="btn btn-outline-primary" href="/consoles/show/?id=${console.id}" role="button">View</a>
+                                        <a class="btn btn-outline-success" href="/consoles/edition/?id=${console.id}" role="button">Edit</a>
                                     </div>
                                     <small class="text-muted">9 mins</small>
                                 </div>
                             </div>
                         </div>
                     </div>
-
+                </#list>
 
             </div>
         </div>

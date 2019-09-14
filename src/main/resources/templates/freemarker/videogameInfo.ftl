@@ -97,8 +97,8 @@
                             <p class="card-text">${videogame.name}</p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                                    <a class="btn btn-outline-primary" href="/videogames/show/?id=${videogame.id}" role="button">View</a>
+                                    <a class="btn btn-outline-success" href="/videogames/edition/?id=${videogame.id}" role="button">Edit</a>
                                 </div>
                                 <small class="text-muted">9 mins</small>
                             </div>

@@ -18,7 +18,7 @@ public class UserServices {
 
     }
 
-    public List<User> listAllConsoles(){
+    public List<User> listAllUsers(){
 
         return userRepository.findAll();
     }

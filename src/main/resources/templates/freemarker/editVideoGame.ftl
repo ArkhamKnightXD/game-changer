@@ -35,7 +35,7 @@
 <body class="bg-light">
 <div class="container">
     <div class="py-5 text-center">
-        <h1>Videogame Form</h1>
+        <h1>Edit Videogame</h1>
     </div>
 
 
@@ -47,17 +47,17 @@
             <div class="col-md-8 order-md-1">
                 <h4 class="mb-3">Write the information of the videogame</h4>
 
-                <form method="post" action="/videogames/create" class="needs-validation" enctype="multipart/form-data" novalidate >
+                <form method="post" action="/videogames/edit/?id=${videogame.id}" class="needs-validation" enctype="multipart/form-data" novalidate >
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label for="name">Videogame name</label>
-                            <input type="text" class="form-control" id="name" name="name" placeholder="Videogame name"  required>
+                            <input type="text" class="form-control" value="${videogame.name}" id="name" name="name" placeholder="Videogame name"  required>
 
                         </div>
 
                         <div class="col-md-6 mb-3">
                             <label for="developer">Developer</label>
-                            <input type="text" class="form-control" id="developer" name="developer" placeholder="Developer"  required>
+                            <input type="text" class="form-control" value="${videogame.developer}" id="developer" name="developer" placeholder="Developer"  required>
 
                         </div>
                     </div>
@@ -66,7 +66,7 @@
                     <div class="mb-3">
                         <label for="genre">Genre</label>
                         <select class="custom-select d-block w-100" id="genre" name="genre" required>
-                            <option value="">Choose...</option>
+                            <option value="${videogame.genre}">${videogame.genre}</option>
                             <option value="Action">Action</option>
                             <option value="First-person shooter">First-person shooter</option>
                             <option value="Third-person shooter">Third-person shooter</option>
@@ -83,7 +83,7 @@
                     <div class="mb-3">
                         <label for="gameModes">Game modes</label>
                         <select class="custom-select d-block w-100" id="gameModes" name="gameModes" required>
-                            <option value="">Choose...</option>
+                            <option value="${videogame.gameModes}">${videogame.gameModes}</option>
                             <option value="Single-player">Single-player</option>
                             <option value="Multiplayer">Multiplayer</option>
                             <option value="Single-player, Multiplayer">Single-player, Multiplayer</option>
@@ -105,15 +105,15 @@
                     <div class="mb-3">
                         <label for="unitsSold">Units sold</label>
                         <div class="input-group">
-                            <input type="number" class="form-control" id="unitsSold" name="unitsSold" placeholder="Units sold" required>
+                            <input type="number" class="form-control" value="${videogame.unitsSold}" id="unitsSold" name="unitsSold" placeholder="Units sold" required>
 
                         </div>
                     </div>
 
                     <div class="mb-3">
-                        <label for="unitsSold">Picture of the cover</label>
+                        <label for="image">Picture of the cover</label>
                         <div class="input-group">
-                            <input type="file" class="form-control" id="image" name="image" placeholder="Picture of the cover" required>
+                            <input type="file" class="form-control" value="${videogame.image}" id="image" name="image" placeholder="Picture of the cover" required>
 
                         </div>
                     </div>
