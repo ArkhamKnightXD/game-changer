@@ -14,4 +14,12 @@ public class IndexController {
         return "/freemarker/index";
     }
 
+    @RequestMapping("/admin")
+    public String admin(Model model){
+
+        model.addAttribute("title","Welcome to the game store");
+
+        return "/freemarker/adminPage";
+    }
+
 }

@@ -91,9 +91,12 @@ public class ConsoleController {
 
 
     @RequestMapping("/show")
-    public String showPage(Model model){
+    public String showPage(Model model, @RequestParam(name = "id") Long id){
+
+        Console consoleToShow = consoleServices.findConsoleById(id);
 
         model.addAttribute("title","Welcome to the game store");
+        model.addAttribute("console",consoleToShow);
 
         return "/freemarker/showConsole";
     }

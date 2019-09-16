@@ -9,23 +9,6 @@
     <!-- Bootstrap core CSS -->
     <link href="../../bootstrap-4.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-
-    <style>
-        .bd-placeholder-img {
-            font-size: 1.125rem;
-            text-anchor: middle;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-        }
-
-        @media (min-width: 768px) {
-            .bd-placeholder-img-lg {
-                font-size: 3.5rem;
-            }
-        }
-    </style>
     <!-- Custom styles for this template -->
     <link href="../../bootstrap-4.3.1/style/show-info.css" rel="stylesheet">
 </head>
@@ -73,8 +56,8 @@
 
     <section class="jumbotron text-center">
         <div class="container">
-            <h1 class="jumbotron-heading">Album of my top 9 best handheldconsole</h1>
-            <p class="lead text-muted">In this gallery, i'm going to show pictures of the top 9 best handheld console, also i'm going to put a short description of each one of these.</p>
+            <h1 class="jumbotron-heading">Top 9 best handheldconsole</h1>
+            <p class="lead text-muted">In this gallery, i'm going to show pictures of the top 9 best handheld console.</p>
             <p>
                 <a href="/consoles/showHomeConsole" class="btn btn-primary my-2">Go to the top console page</a>
                 <a href="/videogames/showVideogame" class="btn btn-secondary my-2">Go to the top videogames page</a>
@@ -94,13 +77,14 @@
                         <div class="card mb-4 shadow-sm">
                             <img src="../../bootstrap-4.3.1/assets/img/${console.image}" width="100%" height="400">
                             <div class="card-body">
-                                <p class="card-text">${console.name}</p>
+                                <h4 class="card-title">${console.name}</h4>
+                                <p class="card-text">${console.developer}</p>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
                                         <a class="btn btn-outline-primary" href="/consoles/show/?id=${console.id}" role="button">View</a>
                                         <a class="btn btn-outline-success" href="/consoles/edition/?id=${console.id}" role="button">Edit</a>
                                     </div>
-                                    <small class="text-muted">9 mins</small>
+                                    <small class="text-muted">${console.unitsSold}</small>
                                 </div>
                             </div>
                         </div>

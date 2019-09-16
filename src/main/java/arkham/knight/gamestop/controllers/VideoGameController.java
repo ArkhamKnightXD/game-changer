@@ -84,14 +84,17 @@ public class VideoGameController {
         videoGameServices.createVideoGame(videoGameToEdit);
 
         model.addAttribute("title","Welcome to the game store");
-        return "redirect:/videogames/";
+        return "redirect:/videogames/showVideogame/";
     }
 
 
     @RequestMapping("/show")
-    public String showPage(Model model){
+    public String showPage(Model model, @RequestParam(name = "id") Long id){
+
+        VideoGame videoGameToShow = videoGameServices.findVideoGameById(id);
 
         model.addAttribute("title","Welcome to the game store");
+        model.addAttribute("videogame",videoGameToShow);
 
         return "/freemarker/showVideoGame";
     }
