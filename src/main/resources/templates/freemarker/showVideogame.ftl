@@ -14,6 +14,8 @@
 
     <!-- Custom styles for this template -->
     <link href="../../bootstrap-4.3.1/style/product.css" rel="stylesheet">
+
+    <link href="../../bootstrap-4.3.1/style/style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -132,14 +134,10 @@
     </div>
 </div>
 
-<footer class="container py-5">
-    <div class="row">
-        <div class="col-12 col-md">
-            <p class="float-right"><a href="#">Back to top</a></p>
-            <p>&copy; Arkham-Store 2019</p>
-        </div>
-
-    </div>
+<!-- FOOTER -->
+<footer class="footer-container">
+    <p class="float-right"><a href="#">Back to top</a></p>
+    <p class="logo">&copy; Arkham-Store 2019</p>
 </footer>
 
 

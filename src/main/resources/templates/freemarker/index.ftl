@@ -14,6 +14,8 @@
 
     <!-- Custom styles for this template -->
     <link href="../../bootstrap-4.3.1/style/carousel.css" rel="stylesheet">
+
+    <link href="../../bootstrap-4.3.1/style/style.css" rel="stylesheet">
 </head>
 <body>
 
@@ -180,13 +182,12 @@
     </div><!-- /.container -->
 
 
-    <!-- FOOTER -->
-    <footer class="container">
-        <p class="float-right"><a href="#">Back to top</a></p>
-        <p>&copy; Arkham-Store 2019</p>
-    </footer>
 </main>
-
+<!-- FOOTER -->
+<footer class="footer-container">
+    <p class="float-right"><a href="#">Back to top</a></p>
+    <p class="logo">&copy; Arkham-Store 2019</p>
+</footer>
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->

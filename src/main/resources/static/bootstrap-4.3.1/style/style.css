@@ -1,11 +1,32 @@
 body {
-  padding-top: 5rem;
+  padding-top: 3rem;
 }
 .starter-template {
-  padding: 3rem 1.5rem;
+  padding: 1rem 1.5rem;
   text-align: center;
 }
 
-.welcome-text{
+.footer-container{
 
+  border: 2px solid black ;
+  position: relative;
+  top: 200px;
+  background: #303036;
+  color: white;
+  height: 100px;
+  width: 100%;
+}
+
+.logo{
+  position: relative;
+  left: 80px;
+  top: 20px;
+  font-size: 20px;
+}
+
+.logo-info{
+  position: relative;
+  left: 80px;
+  bottom: 20px;
+  font-size: 20px;
 }

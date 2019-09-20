@@ -54,15 +54,15 @@
       </div>
     </nav>
 
+    <h1 class="jumbotron text-center">List of the consoles</h1>
     <main role="main" class="container">
 
       <div class="starter-template">
-        <h1>List of the consoles</h1>
-
         <table class="table table-hover table-bordered">
           <thead class="thead-dark">
           <tr>
             <th scope="col">#</th>
+            <th scope="col">Picture</th>
             <th scope="col">Name</th>
             <th scope="col">Developer</th>
             <th scope="col">Generation</th>
@@ -81,6 +81,7 @@
 
           <tr>
             <th scope="row">1</th>
+            <td><a href="/consoles/show/?id=${console.id}"><img src="../../bootstrap-4.3.1/assets/img/${console.image}" width="110px" height="110px"></a></td>
             <td>${console.name}</td>
             <td>${console.developer}</td>
             <td>${console.generation}</td>
@@ -97,8 +98,14 @@
 
       </div>
 
+
     </main><!-- /.container -->
 
+    <!-- FOOTER -->
+    <footer class="footer-container">
+      <p class="float-right"><a href="#">Back to top</a></p>
+      <p class="logo">&copy; Arkham-Store 2019</p>
+    </footer>
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
