@@ -85,6 +85,7 @@
                                     <div class="btn-group">
                                         <a class="btn btn-outline-primary" href="/consoles/show/?id=${console.id}" role="button">View</a>
                                         <a class="btn btn-outline-success" href="/consoles/edition/?id=${console.id}" role="button">Edit</a>
+                                        <a class="btn btn-outline-danger" href="/consoles/delete/?id=${console.id}" role="button">Delete</a>
                                     </div>
                                     <small class="text-muted">${console.unitsSold}</small>
                                 </div>

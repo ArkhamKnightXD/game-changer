@@ -5,13 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
 
     <title>${title}</title>
 
 
     <!-- Bootstrap core CSS -->
     <link href="../../bootstrap-4.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="../../font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="../../bootstrap-4.3.1/style/style.css" rel="stylesheet">
@@ -71,13 +72,13 @@
             <th scope="col">Discontinued date</th>
             <th scope="col">Lifespan</th>
             <th scope="col">Units sold</th>
+            <th scope="col">Options</th>
           </tr>
           </thead>
 
           <tbody>
 
           <#list consoles as console >
-
 
           <tr>
             <th scope="row">1</th>
@@ -90,6 +91,11 @@
             <td>${console.discontinuedDate?date}</td>
             <td>${console.lifespan}</td>
             <td>${console.unitsSold}</td>
+            <td>
+              <a href="/consoles/edition/?id=${console.id}">  <i class="fa fa-edit" style="font-size:25px"></i></a>
+              <a href="/consoles/delete/?id=${console.id}">  <i class="fa fa-trash" style="font-size:25px;color:red"></i> </a>
+            </td>
+
           </tr>
 
           </#list>

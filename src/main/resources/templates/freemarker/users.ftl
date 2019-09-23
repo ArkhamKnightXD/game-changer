@@ -5,13 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
 
     <title>${title}</title>
 
 
     <!-- Bootstrap core CSS -->
     <link href="../../bootstrap-4.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="../../font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="../../bootstrap-4.3.1/style/style.css" rel="stylesheet">
@@ -27,34 +28,40 @@
 
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item ">
+            <li class="nav-item">
                 <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link" href="/consoles/">Consoles</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item active">
                 <a class="nav-link " href="/videogames/">Videogames</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link " href="/admin">Admin</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sort by</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown01">
-                    <a class="dropdown-item" href="#">Best selling game</a>
-                    <a class="dropdown-item" href="#">Games by year</a>
-                    <a class="dropdown-item" href="#">Consoles by units sold</a>
+                    <a class="dropdown-item" href="/videogames/showVideogame">Best selling games</a>
+                    <a class="dropdown-item" href="/consoles/showHandheldConsole">Best selling handheld consoles</a>
+                    <a class="dropdown-item" href="/consoles/showHomeConsole">Best selling home consoles</a>
                 </div>
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
-            <a class="btn btn-outline-success my-2 my-sm-0" href="/users/creation" role="button">Create a new user</a>
+            <form class="form-inline my-2 my-lg-0">
+                <a class="btn btn-outline-success my-2 my-sm-0" href="/videogames/creation" role="button">Add a new Video game</a>
+            </form>
         </form>
     </div>
 </nav>
 
+<h1 class="jumbotron text-center">List of the videogames</h1>
+
 <main role="main" class="container">
 
     <div class="starter-template">
-        <h1>List of the consoles</h1>
 
         <table class="table table-hover table-bordered">
             <thead class="thead-dark">
@@ -62,30 +69,25 @@
                 <th scope="col">#</th>
                 <th scope="col">Name</th>
                 <th scope="col">Developer</th>
-                <th scope="col">Generation</th>
-                <th scope="col">Consoles type</th>
+                <th scope="col">Genre</th>
                 <th scope="col">Released date</th>
-                <th scope="col">Discontinued date</th>
-                <th scope="col">Lifespan</th>
                 <th scope="col">Units sold</th>
+                <th scope="col">Games mode</th>
             </tr>
             </thead>
 
             <tbody>
-
-            <#list consoles as console >
-
+            <#list videogames as videogame >
 
                 <tr>
                     <th scope="row">1</th>
-                    <td>${console.name}</td>
-                    <td>${console.developer}</td>
-                    <td>${console.generation}</td>
-                    <td>${console.consoleType}</td>
-                    <td>${console.releasedDate?date}</td>
-                    <td>${console.discontinuedDate?date}</td>
-                    <td>${console.lifespan}</td>
-                    <td>${console.unitsSold}</td>
+                    <td><a href="/videogames/show/?id=${videogame.id}"></a></td>
+                    <td>${videogame.name}</td>
+                    <td>${videogame.developer}</td>
+                    <td>${videogame.genre}</td>
+                    <td>${videogame.releasedDate?date}</td>
+                    <td>${videogame.unitsSold}</td>
+                    <td>${videogame.gameModes}</td>
                 </tr>
 
             </#list>
@@ -95,7 +97,10 @@
     </div>
 
 </main><!-- /.container -->
-
+<footer class="footer-container">
+    <p class="float-right"><a href="#">Back to top</a></p>
+    <p class="logo">&copy; Arkham-Store 2019</p>
+</footer>
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->

@@ -122,15 +122,14 @@ public class ConsoleController {
 
 
     @RequestMapping("/delete")
-    public String delete(@RequestParam(name = "idConsole") Long idConsole){
+    public String delete(@RequestParam(name = "id") Long id){
 
-        Console consoleToDelete = consoleServices.findConsoleById(idConsole);
+        Console consoleToDelete = consoleServices.findConsoleById(id);
 
         consoleServices.deleteConsole(consoleToDelete);
 
         return "redirect:/consoles/";
     }
-
 
 
 }

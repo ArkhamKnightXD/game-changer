@@ -5,13 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-  <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
 
   <title>${title}</title>
 
 
   <!-- Bootstrap core CSS -->
   <link href="../../bootstrap-4.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <link href="../../font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet">
 
   <!-- Custom styles for this template -->
   <link href="../../bootstrap-4.3.1/style/style.css" rel="stylesheet">
@@ -73,6 +74,7 @@
         <th scope="col">Released date</th>
         <th scope="col">Units sold</th>
         <th scope="col">Games mode</th>
+        <th scope="col">Options</th>
       </tr>
       </thead>
 
@@ -88,6 +90,10 @@
         <td>${videogame.releasedDate?date}</td>
         <td>${videogame.unitsSold}</td>
         <td>${videogame.gameModes}</td>
+        <td>
+          <a href="/videogames/edition/?id=${videogame.id}">  <i class="fa fa-edit" style="font-size:25px"></i></a>
+          <a href="/videogames/delete/?id=${videogame.id}">  <i class="fa fa-trash" style="font-size:25px;color:red"></i> </a>
+        </td>
       </tr>
 
       </#list>

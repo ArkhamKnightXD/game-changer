@@ -111,6 +111,28 @@
                     </div>
 
                     <div class="mb-3">
+                        <label for="rating">Rating of the game</label>
+                        <div class="input-group">
+                            <input type="number" class="form-control" id="rating" name="rating" placeholder="Rating of the game" required>
+
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="idConsoles">Platforms of the game</label>
+
+                        <div class="input-group">
+                            <select multiple class="form-control" name="idConsoles" required>
+                                <#list consoles as console>
+                                        <option value="${console.id}" >${console.name} - ${console.developer} - ${console.consoleType} - ${console.generation}</option>
+                                </#list>
+                            </select>
+                        </div>
+
+
+                    </div>
+
+                    <div class="mb-3">
                         <label for="unitsSold">Picture of the cover</label>
                         <div class="input-group">
                             <input type="file" class="form-control" id="image" name="image" placeholder="Picture of the cover" required>

@@ -83,6 +83,7 @@
                                 <div class="btn-group">
                                     <a class="btn btn-outline-primary" href="/videogames/show/?id=${videogame.id}" role="button">View</a>
                                     <a class="btn btn-outline-success" href="/videogames/edition/?id=${videogame.id}" role="button">Edit</a>
+                                    <a class="btn btn-outline-danger" href="/videogames/delete/?id=${videogame.id}" role="button">Delete</a>
                                 </div>
                                 <small class="text-muted">${videogame.gameModes}</small>
                             </div>
