@@ -25,6 +25,7 @@ public class UserController {
         return "/freemarker/users";
     }
 
+
     @RequestMapping("/creation")
     public String creationPage(Model model){
 
@@ -32,6 +33,7 @@ public class UserController {
 
         return "/freemarker/createUser";
     }
+
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public String create(Model model){
@@ -49,6 +51,7 @@ public class UserController {
 
         return "/freemarker/editUser";
     }
+
 
     @RequestMapping("/edit")
     public String edit(){

@@ -19,6 +19,7 @@ public class IndexController {
         return "/freemarker/index";
     }
 
+
     @RequestMapping("/admin")
     public String admin(Model model){
 
@@ -27,5 +28,4 @@ public class IndexController {
 
         return "/freemarker/adminPage";
     }
-
 }

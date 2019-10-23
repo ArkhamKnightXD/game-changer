@@ -8,30 +8,10 @@
   <meta name="generator" content="Jekyll v3.8.5">
   <title>${title}</title>
 
-
-
-  <!-- Bootstrap core CSS -->
   <link href="../../bootstrap-4.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-
-  <style>
-    .bd-placeholder-img {
-      font-size: 1.125rem;
-      text-anchor: middle;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-    }
-
-    @media (min-width: 768px) {
-      .bd-placeholder-img-lg {
-        font-size: 3.5rem;
-      }
-    }
-  </style>
-  <!-- Custom styles for this template -->
   <link href="../../bootstrap-4.3.1/style/index-style.css" rel="stylesheet">
+
 </head>
 <body>
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
@@ -69,7 +49,6 @@
 
 <main role="main">
 
-  <!-- Main jumbotron for a primary marketing message or call to action -->
   <div class="jumbotron">
     <div class="container">
       <h1>Welcome to the best library of consoles and videogames</h1>
@@ -79,7 +58,6 @@
   </div>
 
   <div class="container">
-    <!-- Example row of columns -->
     <div class="row">
       <div class="col-md-4">
         <h2>Home console</h2>
@@ -100,7 +78,7 @@
 
     <hr>
 
-  </div> <!-- /container -->
+  </div>
 
 </main>
 

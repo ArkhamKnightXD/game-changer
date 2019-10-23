@@ -24,7 +24,6 @@ public class ConsoleController {
     public static String uploadDirectory = System.getProperty("user.dir")+"/src/main/resources/static/bootstrap-4.3.1/assets/img";
 
 
-
     @RequestMapping("/")
     public String index(Model model){
 
@@ -34,6 +33,7 @@ public class ConsoleController {
         return "/freemarker/consoles";
     }
 
+
     @RequestMapping("/creation")
     public String creationPage(Model model){
 
@@ -41,6 +41,7 @@ public class ConsoleController {
 
         return "/freemarker/createConsole";
     }
+
 
     @RequestMapping("/create")
     public String create(@RequestParam(name = "name") String name, @RequestParam(name = "developer") String developer, @RequestParam(name = "consoleType") String consoleType, @RequestParam(name = "generation") String generation, @RequestParam(name = "unitsSold") Double unitsSold, @RequestParam(name = "releasedDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date releasedDate, @RequestParam(name = "discontinuedDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date discontinuedDate, @RequestParam(name = "image") MultipartFile[] image){
@@ -65,6 +66,7 @@ public class ConsoleController {
 
         return "/freemarker/editConsole";
     }
+
 
     @RequestMapping("/edit")
     public String edit(Model model, @RequestParam(name = "id") Long id ,@RequestParam(name = "name") String name, @RequestParam(name = "developer") String developer, @RequestParam(name = "consoleType") String consoleType, @RequestParam(name = "generation") String generation, @RequestParam(name = "unitsSold") Double unitsSold, @RequestParam(name = "releasedDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date releasedDate, @RequestParam(name = "discontinuedDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date discontinuedDate, @RequestParam(name = "image") MultipartFile[] image){
@@ -101,6 +103,7 @@ public class ConsoleController {
         return "/freemarker/showConsole";
     }
 
+
     @RequestMapping("/showHomeConsole")
     public String showHomeConsoleDescription(Model model){
 
@@ -110,6 +113,7 @@ public class ConsoleController {
 
         return "/freemarker/homeConsoleInfo";
     }
+
 
     @RequestMapping("/showHandheldConsole")
     public String showHandheldConsoleDescription(Model model){
@@ -130,6 +134,4 @@ public class ConsoleController {
 
         return "redirect:/consoles/";
     }
-
-
 }

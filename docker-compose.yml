@@ -4,7 +4,7 @@ services:
 
   gamestop:
     
-    image: gamestop-image
+    image: kerxd/game-changer
 
     container_name: docker-gamestop
 

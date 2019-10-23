@@ -6,13 +6,12 @@
     <meta name="description" content="">
     <title>${title}</title>
 
-    <!-- Bootstrap core CSS -->
     <link href="../../bootstrap-4.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <!-- Custom styles for this template -->
     <link href="../../bootstrap-4.3.1/style/show-info.css" rel="stylesheet">
 
     <link href="../../bootstrap-4.3.1/style/style.css" rel="stylesheet">
+
 </head>
 <body>
 <header>
@@ -100,7 +99,6 @@
 
 </main>
 
-<!-- FOOTER -->
 <footer class="footer-container">
     <p class="float-right"><a href="#">Back to top</a></p>
     <p class="logo-info">&copy; Arkham-Store 2019</p>

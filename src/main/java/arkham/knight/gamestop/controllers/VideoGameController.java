@@ -45,6 +45,7 @@ public class VideoGameController {
         return "/freemarker/videogames";
     }
 
+
     @RequestMapping("/creation")
     public String creationPage(Model model){
 
@@ -53,6 +54,7 @@ public class VideoGameController {
 
         return "/freemarker/createVideoGame";
     }
+
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public String create(@RequestParam(name = "idConsoles") List<Long> idConsoles, @RequestParam(name = "name") String name, @RequestParam(name = "developer") String developer, @RequestParam(name = "genre") String genre, @RequestParam(name = "gameModes") String gameModes, @RequestParam(name = "unitsSold") Double unitsSold, @RequestParam(name = "releasedDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date releasedDate, @RequestParam(name = "rating") float rating, @RequestParam(name = "image") MultipartFile[] image){
@@ -89,6 +91,7 @@ public class VideoGameController {
 
         return "/freemarker/editVideoGame";
     }
+
 
     @RequestMapping("/edit")
     public String edit(Model model,@RequestParam(name = "idConsoles") List<Long> idConsoles, @RequestParam(name = "id") Long id, @RequestParam(name = "name") String name,@RequestParam(name = "developer") String developer, @RequestParam(name = "genre") String genre,@RequestParam(name = "gameModes") String gameModes,@RequestParam(name = "unitsSold") Double unitsSold, @RequestParam(name = "releasedDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date releasedDate,@RequestParam(name = "rating") float rating, @RequestParam(name = "image") MultipartFile[] image){
@@ -133,6 +136,7 @@ public class VideoGameController {
 
         return "/freemarker/showVideoGame";
     }
+
 
     @RequestMapping("/showVideogame")
     public String showVideogameDescription(Model model){

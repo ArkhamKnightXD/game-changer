@@ -169,9 +169,7 @@ public class Console implements Serializable {
         return backwardCompatibility;
     }
 
-    public void setBackwardCompatibility(Console backwardCompatibility) {
-        this.backwardCompatibility = backwardCompatibility;
-    }
+    public void setBackwardCompatibility(Console backwardCompatibility) { this.backwardCompatibility = backwardCompatibility; }
 
     public List<VideoGame> getVideoGameList() {
         return videoGameList;

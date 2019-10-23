@@ -5,14 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
 
     <title>${title}</title>
 
-    <!-- Bootstrap core CSS -->
     <link href="../../bootstrap-4.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Custom styles for this template -->
     <link href="../../bootstrap-4.3.1/style/carousel.css" rel="stylesheet">
 
     <link href="../../bootstrap-4.3.1/style/style.css" rel="stylesheet">
@@ -107,37 +104,28 @@
         </a>
     </div>
 
-
-    <!-- Marketing messaging and featurettes
-    ================================================== -->
-    <!-- Wrap the rest of the page in another container to center all the content. -->
-
     <div class="container marketing">
 
-        <!-- Three columns of text below the carousel -->
         <div class="row">
             <div class="col-lg-4">
                 <a href="/consoles/showHomeConsole"><img class="rounded-circle" src="../../bootstrap-4.3.1/assets/img/icons/home console.jpg" alt="Generic placeholder image" width="140" height="140"></a>
                 <h2>Home consoles</h2>
                 <p>A home video game console, or simply home console, is a video game device that is primarily used for home gamers, as opposed to in arcades or some other commercial establishment. Home consoles are one type of video game consoles, in contrast to the handheld game consoles which are smaller and portable, allowing people to carry them and play them at any time or place.</p>
                 <p><a class="btn btn-secondary" href="https://en.wikipedia.org/wiki/Home_video_game_console" role="button">Learn more &raquo;</a></p>
-            </div><!-- /.col-lg-4 -->
+            </div>
             <div class="col-lg-4">
                 <a href="/consoles/showHandheldConsole"><img class="rounded-circle" src="../../bootstrap-4.3.1/assets/img/icons/handheld icon.jpg" alt="Generic placeholder image" width="140" height="140"></a>
                 <h2>Handheld consoles</h2>
                 <p>A handheld game console, or simply handheld console, is a small, portable self-contained video game console with a built-in screen, game controls, and speakers.[1] Handheld game consoles are smaller than home video game consoles and contain the console, screen, speakers, and controls in one unit, allowing people to carry them and play them at any time or place.</p>
                 <p><a class="btn btn-secondary" href="https://en.wikipedia.org/wiki/Handheld_game_console" role="button">Learn more &raquo;</a></p>
-            </div><!-- /.col-lg-4 -->
+            </div>
             <div class="col-lg-4">
                <a href="/videogames/showVideogame"><img class="rounded-circle" src="../../bootstrap-4.3.1/assets/img/icons/videogame icon.jpg" alt="Generic placeholder image" width="140" height="140"></a>
                 <h2>Videogames</h2>
                 <p>A video game is an electronic game that involves interaction with a user interface to generate visual feedback on a two- or three-dimensional video display device such as a TV screen, virtual reality headset or computer monitor. Since the 1980s, video games have become an increasingly important part of the entertainment industry, and whether they are also a form of art is a matter of dispute.</p>
                 <p><a class="btn btn-secondary" href="https://en.wikipedia.org/wiki/Video_game" role="button">Learn more &raquo;</a></p>
-            </div><!-- /.col-lg-4 -->
-        </div><!-- /.row -->
-
-
-        <!-- START THE FEATURETTES -->
+            </div>
+        </div>
 
         <hr class="featurette-divider">
 
@@ -177,25 +165,22 @@
 
         <hr class="featurette-divider">
 
-        <!-- /END THE FEATURETTES -->
 
-    </div><!-- /.container -->
+    </div>
 
 
 </main>
-<!-- FOOTER -->
+
 <footer class="footer-container">
     <p class="float-right"><a href="#">Back to top</a></p>
     <p class="logo">&copy; Arkham-Store 2019</p>
 </footer>
-<!-- Bootstrap core JavaScript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
+
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script>window.jQuery || document.write('<script src="../../bootstrap-4.3.1/dist/js/jquery-3.2.1.slim.min.js"><\/script>')</script>
 <script src="../../bootstrap-4.3.1/assets/js/vendor/popper.min.js"></script>
 <script src="../../bootstrap-4.3.1/dist/js/bootstrap.min.js"></script>
-<!-- Just to make our placeholder images work. Don't actually copy the next line! -->
 <script src="../../bootstrap-4.3.1/assets/js/vendor/holder.min.js"></script>
+
 </body>
 </html>
