@@ -20,7 +20,7 @@ public class VideoGame implements Serializable {
     private float rating;
     private String image;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     private List<Console> platformsList;
 
 

@@ -1,32 +1,32 @@
-body {
-  padding-top: 3rem;
+*{
+  margin: 0;
+  padding: 0;
 }
-.starter-template {
-  padding: 1rem 1.5rem;
-  text-align: center;
+
+html, body {
+  height: 100%;
+}
+
+.container {
+  min-height: 100%;
+}
+
+
+.album {
+
+  position: relative;
+  bottom: 100px;
+
 }
 
 .footer-container{
 
   border: 2px solid black ;
   position: relative;
-  top: 200px;
   background: #303036;
   color: white;
-  height: 30%;
-  width: 100%;
+  margin-top: -100px;
+  height: 100px;
+  clear: both;
 }
 
-.logo{
-  position: relative;
-  left: 80px;
-  top: 20px;
-  font-size: 20px;
-}
-
-.logo-info{
-  position: relative;
-  left: 80px;
-  bottom: 20px;
-  font-size: 20px;
-}

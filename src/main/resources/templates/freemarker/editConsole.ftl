@@ -92,6 +92,59 @@
                     </div>
 
                     <div class="mb-3">
+                        <label for="idPredecessorConsole">Predecessor console</label>
+
+                        <div class="input-group">
+                            <select class="form-control" name="idPredecessorConsole" required>
+                                <#list predecessorConsoles as console0>
+
+                                    <#if console0.id != console.id>
+
+                                        <#if console.predecessor.id == console0.id>
+
+                                            <option value="${console.predecessor.id}" >${console.predecessor.name} - ${console.predecessor.developer} - ${console.predecessor.consoleType} - ${console.predecessor.generation}</option>
+
+                                        </#if>
+                                        <!--Esta fallando esta regla  -->
+                                         <#if console.predecessor.id != console0.id >
+
+                                            <option value="${console0.id}" >${console0.name} - ${console0.developer} - ${console0.consoleType} - ${console0.generation}</option>
+
+                                         </#if>
+
+                                    </#if>
+                                </#list>
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="idSuccessorConsole">Successor console</label>
+
+                        <div class="input-group">
+                            <select class="form-control" name="idSuccessorConsole" required>
+                                <#list successorConsoles as console1>
+
+                                    <#if console1.id != console.id>
+
+                                        <#if  console.successor.id == console1.id>
+                                            <option value="${console.successor.id}" >${console.successor.name} - ${console.successor.developer} - ${console.successor.consoleType} - ${console.successor.generation}</option>
+
+                                            <!--Falla -->
+                                            <#else>
+                                                <option value="${console1.id}" >${console1.name} - ${console1.developer} - ${console1.consoleType} - ${console1.generation}</option>
+
+                                        </#if>
+
+                                    </#if>
+                                </#list>
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <div class="mb-3">
                         <label for="image">Picture of the console</label>
                         <div class="input-group">
                             <input type="file" class="form-control" value="${console.image}" id="image" name="image" placeholder="Picture of the console" required>

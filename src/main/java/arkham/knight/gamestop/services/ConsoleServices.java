@@ -35,6 +35,16 @@ public class ConsoleServices {
 
     }
 
+    public List<Console> findAllConsoleByDeveloper(String developer){
+
+        return consoleRepository.findAllByDeveloper(developer);
+    }
+
+    public Console findConsoleByUnitsSold(double units){
+
+        return consoleRepository.findConsoleByUnitsSold(units);
+    }
+
 
     public Console findConsoleById(long id){
 

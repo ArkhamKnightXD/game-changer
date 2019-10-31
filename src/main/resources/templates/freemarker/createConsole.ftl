@@ -93,12 +93,39 @@
                 </div>
 
                 <div class="mb-3">
+                    <label for="idPredecessorConsole">Predecessor console</label>
+
+                    <div class="input-group">
+                        <select class="form-control" name="idPredecessorConsole" required>
+                            <#list predecessorConsoles as console>
+                                <option value="${console.id}" >${console.name} - ${console.developer} - ${console.consoleType} - ${console.generation}</option>
+                            </#list>
+                        </select>
+                    </div>
+
+                </div>
+
+                <div class="mb-3">
+                    <label for="idSuccessorConsole">Successor console</label>
+
+                    <div class="input-group">
+                        <select class="form-control" name="idSuccessorConsole" required>
+                            <#list successorConsoles as console1>
+                                <option value="${console1.id}" >${console1.name} - ${console1.developer} - ${console1.consoleType} - ${console1.generation}</option>
+                            </#list>
+                        </select>
+                    </div>
+
+                </div>
+
+                <div class="mb-3">
                     <label for="image">Picture of the console</label>
                     <div class="input-group">
                         <input type="file" class="form-control" id="image" name="image" placeholder="Picture of the console" required>
 
                     </div>
                 </div>
+
 
                 <hr class="mb-4">
                 <button class="btn btn-primary btn-lg btn-block" type="submit">Save console</button>

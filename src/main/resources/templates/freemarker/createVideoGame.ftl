@@ -56,6 +56,10 @@
                             <option value="2D Fighting">2D Fighting</option>
                             <option value="3D Fighting">3D Fighting</option>
                             <option value="Survival horror">Survival horror</option>
+                            <option value="Hack And Slash">Hack And Slash</option>
+                            <option value="Stealth Game">Stealth Game</option>
+                            <option value="Metroidvania">Metroidvania</option>
+                            <option value="Racing">Racing</option>
                         </select>
 
                     </div>
@@ -67,7 +71,7 @@
                             <option value="">Choose...</option>
                             <option value="Single-player">Single-player</option>
                             <option value="Multiplayer">Multiplayer</option>
-                            <option value="Single-player, Multiplayer">Single-player, Multiplayer</option>
+                            <option value="Single-player, multiplayer">Single-player, multiplayer</option>
                         </select>
 
                     </div>

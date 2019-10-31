@@ -32,6 +32,27 @@ public class VideoGameServices {
         return videoGameRepository.findVideoGameById(id);
     }
 
+    public List<VideoGame> findAllVideoGamesByPlatformName(String platformName){
+
+        return videoGameRepository.findAllByPlatformsListName(platformName);
+    }
+
+    public List<VideoGame> findAllVideoGamesByRating(float rating){
+
+        return videoGameRepository.findAllByRating(rating);
+
+    }
+
+    public VideoGame findVideoGameByRating(float rating){
+
+        return videoGameRepository.findVideoGameByRating(rating);
+    }
+
+    public VideoGame findVideoGameByUnitsSold(double units){
+
+        return videoGameRepository.findVideoGameByUnitsSold(units);
+
+    }
 
     public void deleteVideoGame(VideoGame videoGame){
 

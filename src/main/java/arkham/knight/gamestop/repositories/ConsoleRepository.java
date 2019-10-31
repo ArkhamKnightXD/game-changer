@@ -14,4 +14,8 @@ public interface ConsoleRepository extends JpaRepository<Console,Long> {
 
      List<Console> findAllByGeneration(String generation);
 
+     List<Console> findAllByDeveloper(String developer);
+
+     Console findConsoleByUnitsSold(double units);
+
 }

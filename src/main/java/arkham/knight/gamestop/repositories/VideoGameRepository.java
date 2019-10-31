@@ -10,4 +10,12 @@ public interface VideoGameRepository extends JpaRepository<VideoGame, Long> {
     VideoGame findVideoGameById(long id);
 
     List<VideoGame> findAllByGenre(String genre);
+
+    List<VideoGame> findAllByRating(float rating);
+
+    VideoGame findVideoGameByRating(float rating);
+
+    List<VideoGame> findAllByPlatformsListName(String platformName);
+
+    VideoGame findVideoGameByUnitsSold(Double units);
 }
