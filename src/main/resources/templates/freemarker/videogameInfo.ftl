@@ -6,7 +6,11 @@
     <meta name="description" content="">
     <title>${title}</title>
 
-    <link href="../../bootstrap-4.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!--Nota esta pagina y la de home console y handheld se mostraban mal debido a los hashes ya que estos estaban puestos
+     y coincidan con mi desktop y por lo tanto causaban error en mi laptop, por esa razon la pagina se mostraban
+     como si no tuviera nada de javascript o estilos css y la solucion a esto es borrar donde sea que este la palabra integrity
+     tanto en los estilos como en los js dentro del integrity estan los hashes tambien podemos borrar los crossorigin-->
+    <link href="../../bootstrap-4.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <link href="../../bootstrap-4.3.1/style/show-info.css" rel="stylesheet">
 
@@ -102,6 +106,6 @@
     <p class="float-right"><a href="#">Back to top</a></p>
     <p class="logo-info">&copy; Arkham-Store 2019</p>
 </footer>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script>window.jQuery || document.write('<script src="../../bootstrap-4.3.1/dist/js/jquery-3.2.1.slim.min.js"><\/script>')</script><script src="../../bootstrap-4.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script></body>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script>window.jQuery || document.write('<script src="../../bootstrap-4.3.1/dist/js/jquery-3.2.1.slim.min.js"><\/script>')</script><script src="../../bootstrap-4.3.1/dist/js/bootstrap.bundle.min.js" ></script></body>
 </html>

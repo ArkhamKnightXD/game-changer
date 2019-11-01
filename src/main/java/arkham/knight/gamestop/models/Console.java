@@ -24,10 +24,10 @@ public class Console implements Serializable {
     @ManyToMany(mappedBy = "platformsList")
     private List<VideoGame> videoGameList;
 
-    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.DETACH)
     private Console predecessor;
 
-    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.DETACH)
     private Console successor;
 
 

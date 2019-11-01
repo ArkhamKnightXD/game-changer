@@ -56,7 +56,8 @@ public class ConsoleController {
 
         Console consoleToCreate = new Console(name,developer,consoleType,generation,releasedDate,discontinuedDate,10,unitsSold,imageName);
 
-       if (idPredecessorConsole !=null ){
+        // intentar crear una funcion para no repetir dos veces el mismo codigo
+       if (idPredecessorConsole !=null){
 
            Console predecessorConsole = consoleServices.findConsoleById(idPredecessorConsole);
 
@@ -95,13 +96,24 @@ public class ConsoleController {
 
 
     @RequestMapping("/edit")
-    public String edit(Model model, @RequestParam(name = "id") Long id ,@RequestParam(name = "name") String name, @RequestParam(name = "developer") String developer, @RequestParam(name = "consoleType") String consoleType, @RequestParam(name = "generation") int generation, @RequestParam(name = "unitsSold") Double unitsSold, @RequestParam(name = "releasedDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date releasedDate, @RequestParam(name = "discontinuedDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date discontinuedDate, @RequestParam(name = "image") MultipartFile[] image,@RequestParam(name = "idPredecessorConsole") Long idPredecessorConsole, @RequestParam(name = "idSuccessorConsole") Long idSuccessorConsole){
+    public String edit(Model model, @RequestParam(name = "id") Long id ,@RequestParam(name = "name") String name, @RequestParam(name = "developer") String developer, @RequestParam(name = "consoleType") String consoleType, @RequestParam(name = "generation") int generation, @RequestParam(name = "unitsSold") Double unitsSold, @RequestParam(name = "releasedDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date releasedDate, @RequestParam(name = "discontinuedDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date discontinuedDate, @RequestParam(name = "image") MultipartFile[] image, @RequestParam(required = false,name = "idPredecessorConsole") Long idPredecessorConsole, @RequestParam(required = false, name = "idSuccessorConsole")  Long idSuccessorConsole){
 
         Console consoleToEdit = consoleServices.findConsoleById(id);
 
-        Console predecessorConsole = consoleServices.findConsoleById(idPredecessorConsole);
+        if (idPredecessorConsole !=null ){
 
-        Console successorConsole = consoleServices.findConsoleById(idSuccessorConsole);
+            Console predecessorConsole = consoleServices.findConsoleById(idPredecessorConsole);
+
+            consoleToEdit.setPredecessor(predecessorConsole);
+
+        }
+
+        if (idSuccessorConsole != null){
+
+            Console successorConsole = consoleServices.findConsoleById(idSuccessorConsole);
+
+            consoleToEdit.setSuccessor(successorConsole);
+        }
 
         String imageName = fileUploadServices.almacenarAndDepurarImagen(image,uploadDirectory);
 
@@ -112,8 +124,6 @@ public class ConsoleController {
         consoleToEdit.setUnitsSold(unitsSold);
         consoleToEdit.setReleasedDate(releasedDate);
         consoleToEdit.setDiscontinuedDate(discontinuedDate);
-        consoleToEdit.setPredecessor(predecessorConsole);
-        consoleToEdit.setSuccessor(successorConsole);
         consoleToEdit.setImage(imageName);
 
         consoleServices.createConsole(consoleToEdit);
