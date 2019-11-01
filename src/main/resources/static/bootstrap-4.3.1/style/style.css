@@ -8,14 +8,13 @@ html, body {
 }
 
 .container {
-  min-height: 100%;
+  min-height: 65%;
 }
 
 
 .album {
 
-  position: relative;
-  bottom: 100px;
+  min-height: 100%;
 
 }
 
@@ -23,10 +22,22 @@ html, body {
 
   border: 2px solid black ;
   position: relative;
+  top: 40%;
   background: #303036;
   color: white;
-  margin-top: -100px;
-  height: 100px;
+  height: 10%;
+  clear: both;
+}
+
+
+.footer-container-1{
+
+  border: 2px solid black ;
+  position: relative;
+  top: 3%;
+  background: #303036;
+  color: white;
+  height: 10%;
   clear: both;
 }
 

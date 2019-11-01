@@ -57,7 +57,7 @@
 
     <section class="jumbotron text-center">
         <div class="container">
-            <h1 class="jumbotron-heading">Top 9 best handheldconsole</h1>
+            <h1 class="jumbotron-heading">Top handheldconsole</h1>
             <p class="lead text-muted">In this gallery, i'm going to show pictures of the top 9 best handheld console.</p>
             <p>
                 <a href="/consoles/showHomeConsole" class="btn btn-primary my-2">Go to the top console page</a>
@@ -84,7 +84,6 @@
                                     <div class="btn-group">
                                         <a class="btn btn-outline-primary" href="/consoles/show/?id=${console.id}" role="button">View</a>
                                         <a class="btn btn-outline-success" href="/consoles/edition/?id=${console.id}" role="button">Edit</a>
-                                        <a class="btn btn-outline-danger" href="/consoles/delete/?id=${console.id}" role="button">Delete</a>
                                     </div>
                                     <small class="text-muted">${console.unitsSold}</small>
                                 </div>

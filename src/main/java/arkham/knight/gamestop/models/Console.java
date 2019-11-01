@@ -14,7 +14,7 @@ public class Console implements Serializable {
     private String name;
     private String developer;
     private String consoleType;
-    private String generation;
+    private int generation;
     private Date releasedDate;
     private Date discontinuedDate;
     private int lifespan;
@@ -31,7 +31,7 @@ public class Console implements Serializable {
     private Console successor;
 
 
-    public Console(String name, String developer, String consoleType, String generation, Date releasedDate, Date discontinuedDate, int lifespan, Double unitsSold, String image) {
+    public Console(String name, String developer, String consoleType, int generation, Date releasedDate, Date discontinuedDate, int lifespan, Double unitsSold, String image) {
         this.name = name;
         this.developer = developer;
         this.consoleType = consoleType;
@@ -79,13 +79,9 @@ public class Console implements Serializable {
         this.consoleType = consoleType;
     }
 
-    public String getGeneration() {
-        return generation;
-    }
+    public int getGeneration() { return generation; }
 
-    public void setGeneration(String generation) {
-        this.generation = generation;
-    }
+    public void setGeneration(int generation) { this.generation = generation; }
 
     public Date getReleasedDate() {
         return releasedDate;

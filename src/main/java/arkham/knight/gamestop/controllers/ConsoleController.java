@@ -1,6 +1,5 @@
 package arkham.knight.gamestop.controllers;
 import arkham.knight.gamestop.models.Console;
-import arkham.knight.gamestop.models.VideoGame;
 import arkham.knight.gamestop.services.ConsoleServices;
 import arkham.knight.gamestop.services.FileUploadServices;
 import arkham.knight.gamestop.services.VideoGameServices;
@@ -11,10 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 @Controller
 @RequestMapping("/consoles")
@@ -54,21 +50,29 @@ public class ConsoleController {
 
 
     @RequestMapping("/create")
-    public String create(@RequestParam(name = "name") String name, @RequestParam(name = "developer") String developer, @RequestParam(name = "consoleType") String consoleType, @RequestParam(name = "generation") String generation, @RequestParam(name = "unitsSold") Double unitsSold, @RequestParam(name = "releasedDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date releasedDate, @RequestParam(name = "discontinuedDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date discontinuedDate, @RequestParam(name = "image") MultipartFile[] image,@RequestParam(name = "idPredecessorConsole") Long idPredecessorConsole, @RequestParam(name = "idSuccessorConsole") Long idSuccessorConsole){
+    public String create(@RequestParam(name = "name") String name, @RequestParam(name = "developer") String developer, @RequestParam(name = "consoleType") String consoleType, @RequestParam(name = "generation") int generation, @RequestParam(name = "unitsSold") Double unitsSold, @RequestParam(name = "releasedDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date releasedDate, @RequestParam(name = "discontinuedDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date discontinuedDate, @RequestParam(name = "image") MultipartFile[] image,@RequestParam(required = false,name = "idPredecessorConsole") Long idPredecessorConsole, @RequestParam(required = false, name = "idSuccessorConsole")  Long idSuccessorConsole){
 
         String imageName = fileUploadServices.almacenarAndDepurarImagen(image,uploadDirectory);
 
-        Console predecessorConsole = consoleServices.findConsoleById(idPredecessorConsole);
-
-        Console successorConsole = consoleServices.findConsoleById(idSuccessorConsole);
-
         Console consoleToCreate = new Console(name,developer,consoleType,generation,releasedDate,discontinuedDate,10,unitsSold,imageName);
 
+       if (idPredecessorConsole !=null ){
+
+           Console predecessorConsole = consoleServices.findConsoleById(idPredecessorConsole);
+
+           consoleToCreate.setPredecessor(predecessorConsole);
+
+       }
+
+       if (idSuccessorConsole != null){
+
+           Console successorConsole = consoleServices.findConsoleById(idSuccessorConsole);
+
+           consoleToCreate.setSuccessor(successorConsole);
+       }
+
+
         consoleToCreate.setVideoGameList(videoGameServices.findAllVideoGamesByPlatformName(name));
-
-        consoleToCreate.setPredecessor(predecessorConsole);
-
-        consoleToCreate.setSuccessor(successorConsole);
 
         consoleServices.createConsole(consoleToCreate);
 
@@ -83,15 +87,15 @@ public class ConsoleController {
 
         model.addAttribute("title","Welcome to the game store");
         model.addAttribute("console",consoleToEdit);
-        model.addAttribute("predecessorConsoles",consoleServices.listAllConsoles());
-        model.addAttribute("successorConsoles", consoleServices.listAllConsoles());
+        model.addAttribute("predecessorConsoles", consoleServices.listConsolesByGeneration(consoleToEdit.getGeneration()-1));
+        model.addAttribute("successorConsoles", consoleServices.listConsolesByGeneration(consoleToEdit.getGeneration()+1));
 
         return "/freemarker/editConsole";
     }
 
 
     @RequestMapping("/edit")
-    public String edit(Model model, @RequestParam(name = "id") Long id ,@RequestParam(name = "name") String name, @RequestParam(name = "developer") String developer, @RequestParam(name = "consoleType") String consoleType, @RequestParam(name = "generation") String generation, @RequestParam(name = "unitsSold") Double unitsSold, @RequestParam(name = "releasedDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date releasedDate, @RequestParam(name = "discontinuedDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date discontinuedDate, @RequestParam(name = "image") MultipartFile[] image,@RequestParam(name = "idPredecessorConsole") Long idPredecessorConsole, @RequestParam(name = "idSuccessorConsole") Long idSuccessorConsole){
+    public String edit(Model model, @RequestParam(name = "id") Long id ,@RequestParam(name = "name") String name, @RequestParam(name = "developer") String developer, @RequestParam(name = "consoleType") String consoleType, @RequestParam(name = "generation") int generation, @RequestParam(name = "unitsSold") Double unitsSold, @RequestParam(name = "releasedDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date releasedDate, @RequestParam(name = "discontinuedDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date discontinuedDate, @RequestParam(name = "image") MultipartFile[] image,@RequestParam(name = "idPredecessorConsole") Long idPredecessorConsole, @RequestParam(name = "idSuccessorConsole") Long idSuccessorConsole){
 
         Console consoleToEdit = consoleServices.findConsoleById(id);
 

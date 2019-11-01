@@ -39,6 +39,7 @@ public class VideoGame implements Serializable {
     public VideoGame() {
     }
 
+
     public Long getId() {
         return id;
     }

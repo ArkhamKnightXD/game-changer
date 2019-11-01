@@ -5,15 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
 
     <title>${title}</title>
 
-    <!-- Bootstrap core CSS -->
     <link href="../../bootstrap-4.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Custom styles for this template -->
     <link href="../../bootstrap-4.3.1/style/dashboard.css" rel="stylesheet">
+
 </head>
 
 <body>
@@ -39,13 +37,13 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/consoles/showHomeConsole">
+                        <a class="nav-link" href="/consoles/">
                             <span data-feather="file"></span>
                             Consoles
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/videogames/showVideogame">
+                        <a class="nav-link" href="/videogames/">
                             <span data-feather="shopping-cart"></span>
                             Videogames
                         </a>
@@ -110,8 +108,8 @@
                 <h1 class="h2">Dashboard</h1>
                 <div class="btn-toolbar mb-2 mb-md-0">
                     <div class="btn-group mr-2">
-                        <button class="btn btn-sm btn-outline-secondary">Share</button>
-                        <button class="btn btn-sm btn-outline-secondary">Export</button>
+                        <a class="btn btn-outline-primary my-2 my-sm-0" href="/default" role="button">Create default consoles</a>
+                        <a class="btn btn-outline-success my-2 my-sm-0" href="/default2" role="button">Create default videogames</a>
                     </div>
                     <button class="btn btn-sm btn-outline-secondary dropdown-toggle">
                         <span data-feather="calendar"></span>

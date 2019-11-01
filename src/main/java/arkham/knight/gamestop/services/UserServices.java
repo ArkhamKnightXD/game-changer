@@ -18,10 +18,12 @@ public class UserServices {
 
     }
 
+
     public List<User> listAllUsers(){
 
         return userRepository.findAll();
     }
+
 
     public User findUserById(long id){
 
@@ -39,6 +41,5 @@ public class UserServices {
 
         userRepository.delete(user);
     }
-
 }
 

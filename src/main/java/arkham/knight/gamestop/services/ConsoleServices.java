@@ -18,10 +18,12 @@ public class ConsoleServices {
 
     }
 
+
     public List<Console> listAllConsoles(){
 
         return consoleRepository.findAll();
     }
+
 
     public List<Console> listConsolesByType(String consoleType){
 
@@ -29,16 +31,19 @@ public class ConsoleServices {
 
     }
 
-    public List<Console> listConsolesByGeneration(String generation){
+
+    public List<Console> listConsolesByGeneration(int generation){
 
         return consoleRepository.findAllByGeneration(generation);
 
     }
 
+
     public List<Console> findAllConsoleByDeveloper(String developer){
 
         return consoleRepository.findAllByDeveloper(developer);
     }
+
 
     public Console findConsoleByUnitsSold(double units){
 
@@ -52,9 +57,27 @@ public class ConsoleServices {
     }
 
 
+    public Console findConsoleByName(String name){
+
+        return consoleRepository.findConsoleByName(name);
+    }
+
+
+    public Console findConsoleByGeneration(int generation){
+
+        return consoleRepository.findConsoleByGeneration(generation);
+    }
+
+
     public void deleteConsole(Console console){
 
         consoleRepository.delete(console);
+
     }
 
+
+    public void deleteAllConsoles(){
+
+        consoleRepository.deleteAll();
+    }
 }

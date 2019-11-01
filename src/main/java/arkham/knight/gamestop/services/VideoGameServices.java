@@ -11,31 +11,37 @@ public class VideoGameServices {
     @Autowired
     private VideoGameRepository videoGameRepository;
 
+
     public void createVideoGame(VideoGame console){
 
         videoGameRepository.save(console);
 
     }
 
+
     public List<VideoGame> listAllVideoGames(){
 
         return videoGameRepository.findAll();
     }
+
 
     public List<VideoGame> listAllVideoGamesByGenre(String genre){
 
         return videoGameRepository.findAllByGenre(genre);
     }
 
+
     public VideoGame findVideoGameById(long id){
 
         return videoGameRepository.findVideoGameById(id);
     }
 
+
     public List<VideoGame> findAllVideoGamesByPlatformName(String platformName){
 
         return videoGameRepository.findAllByPlatformsListName(platformName);
     }
+
 
     public List<VideoGame> findAllVideoGamesByRating(float rating){
 
@@ -43,10 +49,12 @@ public class VideoGameServices {
 
     }
 
+
     public VideoGame findVideoGameByRating(float rating){
 
         return videoGameRepository.findVideoGameByRating(rating);
     }
+
 
     public VideoGame findVideoGameByUnitsSold(double units){
 
@@ -54,9 +62,15 @@ public class VideoGameServices {
 
     }
 
+
     public void deleteVideoGame(VideoGame videoGame){
 
         videoGameRepository.delete(videoGame);
     }
 
+
+    public void deleteAllVideoGames(){
+
+        videoGameRepository.deleteAll();
+    }
 }

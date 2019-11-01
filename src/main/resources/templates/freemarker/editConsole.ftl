@@ -4,8 +4,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Jekyll v3.8.5">
     <title>${title}</title>
 
     <link href="../../bootstrap-4.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -55,13 +53,13 @@
                     <div class="mb-3">
                         <label for="generation">Generation</label>
                         <select class="custom-select d-block w-100" id="generation" name="generation" required>
-                            <option value="${console.generation}">${console.generation}</option>
-                            <option value="3rd generation">3rd generation</option>
-                            <option value="4th generation">4th generation</option>
-                            <option value="5th generation">5th generation</option>
-                            <option value="6th generation">6th generation</option>
-                            <option value="7th generation">7th generation</option>
-                            <option value="8th generation">8th generation</option>
+                            <option value="${console.generation}">${console.generation}th generation</option>
+                            <option value="3">3rd generation</option>
+                            <option value="4">4th generation</option>
+                            <option value="5">5th generation</option>
+                            <option value="6">6th generation</option>
+                            <option value="7">7th generation</option>
+                            <option value="8">8th generation</option>
                         </select>
 
                     </div>
@@ -95,24 +93,11 @@
                         <label for="idPredecessorConsole">Predecessor console</label>
 
                         <div class="input-group">
-                            <select class="form-control" name="idPredecessorConsole" required>
+                            <select class="form-control" name="idPredecessorConsole">
                                 <#list predecessorConsoles as console0>
 
-                                    <#if console0.id != console.id>
+                                    <option value="${console0.id}" >${console0.name} - ${console0.developer} - ${console0.consoleType}</option>
 
-                                        <#if console.predecessor.id == console0.id>
-
-                                            <option value="${console.predecessor.id}" >${console.predecessor.name} - ${console.predecessor.developer} - ${console.predecessor.consoleType} - ${console.predecessor.generation}</option>
-
-                                        </#if>
-                                        <!--Esta fallando esta regla  -->
-                                         <#if console.predecessor.id != console0.id >
-
-                                            <option value="${console0.id}" >${console0.name} - ${console0.developer} - ${console0.consoleType} - ${console0.generation}</option>
-
-                                         </#if>
-
-                                    </#if>
                                 </#list>
                             </select>
                         </div>
@@ -123,21 +108,11 @@
                         <label for="idSuccessorConsole">Successor console</label>
 
                         <div class="input-group">
-                            <select class="form-control" name="idSuccessorConsole" required>
+                            <select class="form-control" name="idSuccessorConsole">
                                 <#list successorConsoles as console1>
 
-                                    <#if console1.id != console.id>
+                                    <option value="${console1.id}" >${console1.name} - ${console1.developer} - ${console1.consoleType}</option>
 
-                                        <#if  console.successor.id == console1.id>
-                                            <option value="${console.successor.id}" >${console.successor.name} - ${console.successor.developer} - ${console.successor.consoleType} - ${console.successor.generation}</option>
-
-                                            <!--Falla -->
-                                            <#else>
-                                                <option value="${console1.id}" >${console1.name} - ${console1.developer} - ${console1.consoleType} - ${console1.generation}</option>
-
-                                        </#if>
-
-                                    </#if>
                                 </#list>
                             </select>
                         </div>

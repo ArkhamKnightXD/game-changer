@@ -17,6 +17,7 @@ public class GameChangerApplication {
         new File(VideoGameController.uploadDirectory).mkdir();
 
         SpringApplication.run(GameChangerApplication.class, args);
+
     }
 
 }

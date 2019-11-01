@@ -82,7 +82,7 @@
             <td><a href="/consoles/show/?id=${console.id}"><img src="../../bootstrap-4.3.1/assets/img/${console.image}" width="110px" height="110px"></a></td>
             <td>${console.name}</td>
             <td>${console.developer}</td>
-            <td>${console.generation}</td>
+            <td>${console.generation}th Generation</td>
             <td>${console.consoleType}</td>
             <td>${console.releasedDate?date}</td>
             <td>${console.discontinuedDate?date}</td>
@@ -103,7 +103,7 @@
 
     </main>
 
-    <footer class="footer-container">
+    <footer class="footer-container-1">
       <p class="float-right"><a href="#">Back to top</a></p>
       <p class="logo">&copy; Arkham-Store 2019</p>
     </footer>

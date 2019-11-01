@@ -101,7 +101,7 @@
   </div>
 
 </main>
-<footer class="footer-container">
+<footer class="footer-container-1">
   <p class="float-right"><a href="#">Back to top</a></p>
   <p class="logo">&copy; Arkham-Store 2019</p>
 </footer>

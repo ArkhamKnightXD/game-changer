@@ -17,6 +17,7 @@ public class User implements Serializable {
     @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     private List<Rol> rolList;
 
+
     public User(String username, String password, boolean isAdmin, List<Rol> rolList) {
         this.username = username;
         this.password = password;
@@ -26,6 +27,7 @@ public class User implements Serializable {
 
     public User() {
     }
+
 
     public Long getId() {
         return id;

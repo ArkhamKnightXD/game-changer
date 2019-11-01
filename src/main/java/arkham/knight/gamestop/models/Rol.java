@@ -13,12 +13,14 @@ public class Rol implements Serializable {
 
     private String role;
 
+
     public Rol(String role) {
         this.role = role;
     }
 
     public Rol() {
     }
+
 
     public Long getId() {
         return id;

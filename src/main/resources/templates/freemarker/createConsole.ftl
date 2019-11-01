@@ -57,12 +57,12 @@
                     <label for="generation">Generation</label>
                     <select class="custom-select d-block w-100" id="generation" name="generation" required>
                         <option value="">Choose...</option>
-                        <option value="3rd generation">3rd generation</option>
-                        <option value="4th generation">4th generation</option>
-                        <option value="5th generation">5th generation</option>
-                        <option value="6th generation">6th generation</option>
-                        <option value="7th generation">7th generation</option>
-                        <option value="8th generation">8th generation</option>
+                        <option value="3">3rd generation</option>
+                        <option value="4">4th generation</option>
+                        <option value="5">5th generation</option>
+                        <option value="6">6th generation</option>
+                        <option value="7">7th generation</option>
+                        <option value="8">8th generation</option>
                     </select>
 
                 </div>
@@ -96,9 +96,9 @@
                     <label for="idPredecessorConsole">Predecessor console</label>
 
                     <div class="input-group">
-                        <select class="form-control" name="idPredecessorConsole" required>
+                        <select class="form-control" name="idPredecessorConsole">
                             <#list predecessorConsoles as console>
-                                <option value="${console.id}" >${console.name} - ${console.developer} - ${console.consoleType} - ${console.generation}</option>
+                                <option value="${console.id}" >${console.name} - ${console.developer} - ${console.consoleType}</option>
                             </#list>
                         </select>
                     </div>
@@ -109,9 +109,9 @@
                     <label for="idSuccessorConsole">Successor console</label>
 
                     <div class="input-group">
-                        <select class="form-control" name="idSuccessorConsole" required>
+                        <select class="form-control" name="idSuccessorConsole">
                             <#list successorConsoles as console1>
-                                <option value="${console1.id}" >${console1.name} - ${console1.developer} - ${console1.consoleType} - ${console1.generation}</option>
+                                <option value="${console1.id}" >${console1.name} - ${console1.developer} - ${console1.consoleType}</option>
                             </#list>
                         </select>
                     </div>
@@ -121,7 +121,7 @@
                 <div class="mb-3">
                     <label for="image">Picture of the console</label>
                     <div class="input-group">
-                        <input type="file" class="form-control" id="image" name="image" placeholder="Picture of the console" required>
+                        <input type="file" value="${console.image}" class="form-control" id="image" name="image" placeholder="Picture of the console" required>
 
                     </div>
                 </div>
