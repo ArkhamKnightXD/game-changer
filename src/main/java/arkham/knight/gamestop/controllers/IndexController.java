@@ -56,13 +56,17 @@ public class IndexController {
 
         Console lastConsole = new Console("PlayStation 4","Sony","Home Console",8, date1,date2,10,45.4,"ps4.jpg" );
 
+
         consoleServices.createConsole(consolePredecessor);
 
         consoleServices.createConsole(consoleSuccessor);
 
-        consoleServices.createConsole(console);
-
         consoleServices.createConsole(lastConsole);
+
+        console.setPredecessor(consolePredecessor);
+        console.setSuccessor(consoleSuccessor);
+
+        consoleServices.createConsole(console);
 
         return "redirect:/admin/";
     }
@@ -87,6 +91,7 @@ public class IndexController {
 
         consoleList1.add(ps2);
         consoleList1.add(ps3);
+
 
         VideoGame videoGame1 = new VideoGame("Naruto Ultimate Ninja","Bandai Namco",date,"2D Fighting", 4.5,"Single-player, multiplayer",4,"naruto.jpg",consoleList);
 

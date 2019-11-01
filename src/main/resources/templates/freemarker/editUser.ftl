@@ -27,17 +27,17 @@
             <div class="col-md-8 order-md-1">
                 <h4 class="mb-3">Complete the register form</h4>
 
-                <form method="post" action="/users/create" class="needs-validation" enctype="multipart/form-data" novalidate >
+                <form method="post" action="/users/edit?id=${user.id}" class="needs-validation" enctype="multipart/form-data" novalidate >
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label for="username">Username</label>
-                            <input type="text" class="form-control" id="username" name="username" placeholder="Username"  required>
+                            <input type="text" value="${user.username}" class="form-control" id="username" name="username" placeholder="Username"  required>
 
                         </div>
 
                         <div class="col-md-6 mb-3">
                             <label for="password">Password</label>
-                            <input type="password" class="form-control" id="password" name="password" placeholder="Password"  required>
+                            <input type="password" value="${user.password}" class="form-control" id="password" name="password" placeholder="Password"  required>
 
                         </div>
                     </div>
@@ -59,7 +59,7 @@
                     <div class="mb-3">
                         <label for="image">Profile picture</label>
                         <div class="input-group">
-                            <input type="file" class="form-control" id="image" name="image" placeholder="Profile picture" required>
+                            <input type="file" value="${user.image}" class="form-control" id="image" name="image" placeholder="Profile picture" required>
 
                         </div>
                     </div>

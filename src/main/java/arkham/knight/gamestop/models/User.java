@@ -13,15 +13,17 @@ public class User implements Serializable {
     private String username;
     private String password;
     private boolean isAdmin;
+    private String image;
 
     @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     private List<Rol> rolList;
 
 
-    public User(String username, String password, boolean isAdmin, List<Rol> rolList) {
+    public User(String username, String password, boolean isAdmin, String image, List<Rol> rolList) {
         this.username = username;
         this.password = password;
         this.isAdmin = isAdmin;
+        this.image = image;
         this.rolList = rolList;
     }
 
@@ -60,6 +62,10 @@ public class User implements Serializable {
     public void setAdmin(boolean admin) {
         isAdmin = admin;
     }
+
+    public String getImage() { return image; }
+
+    public void setImage(String image) { this.image = image; }
 
     public List<Rol> getRolList() {
         return rolList;

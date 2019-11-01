@@ -8,13 +8,11 @@
 
     <title>${title}</title>
 
-
     <link href="../../bootstrap-4.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <link href="../../font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet">
 
     <link href="../../bootstrap-4.3.1/style/style.css" rel="stylesheet">
-
 </head>
 
 <body>
@@ -27,14 +25,17 @@
 
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
+            <li class="nav-item ">
                 <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/consoles/">Consoles</a>
             </li>
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link " href="/videogames/">Videogames</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/users/">Users</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link " href="/admin">Admin</a>
@@ -49,44 +50,42 @@
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
-            <form class="form-inline my-2 my-lg-0">
-                <a class="btn btn-outline-success my-2 my-sm-0" href="/videogames/creation" role="button">Add a new Video game</a>
-            </form>
+            <a class="btn btn-outline-success my-2 my-sm-0" href="/users/creation" role="button">Add a new User</a>
         </form>
     </div>
 </nav>
 
-<h1 class="jumbotron text-center">List of the videogames</h1>
-
+<h1 class="jumbotron text-center">List of the register users</h1>
 <main role="main" class="container">
 
     <div class="starter-template">
-
         <table class="table table-hover table-bordered">
             <thead class="thead-dark">
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">Name</th>
-                <th scope="col">Developer</th>
-                <th scope="col">Genre</th>
-                <th scope="col">Released date</th>
-                <th scope="col">Units sold</th>
-                <th scope="col">Games mode</th>
+                <th scope="col">Profile picture</th>
+                <th scope="col">Username</th>
+                <th scope="col">Is admin?</th>
+                <th scope="col">Roles</th>
+                <th scope="col">Options</th>
             </tr>
             </thead>
 
             <tbody>
-            <#list videogames as videogame >
+
+            <#list users as user >
 
                 <tr>
                     <th scope="row">1</th>
-                    <td><a href="/videogames/show/?id=${videogame.id}"></a></td>
-                    <td>${videogame.name}</td>
-                    <td>${videogame.developer}</td>
-                    <td>${videogame.genre}</td>
-                    <td>${videogame.releasedDate?date}</td>
-                    <td>${videogame.unitsSold}</td>
-                    <td>${videogame.gameModes}</td>
+                    <td><a href="/users/show/?id=${user.id}"><img src="../../bootstrap-4.3.1/assets/img/${user.image}" width="110px" height="110px"></a></td>
+                    <td>${user.username}</td>
+                    <td>${user.isAdmin}</td>
+                    <td>${user.rolList}</td>
+                    <td>
+                        <a href="/users/edition/?id=${user.id}">  <i class="fa fa-edit" style="font-size:25px"></i></a>
+                        <a href="/users/delete/?id=${user.id}">  <i class="fa fa-trash" style="font-size:25px;color:red"></i> </a>
+                    </td>
+
                 </tr>
 
             </#list>
@@ -96,7 +95,8 @@
     </div>
 
 </main>
-<footer class="footer-container">
+
+<footer class="footer-container-1">
     <p class="float-right"><a href="#">Back to top</a></p>
     <p class="logo">&copy; Arkham-Store 2019</p>
 </footer>

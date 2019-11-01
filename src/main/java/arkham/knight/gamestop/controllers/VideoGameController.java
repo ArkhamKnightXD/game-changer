@@ -90,7 +90,7 @@ public class VideoGameController {
 
 
     @RequestMapping("/edit")
-    public String edit(Model model,@RequestParam(name = "idConsoles") List<Long> idConsoles, @RequestParam(name = "id") Long id, @RequestParam(name = "name") String name,@RequestParam(name = "developer") String developer, @RequestParam(name = "genre") String genre,@RequestParam(name = "gameModes") String gameModes,@RequestParam(name = "unitsSold") Double unitsSold, @RequestParam(name = "releasedDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date releasedDate,@RequestParam(name = "rating") float rating, @RequestParam(name = "image") MultipartFile[] image){
+    public String edit(@RequestParam(name = "idConsoles") List<Long> idConsoles, @RequestParam(name = "id") Long id, @RequestParam(name = "name") String name,@RequestParam(name = "developer") String developer, @RequestParam(name = "genre") String genre,@RequestParam(name = "gameModes") String gameModes,@RequestParam(name = "unitsSold") Double unitsSold, @RequestParam(name = "releasedDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date releasedDate,@RequestParam(name = "rating") float rating, @RequestParam(name = "image") MultipartFile[] image){
 
         String imageName = fileUploadServices.almacenarAndDepurarImagen(image,uploadDirectory);
 
@@ -117,7 +117,6 @@ public class VideoGameController {
 
         videoGameServices.createVideoGame(videoGameToEdit);
 
-        model.addAttribute("title","Welcome to the game store");
         return "redirect:/videogames/";
     }
 
