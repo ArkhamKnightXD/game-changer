@@ -27,11 +27,26 @@ public class UserController {
     public static String uploadDirectory = System.getProperty("user.dir")+"/src/main/resources/static/bootstrap-4.3.1/assets/img";
 
 
+    private List<Rol> getRolesWithTheIdRoles(List<Long> idRoles, List<Rol> rolList){
+
+        for (Long roles: idRoles) {
+
+            Rol rolesToAdd = userServices.findRoleById(roles);
+
+            rolList.add(rolesToAdd);
+        }
+
+        return rolList;
+
+    }
+
+
     @RequestMapping("/")
     public String index(Model model){
 
         model.addAttribute("title","Welcome to the game store");
         model.addAttribute("users",userServices.listAllUsers());
+
 
         return "/freemarker/users";
     }
@@ -54,14 +69,7 @@ public class UserController {
 
         String imageName = fileUploadServices.almacenarAndDepurarImagen(image,uploadDirectory);
 
-        for (Long roles: idRoles) {
-
-            Rol rolesToAdd = userServices.findRoleById(roles);
-
-            rolList.add(rolesToAdd);
-        }
-
-        User userToCreate = new User(username,password,true,imageName,rolList);
+        User userToCreate = new User(username,password,true,imageName,getRolesWithTheIdRoles(idRoles,rolList));
 
         userServices.createUser(userToCreate);
 
@@ -89,25 +97,29 @@ public class UserController {
 
         String imageName = fileUploadServices.almacenarAndDepurarImagen(image,uploadDirectory);
 
-
-        for (Long roles: idRoles) {
-
-            Rol rolesToAdd = userServices.findRoleById(roles);
-
-            rolList.add(rolesToAdd);
-        }
-
         User userToEdit = userServices.findUserById(id);
 
         userToEdit.setUsername(username);
         userToEdit.setPassword(password);
         userToEdit.setAdmin(true);
         userToEdit.setImage(imageName);
-        userToEdit.setRolList(rolList);
+        userToEdit.setRolList(getRolesWithTheIdRoles(idRoles,rolList));
 
         userServices.createUser(userToEdit);
 
         return "redirect:/users/";
+    }
+
+
+    @RequestMapping("/show")
+    public String showPage(Model model, @RequestParam(name = "id") Long id){
+
+        User userToShow = userServices.findUserById(id);
+
+        model.addAttribute("title","Welcome to the game store");
+        model.addAttribute("user",userToShow);
+
+        return "/freemarker/showUser";
     }
 
 

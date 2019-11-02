@@ -20,14 +20,12 @@ public class UserServices {
     public void createUser(User user){
 
         userRepository.save(user);
-
     }
 
 
     public void createRole(Rol role){
 
         rolRepository.save(role);
-
     }
 
 
@@ -66,15 +64,16 @@ public class UserServices {
         userRepository.delete(user);
     }
 
+
     public void deleteAllUser(){
 
         userRepository.deleteAll();
     }
 
+
     public void deleteAllRoles(){
 
         rolRepository.deleteAll();
     }
-
 }
 

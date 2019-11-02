@@ -15,7 +15,6 @@ public class VideoGameServices {
     public void createVideoGame(VideoGame console){
 
         videoGameRepository.save(console);
-
     }
 
 
@@ -46,7 +45,6 @@ public class VideoGameServices {
     public List<VideoGame> findAllVideoGamesByRating(float rating){
 
         return videoGameRepository.findAllByRating(rating);
-
     }
 
 
@@ -59,7 +57,6 @@ public class VideoGameServices {
     public VideoGame findVideoGameByUnitsSold(double units){
 
         return videoGameRepository.findVideoGameByUnitsSold(units);
-
     }
 
 

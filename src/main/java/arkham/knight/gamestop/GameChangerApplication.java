@@ -1,5 +1,6 @@
 package arkham.knight.gamestop;
 import arkham.knight.gamestop.controllers.ConsoleController;
+import arkham.knight.gamestop.controllers.UserController;
 import arkham.knight.gamestop.controllers.VideoGameController;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -15,6 +16,8 @@ public class GameChangerApplication {
         new File(ConsoleController.uploadDirectory).mkdir();
 
         new File(VideoGameController.uploadDirectory).mkdir();
+
+        new File(UserController.uploadDirectory).mkdir();
 
         SpringApplication.run(GameChangerApplication.class, args);
 

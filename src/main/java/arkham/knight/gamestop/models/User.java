@@ -12,17 +12,17 @@ public class User implements Serializable {
 
     private String username;
     private String password;
-    private boolean isAdmin;
+    private boolean admin;
     private String image;
 
-    @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     private List<Rol> rolList;
 
 
-    public User(String username, String password, boolean isAdmin, String image, List<Rol> rolList) {
+    public User(String username, String password, boolean admin, String image, List<Rol> rolList) {
         this.username = username;
         this.password = password;
-        this.isAdmin = isAdmin;
+        this.admin = admin;
         this.image = image;
         this.rolList = rolList;
     }
@@ -55,13 +55,9 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    public boolean isAdmin() {
-        return isAdmin;
-    }
+    public boolean isAdmin() { return admin; }
 
-    public void setAdmin(boolean admin) {
-        isAdmin = admin;
-    }
+    public void setAdmin(boolean admin) { this.admin = admin; }
 
     public String getImage() { return image; }
 

@@ -15,7 +15,6 @@ public class ConsoleServices {
     public void createConsole(Console console){
 
         consoleRepository.save(console);
-
     }
 
 
@@ -28,14 +27,12 @@ public class ConsoleServices {
     public List<Console> listConsolesByType(String consoleType){
 
         return consoleRepository.findAllByConsoleType(consoleType);
-
     }
 
 
     public List<Console> listConsolesByGeneration(int generation){
 
         return consoleRepository.findAllByGeneration(generation);
-
     }
 
 

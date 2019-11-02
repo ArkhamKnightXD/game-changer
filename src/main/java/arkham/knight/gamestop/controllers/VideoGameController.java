@@ -32,6 +32,23 @@ public class VideoGameController {
     public static String uploadDirectory = System.getProperty("user.dir")+"/src/main/resources/static/bootstrap-4.3.1/assets/img";
 
 
+    private List<Console> findConsolesWithIdConsoles(List<Long> idConsoles){
+
+        List<Console> consoleList = new ArrayList<>();
+
+        for (Long consoles: idConsoles
+        ) {
+
+            Console consolesToAdd = consoleServices.findConsoleById(consoles);
+
+            consoleList.add(consolesToAdd);
+
+        }
+
+        return consoleList;
+    }
+
+
     @RequestMapping("/")
     public String index(Model model){
 
@@ -57,18 +74,7 @@ public class VideoGameController {
 
         String imageName = fileUploadServices.almacenarAndDepurarImagen(image,uploadDirectory);
 
-        List<Console> consoleList = new ArrayList<>();
-
-        for (Long consoles: idConsoles
-             ) {
-
-            Console consolesToAdd = consoleServices.findConsoleById(consoles);
-
-            consoleList.add(consolesToAdd);
-            
-        }
-
-        VideoGame videoGameToCreate =new VideoGame(name,developer,releasedDate,genre,unitsSold,gameModes,rating,imageName,consoleList);
+        VideoGame videoGameToCreate =new VideoGame(name,developer,releasedDate,genre,unitsSold,gameModes,rating,imageName,findConsolesWithIdConsoles(idConsoles));
 
         videoGameServices.createVideoGame(videoGameToCreate);
 
@@ -96,14 +102,6 @@ public class VideoGameController {
 
         VideoGame videoGameToEdit = videoGameServices.findVideoGameById(id);
 
-        List<Console> consoleList = new ArrayList<>();
-
-        for (Long consoles: idConsoles
-             ) {
-
-            Console consoleToAdd = consoleServices.findConsoleById(consoles);
-            consoleList.add(consoleToAdd);
-        }
 
         videoGameToEdit.setName(name);
         videoGameToEdit.setDeveloper(developer);
@@ -112,7 +110,7 @@ public class VideoGameController {
         videoGameToEdit.setGameModes(gameModes);
         videoGameToEdit.setUnitsSold(unitsSold);
         videoGameToEdit.setRating(rating);
-        videoGameToEdit.setPlatformsList(consoleList);
+        videoGameToEdit.setPlatformsList(findConsolesWithIdConsoles(idConsoles));
         videoGameToEdit.setImage(imageName);
 
         videoGameServices.createVideoGame(videoGameToEdit);

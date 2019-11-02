@@ -29,6 +29,37 @@ public class ConsoleController {
     public static String uploadDirectory = System.getProperty("user.dir")+"/src/main/resources/static/bootstrap-4.3.1/assets/img";
 
 
+    private Console getPredecessorConsoleWithIdConsole(Long idPredecessorConsole){
+
+        if (idPredecessorConsole !=null){
+
+            Console predecessorConsole = consoleServices.findConsoleById(idPredecessorConsole);
+
+            return predecessorConsole;
+
+        }
+
+        else
+            return null;
+
+    }
+
+
+    private Console getSuccessorConsoleWithIdConsole(Long idSuccessorConsole){
+
+        if (idSuccessorConsole != null){
+
+            Console successorConsole = consoleServices.findConsoleById(idSuccessorConsole);
+
+            return successorConsole;
+        }
+
+        else
+            return null;
+
+    }
+
+
     @RequestMapping("/")
     public String index(Model model){
 
@@ -57,24 +88,12 @@ public class ConsoleController {
 
         Console consoleToCreate = new Console(name,developer,consoleType,generation,releasedDate,discontinuedDate,10,unitsSold,imageName);
 
-        // intentar crear una funcion para no repetir dos veces el mismo codigo
-       if (idPredecessorConsole !=null){
+        consoleToCreate.setPredecessor(getPredecessorConsoleWithIdConsole(idPredecessorConsole));
 
-           Console predecessorConsole = consoleServices.findConsoleById(idPredecessorConsole);
-
-           consoleToCreate.setPredecessor(predecessorConsole);
-
-       }
-
-       if (idSuccessorConsole != null){
-
-           Console successorConsole = consoleServices.findConsoleById(idSuccessorConsole);
-
-           consoleToCreate.setSuccessor(successorConsole);
-       }
-
+        consoleToCreate.setSuccessor(getSuccessorConsoleWithIdConsole(idSuccessorConsole));
 
         consoleToCreate.setVideoGameList(videoGameServices.findAllVideoGamesByPlatformName(name));
+
 
         consoleServices.createConsole(consoleToCreate);
 
@@ -101,21 +120,6 @@ public class ConsoleController {
 
         Console consoleToEdit = consoleServices.findConsoleById(id);
 
-        if (idPredecessorConsole !=null ){
-
-            Console predecessorConsole = consoleServices.findConsoleById(idPredecessorConsole);
-
-            consoleToEdit.setPredecessor(predecessorConsole);
-
-        }
-
-        if (idSuccessorConsole != null){
-
-            Console successorConsole = consoleServices.findConsoleById(idSuccessorConsole);
-
-            consoleToEdit.setSuccessor(successorConsole);
-        }
-
         String imageName = fileUploadServices.almacenarAndDepurarImagen(image,uploadDirectory);
 
         consoleToEdit.setName(name);
@@ -126,6 +130,8 @@ public class ConsoleController {
         consoleToEdit.setReleasedDate(releasedDate);
         consoleToEdit.setDiscontinuedDate(discontinuedDate);
         consoleToEdit.setImage(imageName);
+        consoleToEdit.setPredecessor(getPredecessorConsoleWithIdConsole(idPredecessorConsole));
+        consoleToEdit.setSuccessor(getSuccessorConsoleWithIdConsole(idSuccessorConsole));
 
         consoleServices.createConsole(consoleToEdit);
 
