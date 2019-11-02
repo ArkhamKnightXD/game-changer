@@ -1,4 +1,5 @@
 package arkham.knight.gamestop.controllers;
+import arkham.knight.gamestop.models.Rol;
 import arkham.knight.gamestop.models.User;
 import arkham.knight.gamestop.services.FileUploadServices;
 import arkham.knight.gamestop.services.UserServices;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -48,9 +50,20 @@ public class UserController {
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public String create(@RequestParam(name = "username") String username, @RequestParam(name = "password") String password, @RequestParam(name = "image") MultipartFile[] image, @RequestParam(name = "idRoles") List<Long> idRoles){
 
+        List<Rol> rolList = new ArrayList<>();
+
         String imageName = fileUploadServices.almacenarAndDepurarImagen(image,uploadDirectory);
 
-       // User userToCreate = new User(username,password,true,imageName,)
+        for (Long roles: idRoles) {
+
+            Rol rolesToAdd = userServices.findRoleById(roles);
+
+            rolList.add(rolesToAdd);
+        }
+
+        User userToCreate = new User(username,password,true,imageName,rolList);
+
+        userServices.createUser(userToCreate);
 
         return "redirect:/users/";
     }
@@ -72,7 +85,17 @@ public class UserController {
     @RequestMapping("/edit")
     public String edit(@RequestParam(name = "id") Long id, @RequestParam(name = "username") String username, @RequestParam(name = "password") String password, @RequestParam(name = "image") MultipartFile[] image, @RequestParam(name = "idRoles") List<Long> idRoles){
 
+        List<Rol> rolList = new ArrayList<>();
+
         String imageName = fileUploadServices.almacenarAndDepurarImagen(image,uploadDirectory);
+
+
+        for (Long roles: idRoles) {
+
+            Rol rolesToAdd = userServices.findRoleById(roles);
+
+            rolList.add(rolesToAdd);
+        }
 
         User userToEdit = userServices.findUserById(id);
 
@@ -80,6 +103,7 @@ public class UserController {
         userToEdit.setPassword(password);
         userToEdit.setAdmin(true);
         userToEdit.setImage(imageName);
+        userToEdit.setRolList(rolList);
 
         userServices.createUser(userToEdit);
 

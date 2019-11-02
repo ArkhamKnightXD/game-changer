@@ -1,7 +1,9 @@
 package arkham.knight.gamestop.controllers;
 import arkham.knight.gamestop.models.Console;
+import arkham.knight.gamestop.models.Rol;
 import arkham.knight.gamestop.models.VideoGame;
 import arkham.knight.gamestop.services.ConsoleServices;
+import arkham.knight.gamestop.services.UserServices;
 import arkham.knight.gamestop.services.VideoGameServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,6 +21,9 @@ public class IndexController {
 
     @Autowired
     private ConsoleServices consoleServices;
+
+    @Autowired
+    private UserServices userServices;
 
 
     @RequestMapping("/")
@@ -42,6 +47,12 @@ public class IndexController {
 
     @RequestMapping("/default")
     public String defaultCreatorConsoles(){
+
+        userServices.deleteAllRoles();
+
+        Rol rol = new Rol("Admin");
+
+        userServices.createRole(rol);
 
         consoleServices.deleteAllConsoles();
 

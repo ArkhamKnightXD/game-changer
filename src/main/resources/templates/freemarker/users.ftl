@@ -79,7 +79,7 @@
                     <th scope="row">1</th>
                     <td><a href="/users/show/?id=${user.id}"><img src="../../bootstrap-4.3.1/assets/img/${user.image}" width="110px" height="110px"></a></td>
                     <td>${user.username}</td>
-                    <td>${user.isAdmin}</td>
+                    <td>${user.isAdmin?c}</td>
                     <td>${user.rolList}</td>
                     <td>
                         <a href="/users/edition/?id=${user.id}">  <i class="fa fa-edit" style="font-size:25px"></i></a>

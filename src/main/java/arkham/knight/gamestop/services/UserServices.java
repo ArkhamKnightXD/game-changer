@@ -17,9 +17,16 @@ public class UserServices {
     private RolRepository rolRepository;
 
 
-    public void createUser(User console){
+    public void createUser(User user){
 
-        userRepository.save(console);
+        userRepository.save(user);
+
+    }
+
+
+    public void createRole(Rol role){
+
+        rolRepository.save(role);
 
     }
 
@@ -42,6 +49,12 @@ public class UserServices {
     }
 
 
+    public Rol findRoleById(long id){
+
+        return rolRepository.findRolById(id);
+    }
+
+
     public User findUserByUsername(String username){
 
         return userRepository.findUserByUsername(username);
@@ -52,5 +65,16 @@ public class UserServices {
 
         userRepository.delete(user);
     }
+
+    public void deleteAllUser(){
+
+        userRepository.deleteAll();
+    }
+
+    public void deleteAllRoles(){
+
+        rolRepository.deleteAll();
+    }
+
 }
 
