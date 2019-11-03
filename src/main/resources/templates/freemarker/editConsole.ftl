@@ -35,7 +35,13 @@
 
                         <div class="col-md-6 mb-3">
                             <label for="developer">Developer</label>
-                            <input type="text" class="form-control" value="${console.developer}" id="developer" name="developer" placeholder="Developer"  required>
+                            <select class="custom-select d-block w-100" id="developer" name="developer" required>
+                                <option value="${console.developer}">${console.developer}</option>
+                                <option value="Sony">Sony</option>
+                                <option value="Microsoft">Microsoft</option>
+                                <option value="Nintendo">Nintendo</option>
+                                <option value="Sega">Sega</option>
+                            </select>
 
                         </div>
                     </div>

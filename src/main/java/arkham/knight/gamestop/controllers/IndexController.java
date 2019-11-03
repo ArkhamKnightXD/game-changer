@@ -59,7 +59,7 @@ public class IndexController {
         Date date1 = new Date();
         Date date2 = new Date();
 
-        Console consolePredecessor = new Console("PlayStation","Sony","Home Console",5, date1,date2,10,45.4,"ps1.jpg" );
+        Console consolePredecessor = new Console("PlayStation 1","Sony","Home Console",5, date1,date2,10,45.4,"ps1.jpg" );
 
         Console console = new Console("PlayStation 2","Sony","Home Console",6, date1,date2,10,45.4,"ps2.jpg" );
 

@@ -78,7 +78,7 @@
           <#list consoles as console >
 
           <tr>
-            <th scope="row">1</th>
+            <th scope="row">${console.id}</th>
             <td><a href="/consoles/show/?id=${console.id}"><img src="../../bootstrap-4.3.1/assets/img/${console.image}" width="110px" height="110px"></a></td>
             <td>${console.name}</td>
             <td>${console.developer}</td>

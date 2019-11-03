@@ -1,21 +1,25 @@
 *{
+
   margin: 0;
   padding: 0;
 }
 
 html, body {
+
   height: 100%;
 }
 
+
 .container {
+
   min-height: 65%;
 }
+
 
 
 .album {
 
   min-height: 100%;
-
 }
 
 .footer-container{
@@ -41,3 +45,36 @@ html, body {
   clear: both;
 }
 
+
+.cover-videogame{
+
+  position: relative;
+  left: 100px;
+  width: 400px;
+  height: 300px;
+}
+
+.card-videogame-developer{
+
+  position: relative;
+  left: 520px;
+  bottom: 233px;
+  height: 300px;
+}
+
+
+.cover-console-videogame{
+
+    position: relative;
+    left: 100px;
+    width: 400px;
+    height: 300px;
+}
+
+.card-console-developer{
+
+    position: relative;
+    left: 520px;
+    bottom: 500px;
+    height: 300px;
+}

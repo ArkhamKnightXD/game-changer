@@ -37,7 +37,19 @@
 
                         <div class="col-md-6 mb-3">
                             <label for="developer">Developer</label>
-                            <input type="text" class="form-control" value="${videogame.developer}" id="developer" name="developer" placeholder="Developer"  required>
+                            <select class="custom-select d-block w-100" id="developer" name="developer" required>
+                                <option value="${videogame.developer}">${videogame.developer}</option>
+                                <option value="Sony">Sony</option>
+                                <option value="Microsoft">Microsoft</option>
+                                <option value="Nintendo">Nintendo</option>
+                                <option value="Sega">Sega</option>
+                                <option value="Santa Monica Studios">Santa Monica Studios</option>
+                                <option value="Square Enix">Square Enix</option>
+                                <option value="Bandai Namco">Bandai Namco</option>
+                                <option value="Konami">Konami</option>
+                                <option value="Capcom">Capcom</option>
+                                <option value="Atlus">Atlus</option>
+                            </select>
 
                         </div>
                     </div>
@@ -92,10 +104,20 @@
 
                     <div class="mb-3">
                         <label for="rating">Rating of the game</label>
-                        <div class="input-group">
-                            <input type="number" class="form-control" value="${videogame.rating}" id="rating" name="rating" placeholder="Rating of the game" required>
+                        <select class="custom-select d-block w-100" id="rating" name="rating" required>
+                            <option value="${videogame.rating}">${videogame.rating}</option>
+                            <option value="1.0">1.0</option>
+                            <option value="2.0">2.0</option>
+                            <option value="3.0">3.0</option>
+                            <option value="4.0">4.0</option>
+                            <option value="5.0">5.0</option>
+                            <option value="6.0">6.0</option>
+                            <option value="7.0">7.0</option>
+                            <option value="8.0">8.0</option>
+                            <option value="9.0">9.0</option>
+                            <option value="10">10</option>
+                        </select>
 
-                        </div>
                     </div>
 
                     <div class="mb-3">
@@ -104,7 +126,7 @@
                         <div class="input-group">
                             <select multiple class="form-control" name="idConsoles" required>
                                 <#list consoles as console>
-                                    <option value="${console.id}" >${console.name} - ${console.developer} - ${console.consoleType} - ${console.generation}</option>
+                                    <option value="${console.id}" >${console.name} - ${console.developer} - ${console.consoleType} - ${console.generation}th generation</option>
                                 </#list>
                             </select>
                         </div>

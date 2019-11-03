@@ -72,6 +72,7 @@
         <th scope="col">Released date</th>
         <th scope="col">Units sold</th>
         <th scope="col">Games mode</th>
+        <th scope="col">Rating</th>
         <th scope="col">Options</th>
       </tr>
       </thead>
@@ -80,7 +81,7 @@
       <#list videogames as videogame >
 
       <tr>
-        <th scope="row">1</th>
+        <th scope="row">${videogame.id}</th>
         <td><a href="/videogames/show/?id=${videogame.id}"><img src="../../bootstrap-4.3.1/assets/img/${videogame.image}" width="110px" height="110px"></a></td>
         <td>${videogame.name}</td>
         <td>${videogame.developer}</td>
@@ -88,6 +89,7 @@
         <td>${videogame.releasedDate?date}</td>
         <td>${videogame.unitsSold}</td>
         <td>${videogame.gameModes}</td>
+        <td>${videogame.rating}</td>
         <td>
           <a href="/videogames/edition/?id=${videogame.id}">  <i class="fa fa-edit" style="font-size:25px"></i></a>
           <a href="/videogames/delete/?id=${videogame.id}">  <i class="fa fa-trash" style="font-size:25px;color:red"></i> </a>

@@ -38,13 +38,13 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/consoles/">
-                            <span data-feather="file"></span>
+                            <span data-feather="layers"></span>
                             Consoles
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/videogames/">
-                            <span data-feather="shopping-cart"></span>
+                            <span data-feather="file"></span>
                             Videogames
                         </a>
                     </li>

@@ -75,7 +75,7 @@
             <#list users as user >
 
                 <tr>
-                    <th scope="row">1</th>
+                    <th scope="row">${user.id}</th>
                     <td><a href="/users/show/?id=${user.id}"><img src="../../bootstrap-4.3.1/assets/img/${user.image}" width="110px" height="110px"></a></td>
                     <td>${user.username}</td>
                     <td>${user.admin?c}</td>
