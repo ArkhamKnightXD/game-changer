@@ -55,15 +55,15 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="/clients/">
                             <span data-feather="bar-chart-2"></span>
-                            Reports
+                            Clients
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="/ventas/">
                             <span data-feather="layers"></span>
-                            Integrations
+                            Store
                         </a>
                     </li>
                 </ul>
