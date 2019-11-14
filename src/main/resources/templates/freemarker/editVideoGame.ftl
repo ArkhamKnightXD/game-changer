@@ -121,6 +121,14 @@
                     </div>
 
                     <div class="mb-3">
+                        <label for="sellPrice">Selling price</label>
+                        <div class="input-group">
+                            <input type="number" value="${videogame.sellPrice]" class="form-control" id="sellPrice" name="sellPrice" placeholder="Selling price" required>
+
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
                         <label for="idConsoles">Platforms of the game</label>
 
                         <div class="input-group">

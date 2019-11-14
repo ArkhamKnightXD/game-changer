@@ -96,6 +96,14 @@
                     </div>
 
                     <div class="mb-3">
+                        <label for="sellPrice">Selling price</label>
+                        <div class="input-group">
+                            <input type="number" value="${console.sellPrice}" class="form-control" id="sellPrice" name="sellPrice" placeholder="Selling price" required>
+
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
                         <label for="idPredecessorConsole">Predecessor console</label>
 
                         <div class="input-group">

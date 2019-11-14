@@ -33,7 +33,6 @@ public class SaleServices {
     public void deleteSale(Sale sale){
 
         saleRepository.delete(sale);
-
     }
 
 

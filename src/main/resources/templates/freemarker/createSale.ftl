@@ -46,13 +46,12 @@
                     <div class="input-group">
                         <select multiple class="form-control" name="idConsoles" required>
                             <#list consoles as console>
-                                <option value="${console.id}" >${console.name} - ${console.developer} - ${console.consoleType} - ${console.generation}th generation</option>
+                                <option value="${console.id}" >${console.name} - ${console.developer} - ${console.consoleType} - $${console.sellPrice}</option>
                             </#list>
                         </select>
                     </div>
 
                 </div>
-
 
                 <div class="mb-3">
                     <label for="idVideoGames">Select the VideoGames</label>
@@ -60,11 +59,10 @@
                     <div class="input-group">
                         <select multiple class="form-control" name="idVideoGames" required>
                             <#list videogames as videogame>
-                                <option value="${videogame.id}" >${videogame.name} - ${videogame.developer} - ${videogame.genre} - ${videogame.gameModes}</option>
+                                <option value="${videogame.id}" >${videogame.name} - ${videogame.developer} - ${videogame.genre} - $${videogame.sellPrice}</option>
                             </#list>
                         </select>
                     </div>
-
 
                 </div>
 

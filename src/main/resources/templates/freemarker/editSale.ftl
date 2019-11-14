@@ -24,7 +24,7 @@
         <div class="row">
 
             <div class="col-md-8 order-md-1">
-                <h4 class="mb-3">Selling page</h4>
+                <h4 class="mb-3">Edit sale</h4>
 
                 <form method="post" action="/sales/edit/?id=${sale.id}" class="needs-validation"  novalidate>
                     <div class="mb-3">
@@ -46,13 +46,12 @@
                         <div class="input-group">
                             <select multiple class="form-control" name="idConsoles" required>
                                 <#list consoles as console>
-                                    <option value="${console.id}" >${console.name} - ${console.developer} - ${console.consoleType} - ${console.generation}th generation</option>
+                                    <option value="${console.id}" >${console.name} - ${console.developer} - ${console.consoleType} - $${console.sellPrice}</option>
                                 </#list>
                             </select>
                         </div>
 
                     </div>
-
 
                     <div class="mb-3">
                         <label for="idVideoGames">Select the VideoGames</label>
@@ -60,18 +59,17 @@
                         <div class="input-group">
                             <select multiple class="form-control" name="idVideoGames" required>
                                 <#list videogames as videogame>
-                                    <option value="${videogame.id}" >${videogame.name} - ${videogame.developer} - ${videogame.genre} - ${videogame.gameModes}</option>
+                                    <option value="${videogame.id}" >${videogame.name} - ${videogame.developer} - ${videogame.genre} - $${videogame.sellPrice}</option>
                                 </#list>
                             </select>
                         </div>
-
 
                     </div>
 
                     <div class="mb-3">
                         <label for="soldDate">Selling Date</label>
                         <div class="input-group">
-                            <input type="date" value="${sale.soldDate}" class="form-control" id="soldDate" name="soldDate" placeholder="Selling Date" required>
+                            <input type="date" class="form-control" id="soldDate" name="soldDate" placeholder="Selling Date" required>
 
                         </div>
                     </div>

@@ -39,7 +39,6 @@ public class ClientServices {
     public void deleteClient(Client client){
 
         clientRepository.delete(client);
-
     }
 
 

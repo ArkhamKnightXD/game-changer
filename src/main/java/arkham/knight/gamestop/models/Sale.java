@@ -36,9 +36,7 @@ public class Sale implements Serializable {
     }
 
 
-    public Long getId() {
-        return id;
-    }
+    public Long getId() { return id; }
 
     public void setId(Long id) {
         this.id = id;
@@ -72,9 +70,7 @@ public class Sale implements Serializable {
         return videoGameListToSell;
     }
 
-    public void setVideoGameListToSell(List<VideoGame> videoGameListToSell) {
-        this.videoGameListToSell = videoGameListToSell;
-    }
+    public void setVideoGameListToSell(List<VideoGame> videoGameListToSell) { this.videoGameListToSell = videoGameListToSell; }
 
     public Client getBuyer() {
         return buyer;

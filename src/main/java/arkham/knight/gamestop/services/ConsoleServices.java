@@ -69,7 +69,6 @@ public class ConsoleServices {
     public void deleteConsole(Console console){
 
         consoleRepository.delete(console);
-
     }
 
 

@@ -18,6 +18,7 @@ public class Console implements Serializable {
     private Date releasedDate;
     private Date discontinuedDate;
     private int lifespan;
+    private float sellPrice;
     private Double unitsSold;
     private String image;
 
@@ -31,7 +32,7 @@ public class Console implements Serializable {
     private Console successor;
 
 
-    public Console(String name, String developer, String consoleType, int generation, Date releasedDate, Date discontinuedDate, int lifespan, Double unitsSold, String image) {
+    public Console(String name, String developer, String consoleType, int generation, Date releasedDate, Date discontinuedDate, int lifespan, float sellPrice, Double unitsSold, String image, List<VideoGame> videoGameList, Console predecessor, Console successor) {
         this.name = name;
         this.developer = developer;
         this.consoleType = consoleType;
@@ -39,6 +40,23 @@ public class Console implements Serializable {
         this.releasedDate = releasedDate;
         this.discontinuedDate = discontinuedDate;
         this.lifespan = lifespan;
+        this.sellPrice = sellPrice;
+        this.unitsSold = unitsSold;
+        this.image = image;
+        this.videoGameList = videoGameList;
+        this.predecessor = predecessor;
+        this.successor = successor;
+    }
+
+    public Console(String name, String developer, String consoleType, int generation, Date releasedDate, Date discontinuedDate, int lifespan, float sellPrice, Double unitsSold, String image) {
+        this.name = name;
+        this.developer = developer;
+        this.consoleType = consoleType;
+        this.generation = generation;
+        this.releasedDate = releasedDate;
+        this.discontinuedDate = discontinuedDate;
+        this.lifespan = lifespan;
+        this.sellPrice = sellPrice;
         this.unitsSold = unitsSold;
         this.image = image;
     }
@@ -114,6 +132,10 @@ public class Console implements Serializable {
     public void setUnitsSold(Double unitsSold) {
         this.unitsSold = unitsSold;
     }
+
+    public float getSellPrice() { return sellPrice; }
+
+    public void setSellPrice(float sellPrice) { this.sellPrice = sellPrice; }
 
     public String getImage() {
         return image;

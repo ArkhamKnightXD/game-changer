@@ -68,6 +68,32 @@ public class SaleController {
     }
 
 
+    private int getTotalOfTheSales(List<Long> idVideoGames, List<Long> idConsoles){
+
+        int total = 0;
+
+        for (Long videoGames: idVideoGames
+        ) {
+
+            VideoGame videoGameToBuy = videoGameServices.findVideoGameById(videoGames);
+
+            total+= videoGameToBuy.getSellPrice();
+
+        }
+
+        for (Long consoles: idConsoles
+        ) {
+
+            Console consolesToBuy = consoleServices.findConsoleById(consoles);
+
+            total+= consolesToBuy.getSellPrice();
+        }
+
+        return total;
+
+    }
+
+
     @RequestMapping("/")
     public String index(Model model){
 
@@ -93,9 +119,13 @@ public class SaleController {
     @RequestMapping("/create")
     public String create(@RequestParam(name = "soldDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date soldDate, @RequestParam(required = false, name = "idConsoles") List<Long> idConsoles, @RequestParam(required = false, name = "idVideoGames") List<Long> idVideoGames, @RequestParam(name = "idClient") Long idClient){
 
+        int total =0;
+
+        total = getTotalOfTheSales(idVideoGames,idConsoles);
+
         Client buyer = clientServices.findClientById(idClient);
 
-        Sale saleToCreate = new Sale(soldDate,0,findConsolesWithIdConsoles(idConsoles),findVideoGamesWithIdVideoGames(idVideoGames),buyer);
+        Sale saleToCreate = new Sale(soldDate,total,findConsolesWithIdConsoles(idConsoles),findVideoGamesWithIdVideoGames(idVideoGames),buyer);
 
         saleServices.createSale(saleToCreate);
 
@@ -110,6 +140,7 @@ public class SaleController {
 
         model.addAttribute("title","Welcome to the game store");
         model.addAttribute("sale", saleToEdit);
+        model.addAttribute("clients", clientServices.listAllClients());
         model.addAttribute("consoles", consoleServices.listAllConsoles());
         model.addAttribute("videogames", videoGameServices.listAllVideoGames());
 
@@ -118,7 +149,11 @@ public class SaleController {
 
 
     @RequestMapping("/edit")
-    public String edit(@RequestParam(name = "id") Long id, @RequestParam(name = "soldDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date soldDate, @RequestParam(name = "total") int total, @RequestParam(required = false, name = "idConsoles") List<Long> idConsoles, @RequestParam(required = false, name = "idVideoGames") List<Long> idVideoGames, @RequestParam(name = "idClient") Long idClient){
+    public String edit(@RequestParam(name = "id") Long id, @RequestParam(name = "soldDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date soldDate, @RequestParam(required = false, name = "idConsoles") List<Long> idConsoles, @RequestParam(required = false, name = "idVideoGames") List<Long> idVideoGames, @RequestParam(name = "idClient") Long idClient){
+
+        int total =0;
+
+        total = getTotalOfTheSales(idVideoGames,idConsoles);
 
         Client buyer = clientServices.findClientById(idClient);
 
@@ -127,7 +162,7 @@ public class SaleController {
         saleToEdit.setSoldDate(soldDate);
         saleToEdit.setTotal(total);
         saleToEdit.setConsoleListToSell(findConsolesWithIdConsoles(idConsoles));
-        saleToEdit.setConsoleListToSell(findConsolesWithIdConsoles(idConsoles));
+        saleToEdit.setVideoGameListToSell(findVideoGamesWithIdVideoGames(idVideoGames));
         saleToEdit.setBuyer(buyer);
 
         saleServices.createSale(saleToEdit);
