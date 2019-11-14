@@ -1,11 +1,21 @@
 package arkham.knight.gamestop.controllers;
+import arkham.knight.gamestop.models.Client;
+import arkham.knight.gamestop.models.Console;
 import arkham.knight.gamestop.models.Sale;
+import arkham.knight.gamestop.models.VideoGame;
+import arkham.knight.gamestop.services.ClientServices;
+import arkham.knight.gamestop.services.ConsoleServices;
 import arkham.knight.gamestop.services.SaleServices;
+import arkham.knight.gamestop.services.VideoGameServices;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 @Controller
 @RequestMapping("/sales")
@@ -13,6 +23,49 @@ public class SaleController {
 
     @Autowired
     private SaleServices saleServices;
+
+    @Autowired
+    private ClientServices clientServices;
+
+    @Autowired
+    private ConsoleServices consoleServices;
+
+    @Autowired
+    private VideoGameServices videoGameServices;
+
+
+    private List<Console> findConsolesWithIdConsoles(List<Long> idConsoles){
+
+        List<Console> consoleList = new ArrayList<>();
+
+        for (Long consoles: idConsoles
+        ) {
+
+            Console consolesToAdd = consoleServices.findConsoleById(consoles);
+
+            consoleList.add(consolesToAdd);
+
+        }
+
+        return consoleList;
+    }
+
+
+    private List<VideoGame> findVideoGamesWithIdVideoGames(List<Long> idVideoGames){
+
+        List<VideoGame> videoGameList = new ArrayList<>();
+
+        for (Long videoGames: idVideoGames
+        ) {
+
+            VideoGame videoGameToAdd = videoGameServices.findVideoGameById(videoGames);
+
+            videoGameList.add(videoGameToAdd);
+
+        }
+
+        return videoGameList;
+    }
 
 
     @RequestMapping("/")
@@ -29,16 +82,22 @@ public class SaleController {
     public String creationPage(Model model ){
 
         model.addAttribute("title","Welcome to the game store");
+        model.addAttribute("clients", clientServices.listAllClients());
+        model.addAttribute("consoles", consoleServices.listAllConsoles());
+        model.addAttribute("videogames", videoGameServices.listAllVideoGames());
 
         return "/freemarker/createSale";
     }
 
 
     @RequestMapping("/create")
-    public String create(){
+    public String create(@RequestParam(name = "soldDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date soldDate, @RequestParam(required = false, name = "idConsoles") List<Long> idConsoles, @RequestParam(required = false, name = "idVideoGames") List<Long> idVideoGames, @RequestParam(name = "idClient") Long idClient){
 
-        Sale saleToCreate = new Sale();
+        Client buyer = clientServices.findClientById(idClient);
 
+        Sale saleToCreate = new Sale(soldDate,0,findConsolesWithIdConsoles(idConsoles),findVideoGamesWithIdVideoGames(idVideoGames),buyer);
+
+        saleServices.createSale(saleToCreate);
 
         return "redirect:/sales/";
     }
@@ -51,16 +110,27 @@ public class SaleController {
 
         model.addAttribute("title","Welcome to the game store");
         model.addAttribute("sale", saleToEdit);
+        model.addAttribute("consoles", consoleServices.listAllConsoles());
+        model.addAttribute("videogames", videoGameServices.listAllVideoGames());
 
         return "/freemarker/editSale";
     }
 
 
     @RequestMapping("/edit")
-    public String edit(@RequestParam(name = "id") Long id){
+    public String edit(@RequestParam(name = "id") Long id, @RequestParam(name = "soldDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date soldDate, @RequestParam(name = "total") int total, @RequestParam(required = false, name = "idConsoles") List<Long> idConsoles, @RequestParam(required = false, name = "idVideoGames") List<Long> idVideoGames, @RequestParam(name = "idClient") Long idClient){
+
+        Client buyer = clientServices.findClientById(idClient);
 
         Sale saleToEdit = saleServices.findSaleById(id);
 
+        saleToEdit.setSoldDate(soldDate);
+        saleToEdit.setTotal(total);
+        saleToEdit.setConsoleListToSell(findConsolesWithIdConsoles(idConsoles));
+        saleToEdit.setConsoleListToSell(findConsolesWithIdConsoles(idConsoles));
+        saleToEdit.setBuyer(buyer);
+
+        saleServices.createSale(saleToEdit);
 
         return "redirect:/sales/";
     }

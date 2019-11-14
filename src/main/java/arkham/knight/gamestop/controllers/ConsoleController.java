@@ -92,7 +92,6 @@ public class ConsoleController {
 
         consoleToCreate.setVideoGameList(videoGameServices.findAllVideoGamesByPlatformName(name));
 
-
         consoleServices.createConsole(consoleToCreate);
 
         return "redirect:/consoles/";
