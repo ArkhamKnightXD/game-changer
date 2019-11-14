@@ -18,9 +18,7 @@
         <h1>Users Form</h1>
     </div>
 
-
     <div class="center-container">
-
 
         <div class="row">
 

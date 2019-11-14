@@ -41,7 +41,6 @@ public class ConsoleController {
 
         else
             return null;
-
     }
 
 
@@ -56,7 +55,6 @@ public class ConsoleController {
 
         else
             return null;
-
     }
 
 

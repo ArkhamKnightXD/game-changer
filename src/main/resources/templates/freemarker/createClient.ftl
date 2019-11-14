@@ -16,127 +16,68 @@
 <body class="bg-light">
 <div class="container">
     <div class="py-5 text-center">
-        <h1>Console Form</h1>
+        <h1>Client Form</h1>
     </div>
 
-
   <div class="center-container">
-
 
     <div class="row">
 
         <div class="col-md-8 order-md-1">
-            <h4 class="mb-3">Write the information of the console</h4>
+            <h4 class="mb-3">Write the information of the client</h4>
 
-            <form method="post" action="/consoles/create" class="needs-validation" enctype="multipart/form-data" novalidate>
+            <form method="post" action="/clients/create" class="needs-validation" enctype="multipart/form-data" novalidate>
                 <div class="row">
                     <div class="col-md-6 mb-3">
-                        <label for="name">Console name</label>
-                        <input type="text" class="form-control" id="name" name="name" placeholder="Console name"  required>
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Name"  required>
 
                     </div>
 
                     <div class="col-md-6 mb-3">
-                        <label for="developer">Developer</label>
-                        <select class="custom-select d-block w-100" id="developer" name="developer" required>
-                            <option value="">Choose...</option>
-                            <option value="Sony">Sony</option>
-                            <option value="Microsoft">Microsoft</option>
-                            <option value="Nintendo">Nintendo</option>
-                            <option value="Sega">Sega</option>
-                        </select>
+                        <label for="lastName">Last Name</label>
+                        <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last Name"  required>
 
                     </div>
                 </div>
 
                 <div class="mb-3">
-                    <label for="consoleType">Console type</label>
-                    <select class="custom-select d-block w-100" id="consoleType" name="consoleType" required>
-                        <option value="">Choose...</option>
-                        <option value="Home Console">Home console</option>
-                        <option value="Handheld Console">Handheld console</option>
-                    </select>
-
-                </div>
-
-                <div class="mb-3">
-                    <label for="generation">Generation</label>
-                    <select class="custom-select d-block w-100" id="generation" name="generation" required>
-                        <option value="">Choose...</option>
-                        <option value="3">3rd generation</option>
-                        <option value="4">4th generation</option>
-                        <option value="5">5th generation</option>
-                        <option value="6">6th generation</option>
-                        <option value="7">7th generation</option>
-                        <option value="8">8th generation</option>
-                    </select>
-
-                </div>
-
-
-                <div class="mb-3">
-                    <label for="releasedDate">Released date</label>
+                    <label for="address">Address</label>
                     <div class="input-group">
-                        <input type="date" class="form-control" id="releasedDate" name="releasedDate" placeholder="Released date" required>
+                        <input type="text" class="form-control" id="address" name="address" placeholder="Address" required>
 
                     </div>
                 </div>
 
                 <div class="mb-3">
-                    <label for="discontinuedDate">Discontinued date</label>
+                    <label for="phone">Phone</label>
                     <div class="input-group">
-                        <input type="date" class="form-control" id="discontinuedDate" name="discontinuedDate" placeholder="Discontinued date" required>
+                        <input type="text" class="form-control" id="phone" name="phone" placeholder="Phone" required>
 
                     </div>
                 </div>
 
                 <div class="mb-3">
-                    <label for="unitsSold">Units sold</label>
+                    <label for="email">Email</label>
                     <div class="input-group">
-                        <input type="number" class="form-control" id="unitsSold" name="unitsSold" placeholder="Units sold" required>
+                        <input type="text" class="form-control" id="email" name="email" placeholder="Email" required>
 
                     </div>
                 </div>
 
                 <div class="mb-3">
-                    <label for="idPredecessorConsole">Predecessor console</label>
-
+                    <label for="image">Picture of the client</label>
                     <div class="input-group">
-                        <select class="form-control" name="idPredecessorConsole">
-                            <#list predecessorConsoles as console>
-                                <option value="${console.id}" >${console.name} - ${console.developer} - ${console.consoleType}</option>
-                            </#list>
-                        </select>
-                    </div>
-
-                </div>
-
-                <div class="mb-3">
-                    <label for="idSuccessorConsole">Successor console</label>
-
-                    <div class="input-group">
-                        <select class="form-control" name="idSuccessorConsole">
-                            <#list successorConsoles as console1>
-                                <option value="${console1.id}" >${console1.name} - ${console1.developer} - ${console1.consoleType}</option>
-                            </#list>
-                        </select>
-                    </div>
-
-                </div>
-
-                <div class="mb-3">
-                    <label for="image">Picture of the console</label>
-                    <div class="input-group">
-                        <input type="file" class="form-control" id="image" name="image" placeholder="Picture of the console" required>
+                        <input type="file" class="form-control" id="photo" name="photo" placeholder="Picture of the client" required>
 
                     </div>
                 </div>
 
 
                 <hr class="mb-4">
-                <button class="btn btn-primary btn-lg btn-block" type="submit">Save console</button>
+                <button class="btn btn-primary btn-lg btn-block" type="submit">Save client</button>
                 <hr class="mb-4">
-                <a class="btn btn-danger btn-lg btn-block" href="/consoles/" role="button">Cancel</a>
+                <a class="btn btn-danger btn-lg btn-block" href="/clients/" role="button">Cancel</a>
             </form>
         </div>
     </div>

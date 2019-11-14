@@ -75,8 +75,8 @@
           <#list clients as client >
 
           <tr>
-            <th scope="row">${console.id}</th>
-            <td><a href="/clients/show/?id=${client.id}"><img src="../../bootstrap-4.3.1/assets/img/${client.image}" width="110px" height="110px"></a></td>
+            <th scope="row">${client.id}</th>
+            <td><a href="/clients/show/?id=${client.id}"><img src="../../bootstrap-4.3.1/assets/img/store/clients/${client.photo}" width="110px" height="110px"></a></td>
             <td>${client.name}</td>
             <td>${client.lastName}</td>
             <td>${client.address}</td>

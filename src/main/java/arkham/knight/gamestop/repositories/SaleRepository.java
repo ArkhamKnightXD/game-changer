@@ -1,11 +1,11 @@
 package arkham.knight.gamestop.repositories;
 
-import arkham.knight.gamestop.models.Venta;
+import arkham.knight.gamestop.models.Sale;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface VentaRepository extends JpaRepository<Venta, Long> {
+public interface SaleRepository extends JpaRepository<Sale, Long> {
 
-    Venta findVentaById(Long id);
+    Sale findSaleById(Long id);
 }

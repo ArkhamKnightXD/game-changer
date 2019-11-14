@@ -61,7 +61,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/ventas/">
+                        <a class="nav-link" href="/sales/">
                             <span data-feather="layers"></span>
                             Store
                         </a>
@@ -109,7 +109,7 @@
                 <div class="btn-toolbar mb-2 mb-md-0">
                     <div class="btn-group mr-2">
                         <a class="btn btn-outline-primary my-2 my-sm-0" href="/default" role="button">Create default consoles</a>
-                        <a class="btn btn-outline-success my-2 my-sm-0" href="/default2" role="button">Create default videogames</a>
+                        <a class="btn btn-outline-success my-2 my-sm-0" href="/default2" role="button">Create default videoGames</a>
                     </div>
                     <button class="btn btn-sm btn-outline-secondary dropdown-toggle">
                         <span data-feather="calendar"></span>

@@ -47,7 +47,7 @@
           </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
-          <a class="btn btn-outline-success my-2 my-sm-0" href="/consoles/creation" role="button">Sell</a>
+          <a class="btn btn-outline-success my-2 my-sm-0" href="/sales/creation" role="button">Sell</a>
         </form>
       </div>
     </nav>
@@ -69,17 +69,16 @@
 
           <tbody>
 
-          <#list ventas as venta >
+          <#list sales as sale >
 
           <tr>
-            <th scope="row">${console.id}</th>
-            <td><a href="/ventas/show/?id=${console.id}"></a></td>
-            <td>${venta.buyer}</td>
-            <td>${venta.soldDate?date}</td>
-            <td>${venta.total}</td>
+            <th scope="row">${sale.id}</th>
+            <td><a href="/sales/show/?id=${sale.id}">${sale.buyer.name}</a></td>
+            <td>${sale.soldDate?date}</td>
+            <td>${sale.total}</td>
             <td>
-              <a href="/ventas/edition/?id=${venta.id}">  <i class="fa fa-edit" style="font-size:25px"></i></a>
-              <a href="/ventas/delete/?id=${venta.id}">  <i class="fa fa-trash" style="font-size:25px;color:red"></i> </a>
+              <a href="/sales/edition/?id=${sale.id}">  <i class="fa fa-edit" style="font-size:25px"></i></a>
+              <a href="/sales/delete/?id=${sale.id}">  <i class="fa fa-trash" style="font-size:25px;color:red"></i> </a>
             </td>
 
           </tr>
