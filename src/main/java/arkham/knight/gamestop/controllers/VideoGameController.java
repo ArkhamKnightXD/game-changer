@@ -55,6 +55,16 @@ public class VideoGameController {
         model.addAttribute("title","Welcome to the game store");
         model.addAttribute("videogames",videoGameServices.listAllVideoGames());
 
+        return "/freemarker/videogameInfo";
+    }
+
+
+    @RequestMapping("/admin")
+    public String AdminVideoGames(Model model){
+
+        model.addAttribute("title","Welcome to the game store");
+        model.addAttribute("videogames",videoGameServices.listAllVideoGames());
+
         return "/freemarker/videogames";
     }
 
@@ -132,7 +142,7 @@ public class VideoGameController {
 
 
     @RequestMapping("/showVideogame")
-    public String showVideogameDescription(Model model){
+    public String showVideoGameDescription(Model model){
 
         model.addAttribute("title","Welcome to the game store");
 

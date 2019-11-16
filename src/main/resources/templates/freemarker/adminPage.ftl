@@ -20,7 +20,7 @@
     <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
     <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap">
-            <a class="nav-link" href="#">Sign out</a>
+            <a class="nav-link" href="/logout">Sign out</a>
         </li>
     </ul>
 </nav>
@@ -37,13 +37,13 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/consoles/">
+                        <a class="nav-link" href="/consoles/admin">
                             <span data-feather="layers"></span>
                             Consoles
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/videogames/">
+                        <a class="nav-link" href="/videogames/admin">
                             <span data-feather="file"></span>
                             Videogames
                         </a>

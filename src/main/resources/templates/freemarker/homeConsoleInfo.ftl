@@ -56,8 +56,8 @@
 
     <section class="jumbotron text-center">
         <div class="container">
-            <h1 class="jumbotron-heading">Top home consoles</h1>
-            <p class="lead text-muted">In this gallery, i'm going to show pictures of the top 9 best home consoles.</p>
+            <h1 class="jumbotron-heading">Consoles gallery</h1>
+            <p class="lead text-muted">Gallery of all the consoles available</p>
             <p>
                 <a href="/videogames/showVideogame" class="btn btn-primary my-2">Go to the top videogames page</a>
                 <a href="/consoles/showHandheldConsole/" class="btn btn-secondary my-2">Go to top handheld console page</a>

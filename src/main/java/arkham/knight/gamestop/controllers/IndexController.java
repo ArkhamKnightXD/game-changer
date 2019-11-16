@@ -1,8 +1,9 @@
 package arkham.knight.gamestop.controllers;
 import arkham.knight.gamestop.models.Console;
-import arkham.knight.gamestop.models.Rol;
+import arkham.knight.gamestop.models.User;
 import arkham.knight.gamestop.models.VideoGame;
 import arkham.knight.gamestop.services.ConsoleServices;
+import arkham.knight.gamestop.services.SecurityServices;
 import arkham.knight.gamestop.services.UserServices;
 import arkham.knight.gamestop.services.VideoGameServices;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,9 @@ public class IndexController {
     @Autowired
     private UserServices userServices;
 
+    @Autowired
+    private SecurityServices securityServices;
+
 
     @RequestMapping("/")
     public String index(Model model){
@@ -32,6 +36,22 @@ public class IndexController {
         model.addAttribute("title","Welcome to the game store");
 
         return "/freemarker/index";
+    }
+
+
+    @RequestMapping("/login")
+    public String login(Model model){
+
+        User adminUser = userServices.findUserByUsername("admin");
+
+        if (adminUser == null){
+
+            securityServices.createAdminUser();
+        }
+
+        model.addAttribute("title","Welcome to the game store");
+
+        return "/freemarker/login";
     }
 
 
@@ -47,12 +67,6 @@ public class IndexController {
 
     @RequestMapping("/default")
     public String defaultCreatorConsoles(){
-
-        userServices.deleteAllRoles();
-
-        Rol rol = new Rol("Admin");
-
-        userServices.createRole(rol);
 
         consoleServices.deleteAllConsoles();
 

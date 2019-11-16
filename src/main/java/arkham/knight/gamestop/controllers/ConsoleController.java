@@ -64,6 +64,16 @@ public class ConsoleController {
         model.addAttribute("title","Welcome to the game store");
         model.addAttribute("consoles",consoleServices.listAllConsoles());
 
+        return "/freemarker/homeConsoleInfo";
+    }
+
+
+    @RequestMapping("/admin")
+    public String adminConsole(Model model){
+
+        model.addAttribute("title","Welcome to the game store");
+        model.addAttribute("consoles",consoleServices.listAllConsoles());
+
         return "/freemarker/consoles";
     }
 

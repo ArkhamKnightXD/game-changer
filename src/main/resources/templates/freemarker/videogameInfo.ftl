@@ -61,8 +61,8 @@
 
     <section class="jumbotron text-center">
         <div class="container">
-            <h1 class="jumbotron-heading">Top videogames</h1>
-            <p class="lead text-muted">In this gallery, i'm going to show pictures of the top 9 best videogames..</p>
+            <h1 class="jumbotron-heading">VideoGame Gallery</h1>
+            <p class="lead text-muted">gallery of all the videogames availables</p>
             <p>
                 <a href="/consoles/showHomeConsole" class="btn btn-primary my-2">Go to the top console page</a>
                 <a href="/consoles/showHandheldConsole/" class="btn btn-secondary my-2">Go to top handheld console page</a>

@@ -23,5 +23,6 @@ public class GameChangerApplication {
         new File(ClientController.uploadDirectory).mkdir();
 
         SpringApplication.run(GameChangerApplication.class, args);
+
     }
 }

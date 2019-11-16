@@ -4,13 +4,13 @@ import arkham.knight.gamestop.models.User;
 import arkham.knight.gamestop.services.FileUploadServices;
 import arkham.knight.gamestop.services.UserServices;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,6 +23,8 @@ public class UserController {
 
     @Autowired
     private FileUploadServices fileUploadServices;
+
+    private BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
 
     public static String uploadDirectory = System.getProperty("user.dir")+"/src/main/resources/static/bootstrap-4.3.1/assets/img";
 
@@ -69,7 +71,7 @@ public class UserController {
 
         String imageName = fileUploadServices.almacenarAndDepurarImagen(image,uploadDirectory);
 
-        User userToCreate = new User(username,password,true,imageName,getRolesWithTheIdRoles(idRoles,rolList));
+        User userToCreate = new User(username,bCryptPasswordEncoder.encode(password),true,imageName,getRolesWithTheIdRoles(idRoles,rolList));
 
         userServices.createUser(userToCreate);
 
@@ -100,7 +102,7 @@ public class UserController {
         User userToEdit = userServices.findUserById(id);
 
         userToEdit.setUsername(username);
-        userToEdit.setPassword(password);
+        userToEdit.setPassword(bCryptPasswordEncoder.encode(password));
         userToEdit.setAdmin(true);
         userToEdit.setImage(imageName);
         userToEdit.setRolList(getRolesWithTheIdRoles(idRoles,rolList));
