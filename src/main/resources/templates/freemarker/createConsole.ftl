@@ -107,6 +107,14 @@
                 </div>
 
                 <div class="mb-3">
+                    <label for="stock">Stock</label>
+                    <div class="input-group">
+                        <input type="number" class="form-control" id="stock" name="stock" placeholder="Stock" required>
+
+                    </div>
+                </div>
+
+                <div class="mb-3">
                     <label for="idPredecessorConsole">Predecessor console</label>
 
                     <div class="input-group">

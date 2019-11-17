@@ -74,13 +74,13 @@ public class IndexController {
 
         Date date2 = new Date();
 
-        Console consolePredecessor = new Console("PlayStation 1","Sony","Home Console",5, date1,date2,10,2400,45.4,"ps1.jpg" );
+        Console consolePredecessor = new Console("PlayStation 1","Sony","Home Console",5, date1,date2,10,2400,45.4,"ps1.jpg",5 );
 
-        Console console = new Console("PlayStation 2","Sony","Home Console",6, date1,date2,10,4500,45.4,"ps2.jpg" );
+        Console console = new Console("PlayStation 2","Sony","Home Console",6, date1,date2,10,4500,45.4,"ps2.jpg",3 );
 
-        Console consoleSuccessor = new Console("PlayStation 3","Sony","Home Console",7, date1,date2,10,3700,45.4,"ps3.jpg" );
+        Console consoleSuccessor = new Console("PlayStation 3","Sony","Home Console",7, date1,date2,10,3700,45.4,"ps3.jpg" ,3);
 
-        Console lastConsole = new Console("PlayStation 4","Sony","Home Console",8, date1,date2,10,3500,45.4,"ps4.jpg" );
+        Console lastConsole = new Console("PlayStation 4","Sony","Home Console",8, date1,date2,10,3500,45.4,"ps4.jpg" ,5);
 
         consoleServices.createConsole(consolePredecessor);
 
@@ -119,23 +119,23 @@ public class IndexController {
 
         consoleList1.add(ps3);
 
-        VideoGame videoGame1 = new VideoGame("Naruto Ultimate Ninja","Bandai Namco",date,"2D Fighting", 4.5,"Single-player, multiplayer",4,1500,"naruto.jpg",consoleList);
+        VideoGame videoGame1 = new VideoGame("Naruto Ultimate Ninja","Bandai Namco",date,"2D Fighting", 4.5,"Single-player, multiplayer",4,1500,"naruto.jpg",5,consoleList);
 
-        VideoGame videoGame2 = new VideoGame("Naruto Ultimate Ninja 2","Bandai Namco",date,"2D Fighting", 4.5,"Single-player, multiplayer",4,1300,"naruto2.jpg",consoleList);
+        VideoGame videoGame2 = new VideoGame("Naruto Ultimate Ninja 2","Bandai Namco",date,"2D Fighting", 4.5,"Single-player, multiplayer",4,1300,"naruto2.jpg",5,consoleList);
 
-        VideoGame videoGame3 = new VideoGame("Naruto Ultimate Ninja 3","Bandai Namco",date,"2D Fighting", 4.5,"Single-player, multiplayer",4,1250,"naruto3.jpg",consoleList);
+        VideoGame videoGame3 = new VideoGame("Naruto Ultimate Ninja 3","Bandai Namco",date,"2D Fighting", 4.5,"Single-player, multiplayer",4,1250,"naruto3.jpg",5,consoleList);
 
-        VideoGame videoGame4 = new VideoGame("Naruto Ultimate Ninja 4","Bandai Namco",date,"2D Fighting", 4.5,"Single-player, multiplayer",4,1800,"naruto4.jpg",consoleList);
+        VideoGame videoGame4 = new VideoGame("Naruto Ultimate Ninja 4","Bandai Namco",date,"2D Fighting", 4.5,"Single-player, multiplayer",4,1800,"naruto4.jpg",3,consoleList);
 
-        VideoGame videoGame5 = new VideoGame("Naruto Ultimate Ninja 5","Bandai Namco",date,"2D Fighting", 4.5,"Single-player, multiplayer",4,2350,"naruto5.jpg",consoleList);
+        VideoGame videoGame5 = new VideoGame("Naruto Ultimate Ninja 5","Bandai Namco",date,"2D Fighting", 4.5,"Single-player, multiplayer",4,2350,"naruto5.jpg",5,consoleList);
 
-        VideoGame videoGame6 = new VideoGame("God of War II","Santa Monica Studio",date,"Hack And Slash", 4.5,"Single-player",4,2120,"god of war 2.jpg",consoleList1);
+        VideoGame videoGame6 = new VideoGame("God of War II","Santa Monica Studio",date,"Hack And Slash", 4.5,"Single-player",4,2120,"god of war 2.jpg",4,consoleList1);
 
-        VideoGame videoGame7 = new VideoGame("God of War","Santa Monica Studio",date,"Hack And Slash", 4.5,"Single-player",4,1870,"god of war.jpg",consoleList1);
+        VideoGame videoGame7 = new VideoGame("God of War","Santa Monica Studio",date,"Hack And Slash", 4.5,"Single-player",4,1870,"god of war.jpg",4,consoleList1);
 
-        VideoGame videoGame8 = new VideoGame("Kingdom Hearts","Square Enix",date,"JRPG", 4.5,"Single-player",4,2444,"kh.jpg",consoleList1);
+        VideoGame videoGame8 = new VideoGame("Kingdom Hearts","Square Enix",date,"JRPG", 4.5,"Single-player",4,2444,"kh.jpg",5,consoleList1);
 
-        VideoGame videoGame9 = new VideoGame("Kingdom Hearts II","Square Enix",date,"JRPG", 4.5,"Single-player",4,1570,"kh 2.jpg",consoleList1);
+        VideoGame videoGame9 = new VideoGame("Kingdom Hearts II","Square Enix",date,"JRPG", 4.5,"Single-player",4,1570,"kh 2.jpg",5,consoleList1);
 
         videoGameServices.createVideoGame(videoGame1);
         videoGameServices.createVideoGame(videoGame2);

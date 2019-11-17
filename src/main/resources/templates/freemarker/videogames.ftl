@@ -26,14 +26,20 @@
 
   <div class="collapse navbar-collapse" id="navbarsExampleDefault">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
+      <li class="nav-item ">
         <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/consoles/">Consoles</a>
+        <a class="nav-link" href="/consoles/admin">Consoles</a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link " href="/videogames/">Videogames</a>
+        <a class="nav-link " href="/videogames/admin">Videogames</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link " href="/clients/">Clients</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link " href="/sales/">Store</a>
       </li>
       <li class="nav-item">
         <a class="nav-link " href="/admin">Admin</a>
@@ -73,6 +79,8 @@
         <th scope="col">Units sold</th>
         <th scope="col">Games mode</th>
         <th scope="col">Rating</th>
+        <th scope="col">Selling price</th>
+        <th scope="col">Stock</th>
         <th scope="col">Options</th>
       </tr>
       </thead>
@@ -90,6 +98,8 @@
         <td>${videogame.unitsSold}</td>
         <td>${videogame.gameModes}</td>
         <td>${videogame.rating}</td>
+        <td>${videogame.sellPrice}</td>
+        <td>${videogame.stock}</td>
         <td>
           <a href="/videogames/edition/?id=${videogame.id}">  <i class="fa fa-edit" style="font-size:25px"></i></a>
           <a href="/videogames/delete/?id=${videogame.id}">  <i class="fa fa-trash" style="font-size:25px;color:red"></i> </a>

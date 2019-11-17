@@ -123,7 +123,15 @@
                     <div class="mb-3">
                         <label for="sellPrice">Selling price</label>
                         <div class="input-group">
-                            <input type="number" value="${videogame.sellPrice]" class="form-control" id="sellPrice" name="sellPrice" placeholder="Selling price" required>
+                            <input type="number" value="${videogame.sellPrice}" class="form-control" id="sellPrice" name="sellPrice" placeholder="Selling price" required>
+
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="stock">Stock</label>
+                        <div class="input-group">
+                            <input type="number" value="${videogame.stock}" class="form-control" id="stock" name="stock" placeholder="Stock" required>
 
                         </div>
                     </div>

@@ -36,6 +36,12 @@ public class VideoGameServices {
     }
 
 
+    public List<VideoGame> findAllVideoGamesById(List<Long> idVideoGames){
+
+        return videoGameRepository.findAllById(idVideoGames);
+    }
+
+
     public List<VideoGame> findAllVideoGamesByPlatformName(String platformName){
 
         return videoGameRepository.findAllByPlatformsListName(platformName);

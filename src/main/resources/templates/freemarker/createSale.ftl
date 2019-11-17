@@ -44,9 +44,13 @@
                     <label for="idConsoles">Select the console</label>
 
                     <div class="input-group">
-                        <select multiple class="form-control" name="idConsoles" required>
+                        <select multiple class="form-control" name="idConsoles">
                             <#list consoles as console>
-                                <option value="${console.id}" >${console.name} - ${console.developer} - ${console.consoleType} - $${console.sellPrice}</option>
+
+                                <#if console.stock gt 0 >
+                                    <option value="${console.id}" >${console.name} - ${console.developer} - ${console.consoleType} - $${console.sellPrice} - Stock: ${console.stock}</option>
+                                </#if>
+
                             </#list>
                         </select>
                     </div>
@@ -57,9 +61,13 @@
                     <label for="idVideoGames">Select the VideoGames</label>
 
                     <div class="input-group">
-                        <select multiple class="form-control" name="idVideoGames" required>
+                        <select multiple class="form-control" name="idVideoGames">
                             <#list videogames as videogame>
-                                <option value="${videogame.id}" >${videogame.name} - ${videogame.developer} - ${videogame.genre} - $${videogame.sellPrice}</option>
+
+                                <#if videogame.stock gt 0 >
+                                    <option value="${videogame.id}" >${videogame.name} - ${videogame.developer} - ${videogame.genre} - $${videogame.sellPrice} - Stock: ${videogame.stock}</option>
+                                </#if>
+
                             </#list>
                         </select>
                     </div>

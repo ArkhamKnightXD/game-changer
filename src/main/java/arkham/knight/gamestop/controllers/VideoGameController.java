@@ -1,5 +1,4 @@
 package arkham.knight.gamestop.controllers;
-import arkham.knight.gamestop.models.Console;
 import arkham.knight.gamestop.models.VideoGame;
 import arkham.knight.gamestop.services.ConsoleServices;
 import arkham.knight.gamestop.services.FileUploadServices;
@@ -12,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -30,23 +28,6 @@ public class VideoGameController {
     private FileUploadServices fileUploadServices;
 
     public static String uploadDirectory = System.getProperty("user.dir")+"/src/main/resources/static/bootstrap-4.3.1/assets/img";
-
-
-    private List<Console> findConsolesWithIdConsoles(List<Long> idConsoles){
-
-        List<Console> consoleList = new ArrayList<>();
-
-        for (Long consoles: idConsoles
-        ) {
-
-            Console consolesToAdd = consoleServices.findConsoleById(consoles);
-
-            consoleList.add(consolesToAdd);
-
-        }
-
-        return consoleList;
-    }
 
 
     @RequestMapping("/")
@@ -80,15 +61,15 @@ public class VideoGameController {
 
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public String create(@RequestParam(name = "idConsoles") List<Long> idConsoles, @RequestParam(name = "name") String name, @RequestParam(name = "developer") String developer, @RequestParam(name = "genre") String genre, @RequestParam(name = "gameModes") String gameModes, @RequestParam(name = "unitsSold") Double unitsSold, @RequestParam(name = "releasedDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date releasedDate, @RequestParam(name = "rating") float rating, @RequestParam(name = "image") MultipartFile[] image, @RequestParam(name = "sellPrice") float sellPrice){
+    public String create(@RequestParam(name = "idConsoles") List<Long> idConsoles, @RequestParam(name = "name") String name, @RequestParam(name = "developer") String developer, @RequestParam(name = "genre") String genre, @RequestParam(name = "gameModes") String gameModes, @RequestParam(name = "unitsSold") Double unitsSold, @RequestParam(name = "releasedDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date releasedDate, @RequestParam(name = "rating") float rating, @RequestParam(name = "image") MultipartFile[] image, @RequestParam(name = "sellPrice") float sellPrice, @RequestParam(name = "stock") int stock){
 
         String imageName = fileUploadServices.almacenarAndDepurarImagen(image,uploadDirectory);
 
-        VideoGame videoGameToCreate =new VideoGame(name,developer,releasedDate,genre,unitsSold,gameModes,rating,sellPrice,imageName,findConsolesWithIdConsoles(idConsoles));
+        VideoGame videoGameToCreate =new VideoGame(name,developer,releasedDate,genre,unitsSold,gameModes,rating,sellPrice,imageName,stock,consoleServices.findAllConsolesById(idConsoles));
 
         videoGameServices.createVideoGame(videoGameToCreate);
 
-        return "redirect:/videogames/";
+        return "redirect:/videogames/admin";
     }
 
 
@@ -106,7 +87,7 @@ public class VideoGameController {
 
 
     @RequestMapping("/edit")
-    public String edit(@RequestParam(name = "idConsoles") List<Long> idConsoles, @RequestParam(name = "id") Long id, @RequestParam(name = "name") String name,@RequestParam(name = "developer") String developer, @RequestParam(name = "genre") String genre,@RequestParam(name = "gameModes") String gameModes,@RequestParam(name = "unitsSold") Double unitsSold, @RequestParam(name = "releasedDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date releasedDate,@RequestParam(name = "rating") float rating, @RequestParam(name = "image") MultipartFile[] image, @RequestParam(name = "sellPrice") float sellPrice){
+    public String edit(@RequestParam(name = "idConsoles") List<Long> idConsoles, @RequestParam(name = "id") Long id, @RequestParam(name = "name") String name,@RequestParam(name = "developer") String developer, @RequestParam(name = "genre") String genre,@RequestParam(name = "gameModes") String gameModes,@RequestParam(name = "unitsSold") Double unitsSold, @RequestParam(name = "releasedDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date releasedDate,@RequestParam(name = "rating") float rating, @RequestParam(name = "image") MultipartFile[] image, @RequestParam(name = "sellPrice") float sellPrice, @RequestParam(name = "stock") int stock){
 
         String imageName = fileUploadServices.almacenarAndDepurarImagen(image,uploadDirectory);
 
@@ -120,12 +101,13 @@ public class VideoGameController {
         videoGameToEdit.setUnitsSold(unitsSold);
         videoGameToEdit.setSellPrice(sellPrice);
         videoGameToEdit.setRating(rating);
-        videoGameToEdit.setPlatformsList(findConsolesWithIdConsoles(idConsoles));
+        videoGameToEdit.setPlatformsList(consoleServices.findAllConsolesById(idConsoles));
         videoGameToEdit.setImage(imageName);
+        videoGameToEdit.setStock(stock);
 
         videoGameServices.createVideoGame(videoGameToEdit);
 
-        return "redirect:/videogames/";
+        return "redirect:/videogames/admin";
     }
 
 

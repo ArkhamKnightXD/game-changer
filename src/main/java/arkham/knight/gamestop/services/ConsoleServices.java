@@ -54,6 +54,12 @@ public class ConsoleServices {
     }
 
 
+    public List<Console> findAllConsolesById(List<Long> idConsoles){
+
+        return consoleRepository.findAllById(idConsoles);
+    }
+
+
     public Console findConsoleByName(String name){
 
         return consoleRepository.findConsoleByName(name);

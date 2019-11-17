@@ -38,16 +38,17 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        
         http
                 .authorizeRequests()
 
                 .antMatchers("/","/css/**", "/js/**").permitAll()
-                .antMatchers("/users/**").hasAnyRole("ADMIN")
-                .antMatchers("/clients/**").hasAnyRole("ADMIN", "USER")
-                .antMatchers("/sales/**").hasAnyRole("ADMIN")
-                .antMatchers("/admin/**").hasAnyRole("ADMIN")
-                .antMatchers("/consoles/**").hasAnyRole("ADMIN", "USER")
-                .antMatchers("/videogames/**").hasAnyRole("ADMIN", "USER")
+                //.antMatchers("/users/**").hasAnyRole("ADMIN")
+                //.antMatchers("/clients/**").hasAnyRole("ADMIN", "USER")
+                //.antMatchers("/sales/**").hasAnyRole("ADMIN")
+                //.antMatchers("/admin/**").hasAnyRole("ADMIN")
+                //.antMatchers("/consoles/**").hasAnyRole("ADMIN", "USER")
+                //.antMatchers("/videogames/**").hasAnyRole("ADMIN", "USER")
                 //.anyRequest().authenticated() //cualquier llamada debe ser validada
 
                 .and()

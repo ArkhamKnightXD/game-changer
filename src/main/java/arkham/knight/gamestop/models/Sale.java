@@ -12,19 +12,19 @@ public class Sale implements Serializable {
     private Long id;
 
     private Date soldDate;
-    private int total;
+    private float total;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     private List<Console> consoleListToSell;
 
-    @ManyToMany(mappedBy = "platformsList")
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     private List<VideoGame> videoGameListToSell;
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     private Client buyer;
 
 
-    public Sale(Date soldDate, int total, List<Console> consoleListToSell, List<VideoGame> videoGameListToSell, Client buyer) {
+    public Sale(Date soldDate, float total, List<Console> consoleListToSell, List<VideoGame> videoGameListToSell, Client buyer) {
         this.soldDate = soldDate;
         this.total = total;
         this.consoleListToSell = consoleListToSell;
@@ -50,13 +50,9 @@ public class Sale implements Serializable {
         this.soldDate = soldDate;
     }
 
-    public int getTotal() {
-        return total;
-    }
+    public float getTotal() { return total; }
 
-    public void setTotal(int total) {
-        this.total = total;
-    }
+    public void setTotal(float total) { this.total = total; }
 
     public List<Console> getConsoleListToSell() {
         return consoleListToSell;

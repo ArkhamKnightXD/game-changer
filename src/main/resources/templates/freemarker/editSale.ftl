@@ -16,7 +16,7 @@
 <body class="bg-light">
 <div class="container">
     <div class="py-5 text-center">
-        <h1>Sale Form</h1>
+        <h1>Devolution Form</h1>
     </div>
 
     <div class="center-container">
@@ -24,7 +24,7 @@
         <div class="row">
 
             <div class="col-md-8 order-md-1">
-                <h4 class="mb-3">Edit sale</h4>
+                <h4 class="mb-3">Make a devolution</h4>
 
                 <form method="post" action="/sales/edit/?id=${sale.id}" class="needs-validation"  novalidate>
                     <div class="mb-3">
@@ -32,9 +32,7 @@
 
                         <div class="input-group">
                             <select class="form-control" name="idClient" required>
-                                <#list clients as client>
                                     <option value="${client.id}" >${client.name} - ${client.lastName} - ${client.address} - ${client.phone}</option>
-                                </#list>
                             </select>
                         </div>
                     </div>
@@ -44,9 +42,13 @@
                         <label for="idConsoles">Select the console</label>
 
                         <div class="input-group">
-                            <select multiple class="form-control" name="idConsoles" required>
+                            <select multiple class="form-control" name="idConsoles">
                                 <#list consoles as console>
-                                    <option value="${console.id}" >${console.name} - ${console.developer} - ${console.consoleType} - $${console.sellPrice}</option>
+
+                                    <#if console.stock gt 0 >
+                                        <option value="${console.id}" >${console.name} - ${console.developer} - ${console.consoleType} - $${console.sellPrice} - Stock: ${console.stock}</option>
+                                    </#if>
+
                                 </#list>
                             </select>
                         </div>
@@ -57,9 +59,13 @@
                         <label for="idVideoGames">Select the VideoGames</label>
 
                         <div class="input-group">
-                            <select multiple class="form-control" name="idVideoGames" required>
+                            <select multiple class="form-control" name="idVideoGames">
                                 <#list videogames as videogame>
-                                    <option value="${videogame.id}" >${videogame.name} - ${videogame.developer} - ${videogame.genre} - $${videogame.sellPrice}</option>
+
+                                    <#if videogame.stock gt 0 >
+                                        <option value="${videogame.id}" >${videogame.name} - ${videogame.developer} - ${videogame.genre} - $${videogame.sellPrice} - Stock: ${videogame.stock}</option>
+                                    </#if>
+
                                 </#list>
                             </select>
                         </div>
@@ -67,7 +73,7 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="soldDate">Selling Date</label>
+                        <label for="soldDate">Devolution Date</label>
                         <div class="input-group">
                             <input type="date" class="form-control" id="soldDate" name="soldDate" placeholder="Selling Date" required>
 
@@ -76,7 +82,7 @@
 
 
                     <hr class="mb-4">
-                    <button class="btn btn-primary btn-lg btn-block" type="submit">Sell</button>
+                    <button class="btn btn-primary btn-lg btn-block" type="submit">Devolution</button>
                     <hr class="mb-4">
                     <a class="btn btn-danger btn-lg btn-block" href="/sales/" role="button">Cancel</a>
                 </form>

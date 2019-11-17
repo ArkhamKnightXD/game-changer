@@ -33,10 +33,7 @@ public class ConsoleController {
 
         if (idPredecessorConsole !=null){
 
-            Console predecessorConsole = consoleServices.findConsoleById(idPredecessorConsole);
-
-            return predecessorConsole;
-
+            return consoleServices.findConsoleById(idPredecessorConsole);
         }
 
         else
@@ -48,9 +45,7 @@ public class ConsoleController {
 
         if (idSuccessorConsole != null){
 
-            Console successorConsole = consoleServices.findConsoleById(idSuccessorConsole);
-
-            return successorConsole;
+            return consoleServices.findConsoleById(idSuccessorConsole);
         }
 
         else
@@ -90,15 +85,15 @@ public class ConsoleController {
 
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public String create(@RequestParam(name = "name") String name, @RequestParam(name = "developer") String developer, @RequestParam(name = "consoleType") String consoleType, @RequestParam(name = "generation") int generation, @RequestParam(name = "unitsSold") Double unitsSold, @RequestParam(name = "releasedDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date releasedDate, @RequestParam(name = "discontinuedDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date discontinuedDate, @RequestParam(name = "image") MultipartFile[] image,@RequestParam(required = false,name = "idPredecessorConsole") Long idPredecessorConsole, @RequestParam(required = false, name = "idSuccessorConsole")  Long idSuccessorConsole, @RequestParam(name = "sellPrice") float sellPrice){
+    public String create(@RequestParam(name = "name") String name, @RequestParam(name = "developer") String developer, @RequestParam(name = "consoleType") String consoleType, @RequestParam(name = "generation") int generation, @RequestParam(name = "unitsSold") Double unitsSold, @RequestParam(name = "releasedDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date releasedDate, @RequestParam(name = "discontinuedDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date discontinuedDate, @RequestParam(name = "image") MultipartFile[] image,@RequestParam(required = false,name = "idPredecessorConsole") Long idPredecessorConsole, @RequestParam(required = false, name = "idSuccessorConsole")  Long idSuccessorConsole, @RequestParam(name = "sellPrice") float sellPrice, @RequestParam(name = "stock") int stock){
 
         String imageName = fileUploadServices.almacenarAndDepurarImagen(image,uploadDirectory);
 
-        Console consoleToCreate = new Console(name,developer,consoleType,generation,releasedDate,discontinuedDate,11,sellPrice,unitsSold,imageName,videoGameServices.findAllVideoGamesByPlatformName(name),getPredecessorConsoleWithIdConsole(idPredecessorConsole),getSuccessorConsoleWithIdConsole(idSuccessorConsole));
+        Console consoleToCreate = new Console(name,developer,consoleType,generation,releasedDate,discontinuedDate,11,sellPrice,unitsSold,imageName,stock,videoGameServices.findAllVideoGamesByPlatformName(name),getPredecessorConsoleWithIdConsole(idPredecessorConsole),getSuccessorConsoleWithIdConsole(idSuccessorConsole));
 
         consoleServices.createConsole(consoleToCreate);
 
-        return "redirect:/consoles/";
+        return "redirect:/consoles/admin";
     }
 
 
@@ -117,7 +112,7 @@ public class ConsoleController {
 
 
     @RequestMapping("/edit")
-    public String edit(@RequestParam(name = "id") Long id ,@RequestParam(name = "name") String name, @RequestParam(name = "developer") String developer, @RequestParam(name = "consoleType") String consoleType, @RequestParam(name = "generation") int generation, @RequestParam(name = "unitsSold") Double unitsSold, @RequestParam(name = "releasedDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date releasedDate, @RequestParam(name = "discontinuedDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date discontinuedDate, @RequestParam(name = "image") MultipartFile[] image, @RequestParam(required = false,name = "idPredecessorConsole") Long idPredecessorConsole, @RequestParam(required = false, name = "idSuccessorConsole")  Long idSuccessorConsole, @RequestParam(name = "sellPrice") float sellPrice){
+    public String edit(@RequestParam(name = "id") Long id ,@RequestParam(name = "name") String name, @RequestParam(name = "developer") String developer, @RequestParam(name = "consoleType") String consoleType, @RequestParam(name = "generation") int generation, @RequestParam(name = "unitsSold") Double unitsSold, @RequestParam(name = "releasedDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date releasedDate, @RequestParam(name = "discontinuedDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date discontinuedDate, @RequestParam(name = "image") MultipartFile[] image, @RequestParam(required = false, name = "idPredecessorConsole") Long idPredecessorConsole, @RequestParam(required = false, name = "idSuccessorConsole")  Long idSuccessorConsole, @RequestParam(name = "sellPrice") float sellPrice, @RequestParam(name = "stock") int stock){
 
         Console consoleToEdit = consoleServices.findConsoleById(id);
 
@@ -132,12 +127,13 @@ public class ConsoleController {
         consoleToEdit.setDiscontinuedDate(discontinuedDate);
         consoleToEdit.setSellPrice(sellPrice);
         consoleToEdit.setImage(imageName);
+        consoleToEdit.setStock(stock);
         consoleToEdit.setPredecessor(getPredecessorConsoleWithIdConsole(idPredecessorConsole));
         consoleToEdit.setSuccessor(getSuccessorConsoleWithIdConsole(idSuccessorConsole));
 
         consoleServices.createConsole(consoleToEdit);
 
-        return "redirect:/consoles/";
+        return "redirect:/consoles/admin";
     }
 
 

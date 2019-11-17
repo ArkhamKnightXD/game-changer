@@ -1,5 +1,4 @@
 package arkham.knight.gamestop.controllers;
-import arkham.knight.gamestop.models.Rol;
 import arkham.knight.gamestop.models.User;
 import arkham.knight.gamestop.services.FileUploadServices;
 import arkham.knight.gamestop.services.UserServices;
@@ -11,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -27,20 +25,6 @@ public class UserController {
     private BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
 
     public static String uploadDirectory = System.getProperty("user.dir")+"/src/main/resources/static/bootstrap-4.3.1/assets/img";
-
-
-    private List<Rol> getRolesWithTheIdRoles(List<Long> idRoles, List<Rol> rolList){
-
-        for (Long roles: idRoles) {
-
-            Rol rolesToAdd = userServices.findRoleById(roles);
-
-            rolList.add(rolesToAdd);
-        }
-
-        return rolList;
-
-    }
 
 
     @RequestMapping("/")
@@ -67,11 +51,9 @@ public class UserController {
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public String create(@RequestParam(name = "username") String username, @RequestParam(name = "password") String password, @RequestParam(name = "image") MultipartFile[] image, @RequestParam(name = "idRoles") List<Long> idRoles){
 
-        List<Rol> rolList = new ArrayList<>();
-
         String imageName = fileUploadServices.almacenarAndDepurarImagen(image,uploadDirectory);
 
-        User userToCreate = new User(username,bCryptPasswordEncoder.encode(password),true,imageName,getRolesWithTheIdRoles(idRoles,rolList));
+        User userToCreate = new User(username,bCryptPasswordEncoder.encode(password),true,imageName,userServices.findAllRolesById(idRoles));
 
         userServices.createUser(userToCreate);
 
@@ -95,8 +77,6 @@ public class UserController {
     @RequestMapping("/edit")
     public String edit(@RequestParam(name = "id") Long id, @RequestParam(name = "username") String username, @RequestParam(name = "password") String password, @RequestParam(name = "image") MultipartFile[] image, @RequestParam(name = "idRoles") List<Long> idRoles){
 
-        List<Rol> rolList = new ArrayList<>();
-
         String imageName = fileUploadServices.almacenarAndDepurarImagen(image,uploadDirectory);
 
         User userToEdit = userServices.findUserById(id);
@@ -105,7 +85,7 @@ public class UserController {
         userToEdit.setPassword(bCryptPasswordEncoder.encode(password));
         userToEdit.setAdmin(true);
         userToEdit.setImage(imageName);
-        userToEdit.setRolList(getRolesWithTheIdRoles(idRoles,rolList));
+        userToEdit.setRolList(userServices.findAllRolesById(idRoles));
 
         userServices.createUser(userToEdit);
 

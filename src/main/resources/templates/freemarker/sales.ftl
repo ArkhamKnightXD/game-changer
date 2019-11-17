@@ -28,11 +28,17 @@
           <li class="nav-item ">
             <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
           </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="/consoles/">Consoles</a>
+          <li class="nav-item">
+            <a class="nav-link" href="/consoles/admin">Consoles</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link " href="/videogames/">Videogames</a>
+            <a class="nav-link " href="/videogames/admin">Videogames</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="/clients/">Clients</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link " href="/sales/">Store</a>
           </li>
           <li class="nav-item">
             <a class="nav-link " href="/admin">Admin</a>

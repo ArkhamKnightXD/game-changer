@@ -28,11 +28,17 @@
           <li class="nav-item ">
             <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
           </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="/consoles/">Consoles</a>
+          <li class="nav-item">
+            <a class="nav-link active" href="/consoles/admin">Consoles</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link " href="/videogames/">Videogames</a>
+            <a class="nav-link " href="/videogames/admin">Videogames</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="/clients/">Clients</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="/sales/">Store</a>
           </li>
           <li class="nav-item">
             <a class="nav-link " href="/admin">Admin</a>
@@ -69,6 +75,8 @@
             <th scope="col">Discontinued date</th>
             <th scope="col">Lifespan</th>
             <th scope="col">Units sold</th>
+            <th scope="col">Selling price</th>
+            <th scope="col">Stock</th>
             <th scope="col">Options</th>
           </tr>
           </thead>
@@ -88,6 +96,8 @@
             <td>${console.discontinuedDate?date}</td>
             <td>${console.lifespan}</td>
             <td>${console.unitsSold}</td>
+            <td>${console.sellPrice}</td>
+            <td>${console.stock}</td>
             <td>
               <a href="/consoles/edition/?id=${console.id}">  <i class="fa fa-edit" style="font-size:25px"></i></a>
               <a href="/consoles/delete/?id=${console.id}">  <i class="fa fa-trash" style="font-size:25px;color:red"></i> </a>
