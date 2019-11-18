@@ -41,6 +41,9 @@
             <a class="nav-link " href="/sales/">Store</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link " href="/users/">Users</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link " href="/admin">Admin</a>
           </li>
           <li class="nav-item dropdown">
@@ -94,7 +97,7 @@
             <td>${console.consoleType}</td>
             <td>${console.releasedDate?date}</td>
             <td>${console.discontinuedDate?date}</td>
-            <td>${console.lifespan}</td>
+            <td>${console.lifespan} Years</td>
             <td>${console.unitsSold}</td>
             <td>${console.sellPrice}</td>
             <td>${console.stock}</td>

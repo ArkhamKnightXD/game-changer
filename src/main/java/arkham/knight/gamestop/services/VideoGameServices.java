@@ -60,7 +60,7 @@ public class VideoGameServices {
     }
 
 
-    public VideoGame findVideoGameByUnitsSold(double units){
+    public VideoGame findVideoGameByUnitsSold(int units){
 
         return videoGameRepository.findVideoGameByUnitsSold(units);
     }

@@ -120,7 +120,7 @@
 
             <canvas class="my-4" id="myChart" width="900" height="380"></canvas>
 
-            <h2>Section title</h2>
+            <h2>Last sold videogames</h2>
             <div class="table-responsive">
                 <table class="table table-striped table-sm">
                     <thead>
@@ -129,17 +129,17 @@
                         <th>Name</th>
                         <th>Developer</th>
                         <th>Genre</th>
-                        <th>Game modes</th>
+                        <th>Selling price</th>
                     </tr>
                     </thead>
                     <#list videogames as videogame >
                     <tbody>
                     <tr>
-                        <td>1,001</td>
+                        <td>${videogame.id}</td>
                         <td>${videogame.name}</td>
                         <td>${videogame.developer}</td>
                         <td>${videogame.genre}</td>
-                        <td>${videogame.gameModes}</td>
+                        <td>${videogame.sellPrice}</td>
                     </tr>
 
                     </tbody>

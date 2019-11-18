@@ -42,6 +42,9 @@
         <a class="nav-link " href="/sales/">Store</a>
       </li>
       <li class="nav-item">
+        <a class="nav-link " href="/users/">Users</a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link " href="/admin">Admin</a>
       </li>
       <li class="nav-item dropdown">
@@ -65,7 +68,7 @@
 
 <main role="main" class="container">
 
-  <div class="starter-template">
+  <div class="starter-template table-responsive">
 
     <table class="table table-hover table-bordered">
       <thead class="thead-dark">

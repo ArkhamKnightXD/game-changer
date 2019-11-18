@@ -64,9 +64,9 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="image">Picture of the client</label>
+                        <label for="photo">Picture of the client</label>
                         <div class="input-group">
-                            <input type="file" class="form-control" id="photo" name="photo" placeholder="Picture of the client" required>
+                            <input type="file" class="form-control" id="photo" name="photo" placeholder="Picture of the client">
 
                         </div>
                     </div>

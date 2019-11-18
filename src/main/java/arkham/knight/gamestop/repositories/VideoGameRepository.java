@@ -17,5 +17,5 @@ public interface VideoGameRepository extends JpaRepository<VideoGame, Long> {
 
     List<VideoGame> findAllByPlatformsListName(String platformName);
 
-    VideoGame findVideoGameByUnitsSold(Double units);
+    VideoGame findVideoGameByUnitsSold(int units);
 }

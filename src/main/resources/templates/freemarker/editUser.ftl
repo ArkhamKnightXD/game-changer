@@ -57,7 +57,7 @@
                     <div class="mb-3">
                         <label for="image">Profile picture</label>
                         <div class="input-group">
-                            <input type="file" value="${user.image}" class="form-control" id="image" name="image" placeholder="Profile picture" required>
+                            <input type="file" value="${user.image}" class="form-control" id="image" name="image" placeholder="Profile picture">
 
                         </div>
                     </div>

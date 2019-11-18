@@ -53,7 +53,7 @@ public class UserController {
 
         String imageName = fileUploadServices.almacenarAndDepurarImagen(image,uploadDirectory);
 
-        User userToCreate = new User(username,bCryptPasswordEncoder.encode(password),true,imageName,userServices.findAllRolesById(idRoles));
+        User userToCreate = new User(username,bCryptPasswordEncoder.encode(password),false,imageName,userServices.findAllRolesById(idRoles));
 
         userServices.createUser(userToCreate);
 
@@ -75,7 +75,7 @@ public class UserController {
 
 
     @RequestMapping("/edit")
-    public String edit(@RequestParam(name = "id") Long id, @RequestParam(name = "username") String username, @RequestParam(name = "password") String password, @RequestParam(name = "image") MultipartFile[] image, @RequestParam(name = "idRoles") List<Long> idRoles){
+    public String edit(@RequestParam(name = "id") Long id, @RequestParam(name = "username") String username, @RequestParam(name = "password") String password, @RequestParam(required = false, name = "image") MultipartFile[] image, @RequestParam(name = "idRoles") List<Long> idRoles){
 
         String imageName = fileUploadServices.almacenarAndDepurarImagen(image,uploadDirectory);
 
@@ -84,8 +84,12 @@ public class UserController {
         userToEdit.setUsername(username);
         userToEdit.setPassword(bCryptPasswordEncoder.encode(password));
         userToEdit.setAdmin(true);
-        userToEdit.setImage(imageName);
         userToEdit.setRolList(userServices.findAllRolesById(idRoles));
+
+        if (imageName.endsWith("jpg")){
+
+            userToEdit.setImage(imageName);
+        }
 
         userServices.createUser(userToEdit);
 

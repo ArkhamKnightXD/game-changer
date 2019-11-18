@@ -28,7 +28,7 @@
 
                 <form method="post" action="/sales/edit/?id=${sale.id}" class="needs-validation"  novalidate>
                     <div class="mb-3">
-                        <label for="idClient">Select the client</label>
+                        <label for="idClient">Information of the client</label>
 
                         <div class="input-group">
                             <select class="form-control" name="idClient" required>
@@ -39,7 +39,7 @@
 
 
                     <div class="mb-3">
-                        <label for="idConsoles">Select the console</label>
+                        <label for="idConsoles">Select the console to make a devolution</label>
 
                         <div class="input-group">
                             <select multiple class="form-control" name="idConsoles">
@@ -56,7 +56,7 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="idVideoGames">Select the VideoGames</label>
+                        <label for="idVideoGames">Select the videogame to make a devolution</label>
 
                         <div class="input-group">
                             <select multiple class="form-control" name="idVideoGames">

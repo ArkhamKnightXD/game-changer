@@ -150,7 +150,7 @@
                     <div class="mb-3">
                         <label for="image">Picture of the cover</label>
                         <div class="input-group">
-                            <input type="file" class="form-control" value="${videogame.image}" id="image" name="image" placeholder="Picture of the cover" required>
+                            <input type="file" class="form-control" value="${videogame.image}" id="image" name="image" placeholder="Picture of the cover">
 
                         </div>
                     </div>
@@ -158,7 +158,7 @@
                     <hr class="mb-4">
                     <button class="btn btn-primary btn-lg btn-block" type="submit">Save videogame</button>
                     <hr class="mb-4">
-                    <a class="btn btn-danger btn-lg btn-block" href="/videogames/" role="button">Cancel</a>
+                    <a class="btn btn-danger btn-lg btn-block" href="/videogames/admin" role="button">Cancel</a>
                 </form>
             </div>
         </div>

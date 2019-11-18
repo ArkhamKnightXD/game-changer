@@ -29,30 +29,6 @@ public class ConsoleController {
     public static String uploadDirectory = System.getProperty("user.dir")+"/src/main/resources/static/bootstrap-4.3.1/assets/img";
 
 
-    private Console getPredecessorConsoleWithIdConsole(Long idPredecessorConsole){
-
-        if (idPredecessorConsole !=null){
-
-            return consoleServices.findConsoleById(idPredecessorConsole);
-        }
-
-        else
-            return null;
-    }
-
-
-    private Console getSuccessorConsoleWithIdConsole(Long idSuccessorConsole){
-
-        if (idSuccessorConsole != null){
-
-            return consoleServices.findConsoleById(idSuccessorConsole);
-        }
-
-        else
-            return null;
-    }
-
-
     @RequestMapping("/")
     public String index(Model model){
 
@@ -85,11 +61,13 @@ public class ConsoleController {
 
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public String create(@RequestParam(name = "name") String name, @RequestParam(name = "developer") String developer, @RequestParam(name = "consoleType") String consoleType, @RequestParam(name = "generation") int generation, @RequestParam(name = "unitsSold") Double unitsSold, @RequestParam(name = "releasedDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date releasedDate, @RequestParam(name = "discontinuedDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date discontinuedDate, @RequestParam(name = "image") MultipartFile[] image,@RequestParam(required = false,name = "idPredecessorConsole") Long idPredecessorConsole, @RequestParam(required = false, name = "idSuccessorConsole")  Long idSuccessorConsole, @RequestParam(name = "sellPrice") float sellPrice, @RequestParam(name = "stock") int stock){
+    public String create(@RequestParam(name = "name") String name, @RequestParam(name = "developer") String developer, @RequestParam(name = "consoleType") String consoleType, @RequestParam(name = "generation") int generation, @RequestParam(name = "unitsSold") int unitsSold, @RequestParam(name = "releasedDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date releasedDate, @RequestParam(name = "discontinuedDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date discontinuedDate, @RequestParam(name = "image") MultipartFile[] image,@RequestParam(required = false,name = "idPredecessorConsole") Long idPredecessorConsole, @RequestParam(required = false, name = "idSuccessorConsole")  Long idSuccessorConsole, @RequestParam(name = "sellPrice") float sellPrice, @RequestParam(name = "stock") int stock){
+
+        int lifeSpan = consoleServices.calculateLifeSpanOfTheConsole(releasedDate, discontinuedDate);
 
         String imageName = fileUploadServices.almacenarAndDepurarImagen(image,uploadDirectory);
 
-        Console consoleToCreate = new Console(name,developer,consoleType,generation,releasedDate,discontinuedDate,11,sellPrice,unitsSold,imageName,stock,videoGameServices.findAllVideoGamesByPlatformName(name),getPredecessorConsoleWithIdConsole(idPredecessorConsole),getSuccessorConsoleWithIdConsole(idSuccessorConsole));
+        Console consoleToCreate = new Console(name,developer,consoleType,generation,releasedDate,discontinuedDate,lifeSpan,sellPrice,unitsSold,imageName,stock,videoGameServices.findAllVideoGamesByPlatformName(name),consoleServices.findConsoleById(idPredecessorConsole),consoleServices.findConsoleById(idSuccessorConsole));
 
         consoleServices.createConsole(consoleToCreate);
 
@@ -112,7 +90,9 @@ public class ConsoleController {
 
 
     @RequestMapping("/edit")
-    public String edit(@RequestParam(name = "id") Long id ,@RequestParam(name = "name") String name, @RequestParam(name = "developer") String developer, @RequestParam(name = "consoleType") String consoleType, @RequestParam(name = "generation") int generation, @RequestParam(name = "unitsSold") Double unitsSold, @RequestParam(name = "releasedDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date releasedDate, @RequestParam(name = "discontinuedDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date discontinuedDate, @RequestParam(name = "image") MultipartFile[] image, @RequestParam(required = false, name = "idPredecessorConsole") Long idPredecessorConsole, @RequestParam(required = false, name = "idSuccessorConsole")  Long idSuccessorConsole, @RequestParam(name = "sellPrice") float sellPrice, @RequestParam(name = "stock") int stock){
+    public String edit(@RequestParam(name = "id") Long id ,@RequestParam(name = "name") String name, @RequestParam(name = "developer") String developer, @RequestParam(name = "consoleType") String consoleType, @RequestParam(name = "generation") int generation, @RequestParam(name = "unitsSold") int unitsSold, @RequestParam(name = "releasedDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date releasedDate, @RequestParam(name = "discontinuedDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date discontinuedDate, @RequestParam(required = false,name = "image") MultipartFile[] image, @RequestParam(required = false, name = "idPredecessorConsole") Long idPredecessorConsole, @RequestParam(required = false, name = "idSuccessorConsole")  Long idSuccessorConsole, @RequestParam(name = "sellPrice") float sellPrice, @RequestParam(name = "stock") int stock){
+
+        int lifeSpan = consoleServices.calculateLifeSpanOfTheConsole(releasedDate, discontinuedDate);
 
         Console consoleToEdit = consoleServices.findConsoleById(id);
 
@@ -125,11 +105,16 @@ public class ConsoleController {
         consoleToEdit.setUnitsSold(unitsSold);
         consoleToEdit.setReleasedDate(releasedDate);
         consoleToEdit.setDiscontinuedDate(discontinuedDate);
+        consoleToEdit.setLifespan(lifeSpan);
         consoleToEdit.setSellPrice(sellPrice);
-        consoleToEdit.setImage(imageName);
         consoleToEdit.setStock(stock);
-        consoleToEdit.setPredecessor(getPredecessorConsoleWithIdConsole(idPredecessorConsole));
-        consoleToEdit.setSuccessor(getSuccessorConsoleWithIdConsole(idSuccessorConsole));
+        consoleToEdit.setPredecessor(consoleServices.findConsoleById(idPredecessorConsole));
+        consoleToEdit.setSuccessor(consoleServices.findConsoleById(idSuccessorConsole));
+
+        if (imageName.endsWith("jpg")){
+
+            consoleToEdit.setImage(imageName);
+        }
 
         consoleServices.createConsole(consoleToEdit);
 
@@ -177,6 +162,6 @@ public class ConsoleController {
 
         consoleServices.deleteConsole(consoleToDelete);
 
-        return "redirect:/consoles/";
+        return "redirect:/consoles/admin";
     }
 }

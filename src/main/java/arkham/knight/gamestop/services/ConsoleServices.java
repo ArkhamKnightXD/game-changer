@@ -3,6 +3,8 @@ import arkham.knight.gamestop.models.Console;
 import arkham.knight.gamestop.repositories.ConsoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -42,15 +44,21 @@ public class ConsoleServices {
     }
 
 
-    public Console findConsoleByUnitsSold(double units){
+    public Console findConsoleByUnitsSold(int units){
 
         return consoleRepository.findConsoleByUnitsSold(units);
     }
 
 
-    public Console findConsoleById(long id){
+    public Console findConsoleById(Long id){
 
-        return consoleRepository.findConsoleById(id);
+        if (id != null){
+
+            return consoleRepository.findConsoleById(id);
+        }
+
+        else
+            return null;
     }
 
 
@@ -69,6 +77,20 @@ public class ConsoleServices {
     public Console findConsoleByGeneration(int generation){
 
         return consoleRepository.findConsoleByGeneration(generation);
+    }
+
+
+    public int calculateLifeSpanOfTheConsole(Date releasedDate, Date discontinuedDate){
+
+        Calendar releasedYear = Calendar.getInstance();
+
+        Calendar discontinuedYear = Calendar.getInstance();
+
+        releasedYear.setTime(releasedDate);
+
+        discontinuedYear.setTime(discontinuedDate);
+
+        return (discontinuedYear.get(Calendar.YEAR) - releasedYear.get(Calendar.YEAR));
     }
 
 

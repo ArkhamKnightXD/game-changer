@@ -15,7 +15,7 @@ public class VideoGame implements Serializable {
     private String developer;
     private Date releasedDate;
     private String genre;
-    private Double unitsSold;
+    private int unitsSold;
     private String gameModes;
     private float rating;
     private float sellPrice;
@@ -26,7 +26,7 @@ public class VideoGame implements Serializable {
     private List<Console> platformsList;
 
 
-    public VideoGame(String name, String developer, Date releasedDate, String genre, Double unitsSold, String gameModes, float rating, float sellPrice, String image, int stock, List<Console> platformsList) {
+    public VideoGame(String name, String developer, Date releasedDate, String genre, int unitsSold, String gameModes, float rating, float sellPrice, String image, int stock, List<Console> platformsList) {
         this.name = name;
         this.developer = developer;
         this.releasedDate = releasedDate;
@@ -84,13 +84,9 @@ public class VideoGame implements Serializable {
         this.genre = genre;
     }
 
-    public Double getUnitsSold() {
-        return unitsSold;
-    }
+    public int getUnitsSold() { return unitsSold; }
 
-    public void setUnitsSold(Double unitsSold) {
-        this.unitsSold = unitsSold;
-    }
+    public void setUnitsSold(int unitsSold) { this.unitsSold = unitsSold; }
 
     public String getGameModes() {
         return gameModes;

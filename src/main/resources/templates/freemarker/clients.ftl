@@ -41,6 +41,9 @@
             <a class="nav-link " href="/sales/">Store</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link " href="/users/">Users</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link " href="/admin">Admin</a>
           </li>
           <li class="nav-item dropdown">
@@ -61,7 +64,7 @@
     <h1 class="jumbotron text-center">List of the clients</h1>
     <main role="main" class="container">
 
-      <div class="starter-template">
+      <div class="starter-template table-responsive">
         <table class="table table-hover table-bordered">
           <thead class="thead-dark">
           <tr>
@@ -82,7 +85,7 @@
 
           <tr>
             <th scope="row">${client.id}</th>
-            <td><a href="/clients/show/?id=${client.id}"><img src="../../bootstrap-4.3.1/assets/img/store/clients/${client.photo}" width="110px" height="110px"></a></td>
+            <td><img src="../../bootstrap-4.3.1/assets/img/store/clients/${client.photo}" width="110px" height="110px"></td>
             <td>${client.name}</td>
             <td>${client.lastName}</td>
             <td>${client.address}</td>

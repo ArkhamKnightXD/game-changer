@@ -9,7 +9,7 @@ public class Client implements Serializable {
 
     @Id
     @GeneratedValue
-    private long id;
+    private Long id;
 
     private String name;
     private String lastName;

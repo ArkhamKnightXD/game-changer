@@ -19,7 +19,7 @@ public class Console implements Serializable {
     private Date discontinuedDate;
     private int lifespan;
     private float sellPrice;
-    private Double unitsSold;
+    private int unitsSold;
     private String image;
     private int stock;
 
@@ -33,7 +33,7 @@ public class Console implements Serializable {
     private Console successor;
 
 
-    public Console(String name, String developer, String consoleType, int generation, Date releasedDate, Date discontinuedDate, int lifespan, float sellPrice, Double unitsSold, String image, int stock, List<VideoGame> videoGameList, Console predecessor, Console successor) {
+    public Console(String name, String developer, String consoleType, int generation, Date releasedDate, Date discontinuedDate, int lifespan, float sellPrice, int unitsSold, String image, int stock, List<VideoGame> videoGameList, Console predecessor, Console successor) {
         this.name = name;
         this.developer = developer;
         this.consoleType = consoleType;
@@ -50,7 +50,7 @@ public class Console implements Serializable {
         this.successor = successor;
     }
 
-    public Console(String name, String developer, String consoleType, int generation, Date releasedDate, Date discontinuedDate, int lifespan, float sellPrice, Double unitsSold, String image, int stock) {
+    public Console(String name, String developer, String consoleType, int generation, Date releasedDate, Date discontinuedDate, int lifespan, float sellPrice, int unitsSold, String image, int stock) {
         this.name = name;
         this.developer = developer;
         this.consoleType = consoleType;
@@ -128,13 +128,9 @@ public class Console implements Serializable {
         this.lifespan = lifespan;
     }
 
-    public Double getUnitsSold() {
-        return unitsSold;
-    }
+    public int getUnitsSold() { return unitsSold; }
 
-    public void setUnitsSold(Double unitsSold) {
-        this.unitsSold = unitsSold;
-    }
+    public void setUnitsSold(int unitsSold) { this.unitsSold = unitsSold; }
 
     public float getSellPrice() { return sellPrice; }
 

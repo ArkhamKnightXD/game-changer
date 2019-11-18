@@ -29,13 +29,19 @@
                 <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/consoles/">Consoles</a>
+                <a class="nav-link" href="/consoles/admin">Consoles</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link " href="/videogames/">Videogames</a>
+                <a class="nav-link " href="/videogames/admin">Videogames</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link " href="/clients/">Clients</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link " href="/sales/">Store</a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="/users/">Users</a>
+                <a class="nav-link " href="/users/">Users</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link " href="/admin">Admin</a>
@@ -58,7 +64,7 @@
 <h1 class="jumbotron text-center">List of the register users</h1>
 <main role="main" class="container">
 
-    <div class="starter-template">
+    <div class="starter-template table-responsive">
         <table class="table table-hover table-bordered">
             <thead class="thead-dark">
             <tr>
@@ -76,7 +82,7 @@
 
                 <tr>
                     <th scope="row">${user.id}</th>
-                    <td><a href="/users/show/?id=${user.id}"><img src="../../bootstrap-4.3.1/assets/img/${user.image}" width="110px" height="110px"></a></td>
+                    <td><img src="../../bootstrap-4.3.1/assets/img/${user.image}" width="110px" height="110px"></td>
                     <td>${user.username}</td>
                     <td>${user.admin?c}</td>
                     <td>

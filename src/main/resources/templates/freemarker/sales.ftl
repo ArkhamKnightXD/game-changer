@@ -41,6 +41,9 @@
             <a class="nav-link " href="/sales/">Store</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link " href="/users/">Users</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link " href="/admin">Admin</a>
           </li>
           <li class="nav-item dropdown">
@@ -61,7 +64,7 @@
     <h1 class="jumbotron text-center">List of the solds article</h1>
     <main role="main" class="container">
 
-      <div class="starter-template">
+      <div class="starter-template table-responsive">
         <table class="table table-hover table-bordered">
           <thead class="thead-dark">
           <tr>
@@ -79,11 +82,12 @@
 
           <tr>
             <th scope="row">${sale.id}</th>
-            <td><a href="/sales/show/?id=${sale.id}">${sale.buyer.name}</a></td>
+            <td>${sale.buyer.name}</td>
             <td>${sale.soldDate?date}</td>
             <td>${sale.total}</td>
             <td>
               <a href="/sales/edition/?id=${sale.id}">  <i class="fa fa-edit" style="font-size:25px"></i></a>
+              <a href="/sales/show/?id=${sale.id}">  <i class="fa fa-eye" style="font-size:25px"></i></a>
               <a href="/sales/delete/?id=${sale.id}">  <i class="fa fa-trash" style="font-size:25px;color:red"></i> </a>
             </td>
 

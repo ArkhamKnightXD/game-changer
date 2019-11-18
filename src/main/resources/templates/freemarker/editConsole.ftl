@@ -144,7 +144,7 @@
                     <div class="mb-3">
                         <label for="image">Picture of the console</label>
                         <div class="input-group">
-                            <input type="file" class="form-control" value="${console.image}" id="image" name="image" placeholder="Picture of the console" required>
+                            <input type="file" class="form-control" value="${console.image}" id="image" name="image" placeholder="Picture of the console">
 
                         </div>
                     </div>
@@ -152,7 +152,7 @@
                     <hr class="mb-4">
                     <button class="btn btn-primary btn-lg btn-block" type="submit">Save console</button>
                     <hr class="mb-4">
-                    <a class="btn btn-danger btn-lg btn-block" href="/consoles/" role="button">Cancel</a>
+                    <a class="btn btn-danger btn-lg btn-block" href="/consoles/admin" role="button">Cancel</a>
                 </form>
             </div>
         </div>

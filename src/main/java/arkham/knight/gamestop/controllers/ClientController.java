@@ -67,7 +67,7 @@ public class ClientController {
 
 
     @RequestMapping("/edit")
-    public String edit(@RequestParam(name = "id")Long id, @RequestParam(name = "name") String name,@RequestParam(name = "lastName") String lastName,@RequestParam(name = "address") String address,@RequestParam(name = "phone") String phone,@RequestParam(name = "email") String email,@RequestParam(name = "photo") MultipartFile[] photo ){
+    public String edit(@RequestParam(name = "id")Long id, @RequestParam(name = "name") String name,@RequestParam(name = "lastName") String lastName,@RequestParam(name = "address") String address,@RequestParam(name = "phone") String phone,@RequestParam(name = "email") String email,@RequestParam(required = false, name = "photo" ) MultipartFile[] photo ){
 
         String photoName = fileUploadServices.almacenarAndDepurarImagen(photo,uploadDirectory);
 
@@ -78,7 +78,11 @@ public class ClientController {
         clientToEdit.setAddress(address);
         clientToEdit.setPhone(phone);
         clientToEdit.setEmail(email);
-        clientToEdit.setPhoto(photoName);
+
+        if (photoName.endsWith("jpg")){
+
+            clientToEdit.setPhoto(photoName);
+        }
 
         clientServices.createClient(clientToEdit);
 

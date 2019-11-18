@@ -11,13 +11,13 @@ public class FileUploadServices {
 
     public String almacenarAndDepurarImagen (MultipartFile[] files, String uploadDirectory){
 
-        StringBuilder fileNames = new StringBuilder();
+        StringBuilder fileName = new StringBuilder();
 
         for (MultipartFile file: files) {
 
             Path fileNamePath = Paths.get(uploadDirectory,file.getOriginalFilename());
 
-            fileNames.append(file.getOriginalFilename());
+            fileName.append(file.getOriginalFilename());
 
             try {
 
@@ -29,6 +29,6 @@ public class FileUploadServices {
 
         }
 
-        return fileNames.toString();
+        return fileName.toString();
     }
 }

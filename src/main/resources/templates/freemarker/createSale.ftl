@@ -41,7 +41,7 @@
 
 
                 <div class="mb-3">
-                    <label for="idConsoles">Select the console</label>
+                    <label for="idConsoles">Select the consoles to buy</label>
 
                     <div class="input-group">
                         <select multiple class="form-control" name="idConsoles">
@@ -58,7 +58,7 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="idVideoGames">Select the VideoGames</label>
+                    <label for="idVideoGames">Select the VideoGames to buy</label>
 
                     <div class="input-group">
                         <select multiple class="form-control" name="idVideoGames">
