@@ -13,6 +13,15 @@
     <link href="../../font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet">
 
     <link href="../../bootstrap-4.3.1/style/style.css" rel="stylesheet">
+
+    <style>
+      body {
+        background-image: url("../../bootstrap-4.3.1/assets/img/bg5.jpg");
+        background-repeat: repeat-y;
+        background-attachment: scroll;
+      }
+    </style>
+
   </head>
 
   <body>
@@ -65,7 +74,7 @@
     <main role="main" class="container">
 
       <div class="starter-template table-responsive">
-        <table class="table table-hover table-bordered">
+        <table class="table-hover table table-bordered table-dark">
           <thead class="thead-dark">
           <tr>
             <th scope="col">#</th>

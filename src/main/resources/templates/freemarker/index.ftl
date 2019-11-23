@@ -13,6 +13,7 @@
     <link href="../../bootstrap-4.3.1/style/carousel.css" rel="stylesheet">
 
     <link href="../../bootstrap-4.3.1/style/style.css" rel="stylesheet">
+
 </head>
 <body>
 

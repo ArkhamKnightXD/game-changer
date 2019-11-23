@@ -1,6 +1,10 @@
 package arkham.knight.gamestop.services;
+import arkham.knight.gamestop.models.Console;
 import arkham.knight.gamestop.models.Sale;
+import arkham.knight.gamestop.models.VideoGame;
+import arkham.knight.gamestop.repositories.ConsoleRepository;
 import arkham.knight.gamestop.repositories.SaleRepository;
+import arkham.knight.gamestop.repositories.VideoGameRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -10,6 +14,12 @@ public class SaleServices {
 
     @Autowired
     private SaleRepository saleRepository;
+
+    @Autowired
+    private VideoGameRepository videoGameRepository;
+
+    @Autowired
+    private ConsoleRepository consoleRepository;
 
 
     public void createSale(Sale sale){
@@ -30,14 +40,93 @@ public class SaleServices {
     }
 
 
-    public void deleteSale(Sale sale){
+    public void deleteSale(Long id){
 
-        saleRepository.delete(sale);
+        saleRepository.deleteById(id);
     }
 
 
     public void deleteAllSales(){
 
         saleRepository.deleteAll();
+    }
+
+
+    public float getTotalOfTheSalesAndCalculateTheStock(List<Long> idVideoGames, List<Long> idConsoles, String identify){
+
+        int consoleStock =0;
+
+        int videoGameStock = 0;
+
+        float total = 0;
+
+
+        for (Long videoGames: idVideoGames
+        ) {
+
+            VideoGame videoGameToBuy = videoGameRepository.findVideoGameById(videoGames);
+
+            videoGameStock = videoGameToBuy.getStock();
+
+            if (identify.equalsIgnoreCase("sale")){
+
+                videoGameStock--;
+
+                videoGameToBuy.setStock(videoGameStock);
+
+                videoGameRepository.save(videoGameToBuy);
+
+                total+= videoGameToBuy.getSellPrice();
+            }
+
+            if (identify.equalsIgnoreCase("devolution")){
+
+                total = videoGameToBuy.getSellPrice();
+
+                videoGameStock++;
+
+                videoGameToBuy.setStock(videoGameStock);
+
+                videoGameRepository.save(videoGameToBuy);
+
+                total-= videoGameToBuy.getSellPrice();
+            }
+
+        }
+
+
+        for (Long consoles: idConsoles
+        ) {
+
+            Console consolesToBuy = consoleRepository.findConsoleById(consoles);
+
+            consoleStock = consolesToBuy.getStock();
+
+            if (identify.equalsIgnoreCase("sale")){
+
+                consoleStock--;
+
+                consolesToBuy.setStock(consoleStock);
+
+                consoleRepository.save(consolesToBuy);
+
+                total+= consolesToBuy.getSellPrice();
+            }
+
+            if (identify.equalsIgnoreCase("devolution")){
+
+                total = consolesToBuy.getSellPrice();
+
+                consoleStock++;
+
+                consolesToBuy.setStock(consoleStock);
+
+                consoleRepository.save(consolesToBuy);
+
+                total-= consolesToBuy.getSellPrice();
+            }
+        }
+
+        return total;
     }
 }

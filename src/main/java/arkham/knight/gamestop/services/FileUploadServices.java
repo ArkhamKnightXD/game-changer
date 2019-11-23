@@ -9,7 +9,7 @@ import java.nio.file.Paths;
 @Service
 public class FileUploadServices {
 
-    public String almacenarAndDepurarImagen (MultipartFile[] files, String uploadDirectory){
+    public String storeAndCleanImage(MultipartFile[] files, String uploadDirectory){
 
         StringBuilder fileName = new StringBuilder();
 

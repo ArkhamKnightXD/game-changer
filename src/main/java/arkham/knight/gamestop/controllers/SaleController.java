@@ -1,8 +1,6 @@
 package arkham.knight.gamestop.controllers;
 import arkham.knight.gamestop.models.Client;
-import arkham.knight.gamestop.models.Console;
 import arkham.knight.gamestop.models.Sale;
-import arkham.knight.gamestop.models.VideoGame;
 import arkham.knight.gamestop.services.ClientServices;
 import arkham.knight.gamestop.services.ConsoleServices;
 import arkham.knight.gamestop.services.SaleServices;
@@ -31,85 +29,6 @@ public class SaleController {
 
     @Autowired
     private VideoGameServices videoGameServices;
-
-
-    private float getTotalOfTheSalesAndCalculateTheStock(List<Long> idVideoGames, List<Long> idConsoles, String identify){
-
-        int consoleStock =0;
-
-        int videoGameStock = 0;
-
-        float total = 0;
-
-
-        for (Long videoGames: idVideoGames
-        ) {
-
-            VideoGame videoGameToBuy = videoGameServices.findVideoGameById(videoGames);
-
-            videoGameStock = videoGameToBuy.getStock();
-
-            if (identify.equalsIgnoreCase("sale")){
-
-                videoGameStock--;
-
-                videoGameToBuy.setStock(videoGameStock);
-
-                videoGameServices.createVideoGame(videoGameToBuy);
-
-                total+= videoGameToBuy.getSellPrice();
-            }
-
-            if (identify.equalsIgnoreCase("devolution")){
-
-                total = videoGameToBuy.getSellPrice();
-
-                videoGameStock++;
-
-                videoGameToBuy.setStock(videoGameStock);
-
-                videoGameServices.createVideoGame(videoGameToBuy);
-
-                total-= videoGameToBuy.getSellPrice();
-            }
-
-        }
-
-
-        for (Long consoles: idConsoles
-        ) {
-
-            Console consolesToBuy = consoleServices.findConsoleById(consoles);
-
-            consoleStock = consolesToBuy.getStock();
-
-            if (identify.equalsIgnoreCase("sale")){
-
-                consoleStock--;
-
-                consolesToBuy.setStock(consoleStock);
-
-                consoleServices.createConsole(consolesToBuy);
-
-                total+= consolesToBuy.getSellPrice();
-            }
-
-            if (identify.equalsIgnoreCase("devolution")){
-
-                total = consolesToBuy.getSellPrice();
-
-                consoleStock++;
-
-                consolesToBuy.setStock(consoleStock);
-
-                consoleServices.createConsole(consolesToBuy);
-
-                total-= consolesToBuy.getSellPrice();
-            }
-        }
-
-        return total;
-    }
 
 
     @RequestMapping("/")
@@ -141,7 +60,7 @@ public class SaleController {
 
         String identify = "sale";
 
-        total = getTotalOfTheSalesAndCalculateTheStock(idVideoGames,idConsoles,identify);
+        total = saleServices.getTotalOfTheSalesAndCalculateTheStock(idVideoGames,idConsoles,identify);
 
         Client buyer = clientServices.findClientById(idClient);
 
@@ -176,7 +95,7 @@ public class SaleController {
         float total =0;
 
         // el programa me falla en esta funcion cuando cuando mando idVideoGames null o idConsoles null ya que son listas
-        total = getTotalOfTheSalesAndCalculateTheStock(idVideoGames,idConsoles,identify);
+        total = saleServices.getTotalOfTheSalesAndCalculateTheStock(idVideoGames,idConsoles,identify);
 
         Client buyer = clientServices.findClientById(idClient);
 
@@ -209,9 +128,7 @@ public class SaleController {
     @RequestMapping("/delete")
     public String delete(@RequestParam(name = "id") Long id){
 
-        Sale saleToDelete = saleServices.findSaleById(id);
-
-        saleServices.deleteSale(saleToDelete);
+        saleServices.deleteSale(id);
 
         return "redirect:/sales/";
     }

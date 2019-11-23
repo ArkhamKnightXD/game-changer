@@ -63,18 +63,19 @@ html, body {
 }
 
 
-.cover-console-videogame{
+.cover-console{
 
     position: relative;
     left: 100px;
     width: 400px;
     height: 300px;
+    top: 200px;
 }
 
 .card-console-developer{
 
     position: relative;
     left: 520px;
-    bottom: 500px;
+    bottom: 200px;
     height: 300px;
 }

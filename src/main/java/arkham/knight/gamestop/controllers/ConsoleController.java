@@ -65,7 +65,7 @@ public class ConsoleController {
 
         int lifeSpan = consoleServices.calculateLifeSpanOfTheConsole(releasedDate, discontinuedDate);
 
-        String imageName = fileUploadServices.almacenarAndDepurarImagen(image,uploadDirectory);
+        String imageName = fileUploadServices.storeAndCleanImage(image,uploadDirectory);
 
         Console consoleToCreate = new Console(name,developer,consoleType,generation,releasedDate,discontinuedDate,lifeSpan,sellPrice,unitsSold,imageName,stock,videoGameServices.findAllVideoGamesByPlatformName(name),consoleServices.findConsoleById(idPredecessorConsole),consoleServices.findConsoleById(idSuccessorConsole));
 
@@ -96,7 +96,7 @@ public class ConsoleController {
 
         Console consoleToEdit = consoleServices.findConsoleById(id);
 
-        String imageName = fileUploadServices.almacenarAndDepurarImagen(image,uploadDirectory);
+        String imageName = fileUploadServices.storeAndCleanImage(image,uploadDirectory);
 
         consoleToEdit.setName(name);
         consoleToEdit.setDeveloper(developer);
@@ -158,9 +158,7 @@ public class ConsoleController {
     @RequestMapping("/delete")
     public String delete(@RequestParam(name = "id") Long id){
 
-        Console consoleToDelete = consoleServices.findConsoleById(id);
-
-        consoleServices.deleteConsole(consoleToDelete);
+        consoleServices.deleteConsole(id);
 
         return "redirect:/consoles/admin";
     }

@@ -23,6 +23,12 @@ public class UserServices {
     }
 
 
+    public void saveAllUsers(List<User> users){
+
+        userRepository.saveAll(users);
+    }
+
+
     public List<User> listAllUsers(){
 
         return userRepository.findAll();
@@ -59,9 +65,9 @@ public class UserServices {
     }
 
 
-    public void deleteUser(User user){
+    public void deleteUser(Long id){
 
-        userRepository.delete(user);
+        userRepository.deleteById(id);
     }
 
 

@@ -18,6 +18,12 @@ public class ClientServices {
     }
 
 
+    public void saveAllClients(List<Client> clients){
+
+        clientRepository.saveAll(clients);
+    }
+
+
     public List<Client> listAllClients(){
 
         return clientRepository.findAll();
@@ -36,9 +42,9 @@ public class ClientServices {
     }
 
 
-    public void deleteClient(Client client){
+    public void deleteClient(Long id){
 
-        clientRepository.delete(client);
+        clientRepository.deleteById(id);
     }
 
 

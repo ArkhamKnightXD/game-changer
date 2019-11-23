@@ -51,7 +51,7 @@ public class UserController {
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public String create(@RequestParam(name = "username") String username, @RequestParam(name = "password") String password, @RequestParam(name = "image") MultipartFile[] image, @RequestParam(name = "idRoles") List<Long> idRoles){
 
-        String imageName = fileUploadServices.almacenarAndDepurarImagen(image,uploadDirectory);
+        String imageName = fileUploadServices.storeAndCleanImage(image,uploadDirectory);
 
         User userToCreate = new User(username,bCryptPasswordEncoder.encode(password),false,imageName,userServices.findAllRolesById(idRoles));
 
@@ -77,7 +77,7 @@ public class UserController {
     @RequestMapping("/edit")
     public String edit(@RequestParam(name = "id") Long id, @RequestParam(name = "username") String username, @RequestParam(name = "password") String password, @RequestParam(required = false, name = "image") MultipartFile[] image, @RequestParam(name = "idRoles") List<Long> idRoles){
 
-        String imageName = fileUploadServices.almacenarAndDepurarImagen(image,uploadDirectory);
+        String imageName = fileUploadServices.storeAndCleanImage(image,uploadDirectory);
 
         User userToEdit = userServices.findUserById(id);
 
@@ -112,9 +112,7 @@ public class UserController {
     @RequestMapping("/delete")
     public String delete(@RequestParam(name = "id") Long id){
 
-        User userToDelete = userServices.findUserById(id);
-
-        userServices.deleteUser(userToDelete);
+        userServices.deleteUser(id);
 
         return "redirect:/users/";
     }

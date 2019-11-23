@@ -12,9 +12,15 @@ public class VideoGameServices {
     private VideoGameRepository videoGameRepository;
 
 
-    public void createVideoGame(VideoGame console){
+    public void createVideoGame(VideoGame videoGame){
 
-        videoGameRepository.save(console);
+        videoGameRepository.save(videoGame);
+    }
+
+
+    public void saveAllVideoGames(List<VideoGame> videoGames){
+
+        videoGameRepository.saveAll(videoGames);
     }
 
 
@@ -66,9 +72,9 @@ public class VideoGameServices {
     }
 
 
-    public void deleteVideoGame(VideoGame videoGame){
+    public void deleteVideoGame(Long id){
 
-        videoGameRepository.delete(videoGame);
+        videoGameRepository.deleteById(id);
     }
 
 

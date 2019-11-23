@@ -14,6 +14,14 @@
 
     <link href="../../bootstrap-4.3.1/style/style.css" rel="stylesheet">
 
+    <style>
+        body {
+            background-image: url("../../bootstrap-4.3.1/assets/img/bg3.jpg");
+            background-repeat: no-repeat;
+            background-attachment: scroll;
+        }
+    </style>
+
 </head>
 
 <body>
@@ -30,10 +38,10 @@
                 <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/consoles/">Consoles</a>
+                <a class="nav-link" href="/consoles/admin">Consoles</a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link " href="/videogames/">Videogames</a>
+                <a class="nav-link " href="/videogames/admin">Videogames</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link " href="/admin">Admin</a>
@@ -58,7 +66,6 @@
 
         <figure class="figure">
             <img src="../../bootstrap-4.3.1/assets/img/${videogame.image}" class="figure-img img-fluid rounded" alt="cover" width="500px" height="350px" >
-            <figcaption class="figure-caption">${videogame.name}</figcaption>
         </figure>
 
     </div>

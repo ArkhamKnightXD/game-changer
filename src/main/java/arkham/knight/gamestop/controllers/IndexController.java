@@ -2,10 +2,7 @@ package arkham.knight.gamestop.controllers;
 import arkham.knight.gamestop.models.Console;
 import arkham.knight.gamestop.models.User;
 import arkham.knight.gamestop.models.VideoGame;
-import arkham.knight.gamestop.services.ConsoleServices;
-import arkham.knight.gamestop.services.SecurityServices;
-import arkham.knight.gamestop.services.UserServices;
-import arkham.knight.gamestop.services.VideoGameServices;
+import arkham.knight.gamestop.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,6 +23,9 @@ public class IndexController {
 
     @Autowired
     private UserServices userServices;
+
+    @Autowired
+    private ClientServices clientServices;
 
     @Autowired
     private SecurityServices securityServices;

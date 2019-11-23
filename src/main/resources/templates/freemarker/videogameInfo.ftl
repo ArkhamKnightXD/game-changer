@@ -6,15 +6,12 @@
     <meta name="description" content="">
     <title>${title}</title>
 
-    <!--Nota esta pagina y la de home console y handheld se mostraban mal debido a los hashes ya que estos estaban puestos
-     y coincidan con mi desktop y por lo tanto causaban error en mi laptop, por esa razon la pagina se mostraban
-     como si no tuviera nada de javascript o estilos css y la solucion a esto es borrar donde sea que este la palabra integrity
-     tanto en los estilos como en los js dentro del integrity estan los hashes tambien podemos borrar los crossorigin-->
     <link href="../../bootstrap-4.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <link href="../../bootstrap-4.3.1/style/show-info.css" rel="stylesheet">
 
     <link href="../../bootstrap-4.3.1/style/style.css" rel="stylesheet">
+
 
 </head>
 <body>

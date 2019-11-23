@@ -94,9 +94,9 @@ public class ConsoleServices {
     }
 
 
-    public void deleteConsole(Console console){
+    public void deleteConsole(Long id){
 
-        consoleRepository.delete(console);
+        consoleRepository.deleteById(id);
     }
 
 

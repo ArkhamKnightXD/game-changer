@@ -27,6 +27,7 @@ public class VideoGameController {
     @Autowired
     private FileUploadServices fileUploadServices;
 
+
     public static String uploadDirectory = System.getProperty("user.dir")+"/src/main/resources/static/bootstrap-4.3.1/assets/img";
 
 
@@ -63,7 +64,7 @@ public class VideoGameController {
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public String create(@RequestParam(name = "idConsoles") List<Long> idConsoles, @RequestParam(name = "name") String name, @RequestParam(name = "developer") String developer, @RequestParam(name = "genre") String genre, @RequestParam(name = "gameModes") String gameModes, @RequestParam(name = "unitsSold") int unitsSold, @RequestParam(name = "releasedDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date releasedDate, @RequestParam(name = "rating") float rating, @RequestParam(name = "image") MultipartFile[] image, @RequestParam(name = "sellPrice") float sellPrice, @RequestParam(name = "stock") int stock){
 
-        String imageName = fileUploadServices.almacenarAndDepurarImagen(image,uploadDirectory);
+        String imageName = fileUploadServices.storeAndCleanImage(image,uploadDirectory);
 
         VideoGame videoGameToCreate =new VideoGame(name,developer,releasedDate,genre,unitsSold,gameModes,rating,sellPrice,imageName,stock,consoleServices.findAllConsolesById(idConsoles));
 
@@ -89,7 +90,7 @@ public class VideoGameController {
     @RequestMapping("/edit")
     public String edit(@RequestParam(name = "idConsoles") List<Long> idConsoles, @RequestParam(name = "id") Long id, @RequestParam(name = "name") String name,@RequestParam(name = "developer") String developer, @RequestParam(name = "genre") String genre,@RequestParam(name = "gameModes") String gameModes,@RequestParam(name = "unitsSold") int unitsSold, @RequestParam(name = "releasedDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date releasedDate,@RequestParam(name = "rating") float rating, @RequestParam(required = false, name = "image") MultipartFile[] image, @RequestParam(name = "sellPrice") float sellPrice, @RequestParam(name = "stock") int stock){
 
-        String imageName = fileUploadServices.almacenarAndDepurarImagen(image,uploadDirectory);
+        String imageName = fileUploadServices.storeAndCleanImage(image,uploadDirectory);
 
         VideoGame videoGameToEdit = videoGameServices.findVideoGameById(id);
 
@@ -141,9 +142,7 @@ public class VideoGameController {
     @RequestMapping("/delete")
     public String delete(@RequestParam(name = "id") long id ){
 
-        VideoGame videoGameToDelete = videoGameServices.findVideoGameById(id);
-
-        videoGameServices.deleteVideoGame(videoGameToDelete);
+        videoGameServices.deleteVideoGame(id);
 
         return "redirect:/videogames/admin";
     }

@@ -44,7 +44,7 @@ public class ClientController {
     @RequestMapping("/create")
     public String create(@RequestParam(name = "name") String name,@RequestParam(name = "lastName") String lastName,@RequestParam(name = "address") String address,@RequestParam(name = "phone") String phone,@RequestParam(name = "email") String email,@RequestParam(name = "photo") MultipartFile[] photo ){
 
-        String photoName = fileUploadServices.almacenarAndDepurarImagen(photo,uploadDirectory);
+        String photoName = fileUploadServices.storeAndCleanImage(photo,uploadDirectory);
 
         Client clientToCreate = new Client(name,lastName,address,phone,email,photoName);
 
@@ -69,7 +69,7 @@ public class ClientController {
     @RequestMapping("/edit")
     public String edit(@RequestParam(name = "id")Long id, @RequestParam(name = "name") String name,@RequestParam(name = "lastName") String lastName,@RequestParam(name = "address") String address,@RequestParam(name = "phone") String phone,@RequestParam(name = "email") String email,@RequestParam(required = false, name = "photo" ) MultipartFile[] photo ){
 
-        String photoName = fileUploadServices.almacenarAndDepurarImagen(photo,uploadDirectory);
+        String photoName = fileUploadServices.storeAndCleanImage(photo,uploadDirectory);
 
         Client clientToEdit = clientServices.findClientById(id);
 
@@ -105,9 +105,7 @@ public class ClientController {
     @RequestMapping("/delete")
     public String delete(@RequestParam(name = "id") Long id){
 
-        Client clientToDelete = clientServices.findClientById(id);
-
-        clientServices.deleteClient(clientToDelete);
+        clientServices.deleteClient(id);
 
         return "redirect:/clients/";
     }
