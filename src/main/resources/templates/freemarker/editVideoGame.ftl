@@ -105,7 +105,6 @@
                     <div class="mb-3">
                         <label for="rating">Rating of the game</label>
                         <select class="custom-select d-block w-100" id="rating" name="rating" required>
-                            <option value="${videogame.rating}">${videogame.rating}</option>
                             <option value="1.0">1.0</option>
                             <option value="2.0">2.0</option>
                             <option value="3.0">3.0</option>

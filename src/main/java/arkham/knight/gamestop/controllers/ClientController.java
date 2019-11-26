@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -41,7 +42,7 @@ public class ClientController {
     }
 
 
-    @RequestMapping("/create")
+    @RequestMapping(value = "/create", method = RequestMethod.POST)
     public String create(@RequestParam(name = "name") String name,@RequestParam(name = "lastName") String lastName,@RequestParam(name = "address") String address,@RequestParam(name = "phone") String phone,@RequestParam(name = "email") String email,@RequestParam(name = "photo") MultipartFile[] photo ){
 
         String photoName = fileUploadServices.storeAndCleanImage(photo,uploadDirectory);
@@ -66,7 +67,7 @@ public class ClientController {
     }
 
 
-    @RequestMapping("/edit")
+    @RequestMapping(value = "/edit", method = RequestMethod.POST)
     public String edit(@RequestParam(name = "id")Long id, @RequestParam(name = "name") String name,@RequestParam(name = "lastName") String lastName,@RequestParam(name = "address") String address,@RequestParam(name = "phone") String phone,@RequestParam(name = "email") String email,@RequestParam(required = false, name = "photo" ) MultipartFile[] photo ){
 
         String photoName = fileUploadServices.storeAndCleanImage(photo,uploadDirectory);

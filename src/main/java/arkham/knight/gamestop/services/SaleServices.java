@@ -54,6 +54,8 @@ public class SaleServices {
 
     public float getTotalOfTheSalesAndCalculateTheStock(List<Long> idVideoGames, List<Long> idConsoles, String identify){
 
+        // falla en la parte de devolution de esta funcion tanto para consola como para videojuego, ver como solucionar esto
+
         int consoleStock =0;
 
         int videoGameStock = 0;

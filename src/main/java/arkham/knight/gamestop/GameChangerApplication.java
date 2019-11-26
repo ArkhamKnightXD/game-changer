@@ -5,7 +5,6 @@ import arkham.knight.gamestop.controllers.UserController;
 import arkham.knight.gamestop.controllers.VideoGameController;
 import arkham.knight.gamestop.models.Client;
 import arkham.knight.gamestop.services.ClientServices;
-import arkham.knight.gamestop.services.VideoGameServices;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.boot.CommandLineRunner;
@@ -37,7 +36,7 @@ public class GameChangerApplication {
     }
 
     @Bean
-    CommandLineRunner runner(ClientServices clientServices, VideoGameServices videoGameServices){
+    CommandLineRunner runner(ClientServices clientServices){
         return args -> {
 
            /* ObjectMapper mapper = new ObjectMapper();

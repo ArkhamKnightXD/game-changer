@@ -74,7 +74,7 @@ public class UserController {
     }
 
 
-    @RequestMapping("/edit")
+    @RequestMapping(value = "/edit", method = RequestMethod.POST)
     public String edit(@RequestParam(name = "id") Long id, @RequestParam(name = "username") String username, @RequestParam(name = "password") String password, @RequestParam(required = false, name = "image") MultipartFile[] image, @RequestParam(name = "idRoles") List<Long> idRoles){
 
         String imageName = fileUploadServices.storeAndCleanImage(image,uploadDirectory);

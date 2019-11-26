@@ -90,7 +90,7 @@
                     <div class="mb-3">
                         <label for="unitsSold">Units sold</label>
                         <div class="input-group">
-                            <input type="number" class="form-control" value="${console.unitsSold}" id="unitsSold" name="unitsSold" placeholder="Units sold" required>
+                            <input type="number" class="form-control"  id="unitsSold" name="unitsSold" placeholder="Units sold" required>
 
                         </div>
                     </div>
