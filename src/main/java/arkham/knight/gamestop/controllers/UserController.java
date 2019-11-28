@@ -53,7 +53,7 @@ public class UserController {
 
         String imageName = fileUploadServices.storeAndCleanImage(image,uploadDirectory);
 
-        User userToCreate = new User(username,bCryptPasswordEncoder.encode(password),false,imageName,userServices.findAllRolesById(idRoles));
+        User userToCreate = new User(username,bCryptPasswordEncoder.encode(password),true,imageName,userServices.findAllRolesById(idRoles));
 
         userServices.createUser(userToCreate);
 

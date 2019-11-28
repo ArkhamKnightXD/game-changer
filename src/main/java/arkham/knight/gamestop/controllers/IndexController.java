@@ -47,6 +47,8 @@ public class IndexController {
 
         if (adminUser == null){
 
+            userServices.deleteAllRoles();
+
             securityServices.createAdminUser();
         }
 

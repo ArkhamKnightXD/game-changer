@@ -74,7 +74,7 @@
                     <div class="mb-3">
                         <label for="releasedDate">Released date</label>
                         <div class="input-group">
-                            <input type="date" class="form-control" value="${console.releasedDate}" id="releasedDate" name="releasedDate" placeholder="Released date" required>
+                            <input type="date" class="form-control" value="${console.releasedDate}" id="releasedDate" name="releasedDate" placeholder="Released date">
 
                         </div>
                     </div>
@@ -82,7 +82,7 @@
                     <div class="mb-3">
                         <label for="discontinuedDate">Discontinued date</label>
                         <div class="input-group">
-                            <input type="date" class="form-control" value="${console.discontinuedDate}" id="discontinuedDate" name="discontinuedDate" placeholder="Discontinued date" required>
+                            <input type="date" class="form-control" value="${console.discontinuedDate}" id="discontinuedDate" name="discontinuedDate" placeholder="Discontinued date">
 
                         </div>
                     </div>
@@ -90,7 +90,7 @@
                     <div class="mb-3">
                         <label for="unitsSold">Units sold</label>
                         <div class="input-group">
-                            <input type="number" class="form-control"  id="unitsSold" name="unitsSold" placeholder="Units sold" required>
+                            <input type="number" class="form-control"  id="unitsSold" name="unitsSold" placeholder="Leave empty if does not want to change it">
 
                         </div>
                     </div>
@@ -98,7 +98,7 @@
                     <div class="mb-3">
                         <label for="sellPrice">Selling price</label>
                         <div class="input-group">
-                            <input type="number" value="${console.sellPrice}" class="form-control" id="sellPrice" name="sellPrice" placeholder="Selling price" required>
+                            <input type="number" class="form-control" id="sellPrice" name="sellPrice" placeholder="Leave empty if does not want to change it">
 
                         </div>
                     </div>

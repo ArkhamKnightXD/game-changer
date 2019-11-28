@@ -23,7 +23,7 @@
         <div class="row">
 
             <div class="col-md-8 order-md-1">
-                <h4 class="mb-3">Complete the register form</h4>
+                <h4 class="mb-3">Edit the user</h4>
 
                 <form method="post" action="/users/edit?id=${user.id}" class="needs-validation" enctype="multipart/form-data" novalidate >
                     <div class="row">

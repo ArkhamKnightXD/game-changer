@@ -31,7 +31,9 @@ public class SecurityServices implements UserDetailsService {
         List<Rol> rolList = new ArrayList<>();
 
         Rol rolUser = new Rol();
+
         rolUser.setRole("ROLE_USER");
+
         rolRepository.save(rolUser);
 
         Rol rolAdmin = new Rol("ROLE_ADMIN");
@@ -40,13 +42,7 @@ public class SecurityServices implements UserDetailsService {
         rolList.add(rolUser);
         rolList.add(rolAdmin);
 
-        User adminUser = new User();
-
-        adminUser.setUsername("admin");
-        adminUser.setPassword(bCryptPasswordEncoder.encode("1234"));
-        adminUser.setAdmin(true);
-        adminUser.setImage("arkham.jpg");
-        adminUser.setRolList(rolList);
+        User adminUser = new User("admin",bCryptPasswordEncoder.encode("1234"),true,"arkham.jpg",rolList);
 
         userRepository.save(adminUser);
     }

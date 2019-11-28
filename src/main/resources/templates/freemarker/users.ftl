@@ -80,7 +80,6 @@
                 <th scope="col">#</th>
                 <th scope="col">Profile picture</th>
                 <th scope="col">Username</th>
-                <th scope="col">Is admin?</th>
                 <th scope="col">Options</th>
             </tr>
             </thead>
@@ -93,7 +92,6 @@
                     <th scope="row">${user.id}</th>
                     <td><img src="../../bootstrap-4.3.1/assets/img/${user.image}" width="110px" height="110px"></td>
                     <td>${user.username}</td>
-                    <td>${user.admin?c}</td>
                     <td>
                         <a href="/users/edition/?id=${user.id}">  <i class="fa fa-edit" style="font-size:25px"></i></a>
                         <a href="/users/delete/?id=${user.id}">  <i class="fa fa-trash" style="font-size:25px;color:red"></i> </a>

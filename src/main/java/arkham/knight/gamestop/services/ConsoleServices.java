@@ -94,6 +94,56 @@ public class ConsoleServices {
     }
 
 
+    public int convertFromStringToIntAndSetTheUnitsSold(String unitSold, Console consoleToEdit){
+
+        int units = 0;
+
+        if (unitSold.equalsIgnoreCase("empty")){
+
+            return consoleToEdit.getUnitsSold();
+        }
+
+        else{
+
+            try {
+
+                units = Integer.parseInt(unitSold);
+            }
+            catch (NumberFormatException e)
+            {
+                units = 0;
+            }
+        }
+
+        return units;
+    }
+
+
+    public float convertFromStringToFloatAndSetThePrice(String sellPrice, Console consoleToEdit){
+
+        float sellingPrice = 0;
+
+        if (sellPrice.equalsIgnoreCase("empty")){
+
+            return consoleToEdit.getSellPrice();
+        }
+
+        else{
+
+            try {
+
+                sellingPrice = Float.parseFloat(sellPrice);
+            }
+            catch (NumberFormatException e)
+            {
+                sellingPrice = 0;
+            }
+        }
+
+        return sellingPrice;
+    }
+
+
     public void deleteConsole(Long id){
 
         consoleRepository.deleteById(id);

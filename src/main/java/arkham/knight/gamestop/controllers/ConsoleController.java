@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Controller
@@ -90,7 +92,7 @@ public class ConsoleController {
 
 
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
-    public String edit(@RequestParam(name = "id") Long id ,@RequestParam(name = "name") String name, @RequestParam(name = "developer") String developer, @RequestParam(name = "consoleType") String consoleType, @RequestParam(name = "generation") int generation, @RequestParam(name = "unitsSold") int unitsSold, @RequestParam(name = "releasedDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date releasedDate, @RequestParam(name = "discontinuedDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date discontinuedDate, @RequestParam(required = false,name = "image") MultipartFile[] image, @RequestParam(required = false, name = "idPredecessorConsole") Long idPredecessorConsole, @RequestParam(required = false, name = "idSuccessorConsole")  Long idSuccessorConsole, @RequestParam(name = "sellPrice") float sellPrice, @RequestParam(name = "stock") int stock){
+    public String edit(@RequestParam(name = "id") Long id ,@RequestParam(name = "name") String name, @RequestParam(name = "developer") String developer, @RequestParam(name = "consoleType") String consoleType, @RequestParam(name = "generation") int generation, @RequestParam(defaultValue = "empty", required = false, name = "unitsSold") String unitsSold, @RequestParam(required = false, name = "releasedDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date releasedDate, @RequestParam(required = false, name = "discontinuedDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date discontinuedDate, @RequestParam(required = false,name = "image") MultipartFile[] image, @RequestParam(required = false, name = "idPredecessorConsole") Long idPredecessorConsole, @RequestParam(required = false, name = "idSuccessorConsole")  Long idSuccessorConsole, @RequestParam(defaultValue = "empty", required = false, name = "sellPrice") String sellPrice, @RequestParam(name = "stock") int stock){
 
         int lifeSpan = consoleServices.calculateLifeSpanOfTheConsole(releasedDate, discontinuedDate);
 
@@ -98,15 +100,19 @@ public class ConsoleController {
 
         String imageName = fileUploadServices.storeAndCleanImage(image,uploadDirectory);
 
+
+        //Date date1=new SimpleDateFormat("yyyy-MM-dd").parse(sDate1);
+
+
+        consoleToEdit.setSellPrice(consoleServices.convertFromStringToFloatAndSetThePrice(sellPrice,consoleToEdit));
+        consoleToEdit.setUnitsSold(consoleServices.convertFromStringToIntAndSetTheUnitsSold(unitsSold, consoleToEdit));
         consoleToEdit.setName(name);
         consoleToEdit.setDeveloper(developer);
         consoleToEdit.setConsoleType(consoleType);
         consoleToEdit.setGeneration(generation);
-        consoleToEdit.setUnitsSold(unitsSold);
         consoleToEdit.setReleasedDate(releasedDate);
         consoleToEdit.setDiscontinuedDate(discontinuedDate);
         consoleToEdit.setLifespan(lifeSpan);
-        consoleToEdit.setSellPrice(sellPrice);
         consoleToEdit.setStock(stock);
         consoleToEdit.setPredecessor(consoleServices.findConsoleById(idPredecessorConsole));
         consoleToEdit.setSuccessor(consoleServices.findConsoleById(idSuccessorConsole));
