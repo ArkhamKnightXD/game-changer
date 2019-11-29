@@ -105,7 +105,7 @@
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-                <h1 class="h2">Dashboard</h1>
+                <h1 class="h2">VideoGames Prices</h1>
                 <div class="btn-toolbar mb-2 mb-md-0">
                     <div class="btn-group mr-2">
                         <a class="btn btn-outline-primary my-2 my-sm-0" href="/default" role="button">Create default consoles</a>
@@ -168,13 +168,27 @@
 <!-- Graphs -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
 <script>
+
+    var videoGamesNames = [];
+    var videoGamesUnitsSold = [];
+
+    <#list videogames as videogame>
+
+    videoGamesNames.push("${videogame.name}");
+
+    videoGamesUnitsSold.push(${videogame.sellPrice})
+
+    </#list>
+
     var ctx = document.getElementById("myChart");
     var myChart = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-            datasets: [{
-                data: [15339, 21345, 18483, 24003, 23489, 24092, 12034],
+            labels: videoGamesNames,
+            datasets: [
+                {
+
+                data: videoGamesUnitsSold,
                 lineTension: 0,
                 backgroundColor: 'transparent',
                 borderColor: '#007bff',

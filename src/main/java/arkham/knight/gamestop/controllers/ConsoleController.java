@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Controller
@@ -92,26 +90,29 @@ public class ConsoleController {
 
 
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
-    public String edit(@RequestParam(name = "id") Long id ,@RequestParam(name = "name") String name, @RequestParam(name = "developer") String developer, @RequestParam(name = "consoleType") String consoleType, @RequestParam(name = "generation") int generation, @RequestParam(defaultValue = "empty", required = false, name = "unitsSold") String unitsSold, @RequestParam(required = false, name = "releasedDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date releasedDate, @RequestParam(required = false, name = "discontinuedDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date discontinuedDate, @RequestParam(required = false,name = "image") MultipartFile[] image, @RequestParam(required = false, name = "idPredecessorConsole") Long idPredecessorConsole, @RequestParam(required = false, name = "idSuccessorConsole")  Long idSuccessorConsole, @RequestParam(defaultValue = "empty", required = false, name = "sellPrice") String sellPrice, @RequestParam(name = "stock") int stock){
+    public String edit(@RequestParam(name = "id") Long id ,@RequestParam(name = "name") String name, @RequestParam(name = "developer") String developer, @RequestParam(name = "consoleType") String consoleType, @RequestParam(name = "generation") int generation, @RequestParam(defaultValue = "empty", required = false, name = "unitsSold") String unitsSold, @RequestParam(defaultValue = "empty", required = false, name = "releasedDate") @DateTimeFormat(pattern = "yyyy-MM-dd") String releasedDate, @RequestParam(defaultValue = "empty", required = false, name = "discontinuedDate") @DateTimeFormat(pattern = "yyyy-MM-dd") String discontinuedDate, @RequestParam(required = false,name = "image") MultipartFile[] image, @RequestParam(required = false, name = "idPredecessorConsole") Long idPredecessorConsole, @RequestParam(required = false, name = "idSuccessorConsole")  Long idSuccessorConsole, @RequestParam(defaultValue = "empty", required = false, name = "sellPrice") String sellPrice, @RequestParam(name = "stock") int stock){
 
-        int lifeSpan = consoleServices.calculateLifeSpanOfTheConsole(releasedDate, discontinuedDate);
+        Date releasedDate1 = consoleServices.convertFromStringToDateAndSetTheDate(releasedDate,"ReleasedDate",id);
+
+        Date discontinuedDate1 = consoleServices.convertFromStringToDateAndSetTheDate(discontinuedDate,"DiscontinuedDate",id);
+
+        int lifeSpan = consoleServices.calculateLifeSpanOfTheConsole(releasedDate1,discontinuedDate1);
 
         Console consoleToEdit = consoleServices.findConsoleById(id);
 
         String imageName = fileUploadServices.storeAndCleanImage(image,uploadDirectory);
 
+        String identifier = "Console";
 
-        //Date date1=new SimpleDateFormat("yyyy-MM-dd").parse(sDate1);
 
-
-        consoleToEdit.setSellPrice(consoleServices.convertFromStringToFloatAndSetThePrice(sellPrice,consoleToEdit));
-        consoleToEdit.setUnitsSold(consoleServices.convertFromStringToIntAndSetTheUnitsSold(unitsSold, consoleToEdit));
+        consoleToEdit.setSellPrice(consoleServices.convertFromStringToFloatAndSetThePrice(sellPrice,identifier,id));
+        consoleToEdit.setUnitsSold(consoleServices.convertFromStringToIntAndSetTheUnitsSold(unitsSold,identifier, id));
         consoleToEdit.setName(name);
         consoleToEdit.setDeveloper(developer);
         consoleToEdit.setConsoleType(consoleType);
         consoleToEdit.setGeneration(generation);
-        consoleToEdit.setReleasedDate(releasedDate);
-        consoleToEdit.setDiscontinuedDate(discontinuedDate);
+        consoleToEdit.setReleasedDate(releasedDate1);
+        consoleToEdit.setDiscontinuedDate(discontinuedDate1);
         consoleToEdit.setLifespan(lifeSpan);
         consoleToEdit.setStock(stock);
         consoleToEdit.setPredecessor(consoleServices.findConsoleById(idPredecessorConsole));

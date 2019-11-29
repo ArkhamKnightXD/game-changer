@@ -25,9 +25,6 @@ public class IndexController {
     private UserServices userServices;
 
     @Autowired
-    private ClientServices clientServices;
-
-    @Autowired
     private SecurityServices securityServices;
 
 

@@ -57,11 +57,13 @@ public class SaleController {
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public String create(@RequestParam(name = "soldDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date soldDate, @RequestParam(required = false, name = "idConsoles") List<Long> idConsoles, @RequestParam(required = false, name = "idVideoGames") List<Long> idVideoGames, @RequestParam(name = "idClient") Long idClient){
 
-        float total =0;
+        float total;
 
         String identify = "sale";
 
-        total = saleServices.getTotalOfTheSalesAndCalculateTheStock(idVideoGames,idConsoles,identify);
+        Sale emptySale = new Sale();
+
+        total = saleServices.getTotalOfTheSalesAndCalculateTheStock(idVideoGames,idConsoles,identify,emptySale);
 
         Client buyer = clientServices.findClientById(idClient);
 
@@ -91,16 +93,15 @@ public class SaleController {
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
     public String edit(@RequestParam(name = "id") Long id, @RequestParam(name = "soldDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date soldDate, @RequestParam(required = false, name = "idConsoles") List<Long> idConsoles, @RequestParam(required = false, name = "idVideoGames") List<Long> idVideoGames, @RequestParam(name = "idClient") Long idClient){
 
-        String identify = "devolution";
+        String identifier = "devolution";
 
-        float total =0;
-
-        // el programa me falla en esta funcion cuando cuando mando idVideoGames null o idConsoles null ya que son listas
-        total = saleServices.getTotalOfTheSalesAndCalculateTheStock(idVideoGames,idConsoles,identify);
+        float total;
 
         Client buyer = clientServices.findClientById(idClient);
 
         Sale saleToEdit = saleServices.findSaleById(id);
+
+        total = saleServices.getTotalOfTheSalesAndCalculateTheStock(idVideoGames,idConsoles,identifier,saleToEdit);
 
         saleToEdit.setSoldDate(soldDate);
         saleToEdit.setTotal(total);

@@ -74,7 +74,7 @@
                     <div class="mb-3">
                         <label for="releasedDate">Released date</label>
                         <div class="input-group">
-                            <input type="date" class="form-control" value="${console.releasedDate}" id="releasedDate" name="releasedDate" placeholder="Released date">
+                            <input type="date" class="form-control"  id="releasedDate" name="releasedDate" placeholder="Leave empty if does not want to change it">
 
                         </div>
                     </div>
@@ -82,7 +82,7 @@
                     <div class="mb-3">
                         <label for="discontinuedDate">Discontinued date</label>
                         <div class="input-group">
-                            <input type="date" class="form-control" value="${console.discontinuedDate}" id="discontinuedDate" name="discontinuedDate" placeholder="Discontinued date">
+                            <input type="date" class="form-control"  id="discontinuedDate" name="discontinuedDate" placeholder="Leave empty if does not want to change it">
 
                         </div>
                     </div>

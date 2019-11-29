@@ -87,17 +87,25 @@
                     <div class="mb-3">
                         <label for="releasedDate">Released date</label>
                         <div class="input-group">
-                            <input type="date" class="form-control" id="releasedDate" name="releasedDate" placeholder="Released date" required>
+                            <input type="date" class="form-control" id="releasedDate" name="releasedDate" placeholder="Leave empty if does not want to change it">
 
                         </div>
                     </div>
 
 
-
                     <div class="mb-3">
                         <label for="unitsSold">Units sold</label>
                         <div class="input-group">
-                            <input type="number" class="form-control" value="${videogame.unitsSold}" id="unitsSold" name="unitsSold" placeholder="Units sold" required>
+                            <input type="number" class="form-control" id="unitsSold" name="unitsSold" placeholder="Leave empty if does not want to change it" >
+
+                        </div>
+                    </div>
+
+
+                    <div class="mb-3">
+                        <label for="sellPrice">Selling price</label>
+                        <div class="input-group">
+                            <input type="number"  class="form-control" id="sellPrice" name="sellPrice" placeholder="Leave empty if does not want to change it" >
 
                         </div>
                     </div>
@@ -105,6 +113,7 @@
                     <div class="mb-3">
                         <label for="rating">Rating of the game</label>
                         <select class="custom-select d-block w-100" id="rating" name="rating" required>
+                            <option value="${videogame.rating}">${videogame.rating}</option>
                             <option value="1.0">1.0</option>
                             <option value="2.0">2.0</option>
                             <option value="3.0">3.0</option>
@@ -117,14 +126,6 @@
                             <option value="10">10</option>
                         </select>
 
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="sellPrice">Selling price</label>
-                        <div class="input-group">
-                            <input type="number" value="${videogame.sellPrice}" class="form-control" id="sellPrice" name="sellPrice" placeholder="Selling price" required>
-
-                        </div>
                     </div>
 
                     <div class="mb-3">

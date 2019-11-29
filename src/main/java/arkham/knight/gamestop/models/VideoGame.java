@@ -44,85 +44,49 @@ public class VideoGame implements Serializable {
     }
 
 
-    public Long getId() {
-        return id;
-    }
+    public Long getId() { return id; }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    public void setId(Long id) { this.id = id; }
 
-    public String getName() {
-        return name;
-    }
+    public String getName() { return name; }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    public void setName(String name) { this.name = name; }
 
-    public String getDeveloper() {
-        return developer;
-    }
+    public String getDeveloper() { return developer; }
 
-    public void setDeveloper(String developer) {
-        this.developer = developer;
-    }
+    public void setDeveloper(String developer) { this.developer = developer; }
 
-    public Date getReleasedDate() {
-        return releasedDate;
-    }
+    public Date getReleasedDate() { return releasedDate; }
 
-    public void setReleasedDate(Date releasedDate) {
-        this.releasedDate = releasedDate;
-    }
+    public void setReleasedDate(Date releasedDate) { this.releasedDate = releasedDate; }
 
-    public String getGenre() {
-        return genre;
-    }
+    public String getGenre() { return genre; }
 
-    public void setGenre(String genre) {
-        this.genre = genre;
-    }
+    public void setGenre(String genre) { this.genre = genre; }
 
     public int getUnitsSold() { return unitsSold; }
 
     public void setUnitsSold(int unitsSold) { this.unitsSold = unitsSold; }
 
-    public String getGameModes() {
-        return gameModes;
-    }
+    public String getGameModes() { return gameModes; }
 
-    public void setGameModes(String gameModes) {
-        this.gameModes = gameModes;
-    }
+    public void setGameModes(String gameModes) { this.gameModes = gameModes; }
 
-    public List<Console> getPlatformsList() {
-        return platformsList;
-    }
+    public List<Console> getPlatformsList() { return platformsList; }
 
-    public void setPlatformsList(List<Console> platformsList) {
-        this.platformsList = platformsList;
-    }
+    public void setPlatformsList(List<Console> platformsList) { this.platformsList = platformsList; }
 
-    public float getRating() {
-        return rating;
-    }
+    public float getRating() { return rating; }
 
-    public void setRating(float rating) {
-        this.rating = rating;
-    }
+    public void setRating(float rating) { this.rating = rating; }
 
     public float getSellPrice() { return sellPrice; }
 
     public void setSellPrice(float sellPrice) { this.sellPrice = sellPrice; }
 
-    public String getImage() {
-        return image;
-    }
+    public String getImage() { return image; }
 
-    public void setImage(String image) {
-        this.image = image;
-    }
+    public void setImage(String image) { this.image = image; }
 
     public int getStock() { return stock; }
 

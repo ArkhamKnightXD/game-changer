@@ -45,9 +45,7 @@
                             <select multiple class="form-control" name="idConsoles">
                                 <#list consoles as console>
 
-                                    <#if console.stock gt 0 >
                                         <option value="${console.id}" >${console.name} - ${console.developer} - ${console.consoleType} - $${console.sellPrice} - Stock: ${console.stock}</option>
-                                    </#if>
 
                                 </#list>
                             </select>
@@ -62,9 +60,7 @@
                             <select multiple class="form-control" name="idVideoGames">
                                 <#list videogames as videogame>
 
-                                    <#if videogame.stock gt 0 >
                                         <option value="${videogame.id}" >${videogame.name} - ${videogame.developer} - ${videogame.genre} - $${videogame.sellPrice} - Stock: ${videogame.stock}</option>
-                                    </#if>
 
                                 </#list>
                             </select>

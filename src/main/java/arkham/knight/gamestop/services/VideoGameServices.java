@@ -72,6 +72,34 @@ public class VideoGameServices {
     }
 
 
+    public float convertFromStringToFloatAndSetTheRating(String rating, Long objectId){
+
+        float ratingExtra = 0;
+
+        VideoGame videoGame = videoGameRepository.findVideoGameById(objectId);
+
+        try {
+
+            ratingExtra = Float.parseFloat(rating);
+        }
+        catch (NumberFormatException e)
+        {
+            ratingExtra = 0;
+        }
+
+
+        if (ratingExtra == 0){
+
+            return videoGame.getRating();
+        }
+
+        else {
+
+            return ratingExtra;
+        }
+    }
+
+
     public void deleteVideoGame(Long id){
 
         videoGameRepository.deleteById(id);

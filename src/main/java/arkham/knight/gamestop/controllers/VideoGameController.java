@@ -88,20 +88,23 @@ public class VideoGameController {
 
 
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
-    public String edit(@RequestParam(name = "idConsoles") List<Long> idConsoles, @RequestParam(name = "id") Long id, @RequestParam(name = "name") String name,@RequestParam(name = "developer") String developer, @RequestParam(name = "genre") String genre,@RequestParam(name = "gameModes") String gameModes,@RequestParam(name = "unitsSold") int unitsSold, @RequestParam(name = "releasedDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date releasedDate,@RequestParam(name = "rating") float rating, @RequestParam(required = false, name = "image") MultipartFile[] image, @RequestParam(name = "sellPrice") float sellPrice, @RequestParam(name = "stock") int stock){
+    public String edit(@RequestParam(name = "idConsoles") List<Long> idConsoles, @RequestParam(name = "id") Long id, @RequestParam(name = "name") String name,@RequestParam(name = "developer") String developer, @RequestParam(name = "genre") String genre,@RequestParam(name = "gameModes") String gameModes,@RequestParam(defaultValue = "empty", required = false, name = "unitsSold") String unitsSold, @RequestParam(defaultValue = "empty", required = false, name = "releasedDate") @DateTimeFormat(pattern = "yyyy-MM-dd") String releasedDate, @RequestParam(required = false, name = "rating") String rating, @RequestParam(required = false, name = "image") MultipartFile[] image, @RequestParam(defaultValue = "empty", required = false, name = "sellPrice") String sellPrice, @RequestParam(name = "stock") int stock){
 
         String imageName = fileUploadServices.storeAndCleanImage(image,uploadDirectory);
 
         VideoGame videoGameToEdit = videoGameServices.findVideoGameById(id);
 
+        String identifier = "VideoGame";
+
+
         videoGameToEdit.setName(name);
         videoGameToEdit.setDeveloper(developer);
         videoGameToEdit.setGenre(genre);
-        videoGameToEdit.setReleasedDate(releasedDate);
+        videoGameToEdit.setReleasedDate(consoleServices.convertFromStringToDateAndSetTheDate(releasedDate,identifier,id));
         videoGameToEdit.setGameModes(gameModes);
-        videoGameToEdit.setUnitsSold(unitsSold);
-        videoGameToEdit.setSellPrice(sellPrice);
-        videoGameToEdit.setRating(rating);
+        videoGameToEdit.setUnitsSold(consoleServices.convertFromStringToIntAndSetTheUnitsSold(unitsSold,identifier,id));
+        videoGameToEdit.setSellPrice(consoleServices.convertFromStringToFloatAndSetThePrice(sellPrice,identifier,id));
+        videoGameToEdit.setRating(videoGameServices.convertFromStringToFloatAndSetTheRating(rating, id));
         videoGameToEdit.setPlatformsList(consoleServices.findAllConsolesById(idConsoles));
         videoGameToEdit.setStock(stock);
 

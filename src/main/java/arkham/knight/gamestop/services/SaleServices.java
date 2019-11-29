@@ -52,7 +52,7 @@ public class SaleServices {
     }
 
 
-    public float getTotalOfTheSalesAndCalculateTheStock(List<Long> idVideoGames, List<Long> idConsoles, String identify){
+    public float getTotalOfTheSalesAndCalculateTheStock(List<Long> idVideoGames, List<Long> idConsoles, String identify, Sale sale){
 
         // falla en la parte de devolution de esta funcion tanto para consola como para videojuego, ver como solucionar esto
 
@@ -83,7 +83,7 @@ public class SaleServices {
 
             if (identify.equalsIgnoreCase("devolution")){
 
-                total = videoGameToBuy.getSellPrice();
+                total = sale.getTotal();
 
                 videoGameStock++;
 
@@ -116,8 +116,6 @@ public class SaleServices {
             }
 
             if (identify.equalsIgnoreCase("devolution")){
-
-                total = consolesToBuy.getSellPrice();
 
                 consoleStock++;
 

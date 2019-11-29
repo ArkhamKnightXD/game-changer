@@ -14,14 +14,6 @@
 
     <link href="../../bootstrap-4.3.1/style/style.css" rel="stylesheet">
 
-    <style>
-      body {
-        background-image: url("../../bootstrap-4.3.1/assets/img/bg5.jpg");
-        background-repeat: repeat-y;
-        background-attachment: scroll;
-      }
-    </style>
-
   </head>
 
   <body>
@@ -74,7 +66,7 @@
     <main role="main" class="container">
 
       <div class="starter-template">
-        <table class="table-hover table table-bordered table-dark">
+        <table class="table-hover table table-bordered">
           <thead class="thead-dark">
           <tr>
             <th scope="col">#</th>

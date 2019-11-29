@@ -1,8 +1,12 @@
 package arkham.knight.gamestop.services;
 import arkham.knight.gamestop.models.Console;
+import arkham.knight.gamestop.models.VideoGame;
 import arkham.knight.gamestop.repositories.ConsoleRepository;
+import arkham.knight.gamestop.repositories.VideoGameRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -12,6 +16,9 @@ public class ConsoleServices {
 
     @Autowired
     private ConsoleRepository consoleRepository;
+
+    @Autowired
+    private VideoGameRepository videoGameRepository;
 
 
     public void createConsole(Console console){
@@ -94,13 +101,23 @@ public class ConsoleServices {
     }
 
 
-    public int convertFromStringToIntAndSetTheUnitsSold(String unitSold, Console consoleToEdit){
+    public int convertFromStringToIntAndSetTheUnitsSold(String unitSold, String identifier, Long objectId){
 
         int units = 0;
 
-        if (unitSold.equalsIgnoreCase("empty")){
+
+        if (unitSold.equalsIgnoreCase("empty") && identifier.equalsIgnoreCase("Console")){
+
+            Console consoleToEdit = consoleRepository.findConsoleById(objectId);
 
             return consoleToEdit.getUnitsSold();
+        }
+
+        if (unitSold.equalsIgnoreCase("empty") && identifier.equalsIgnoreCase("VideoGame")){
+
+            VideoGame videoGame = videoGameRepository.findVideoGameById(objectId);
+
+            return videoGame.getUnitsSold();
         }
 
         else{
@@ -119,13 +136,23 @@ public class ConsoleServices {
     }
 
 
-    public float convertFromStringToFloatAndSetThePrice(String sellPrice, Console consoleToEdit){
+    public float convertFromStringToFloatAndSetThePrice(String sellPrice, String identifier, Long objectId){
 
         float sellingPrice = 0;
 
-        if (sellPrice.equalsIgnoreCase("empty")){
+        if (sellPrice.equalsIgnoreCase("empty") && identifier.equalsIgnoreCase("Console")){
+
+            Console consoleToEdit = consoleRepository.findConsoleById(objectId);
 
             return consoleToEdit.getSellPrice();
+        }
+
+
+        if (sellPrice.equalsIgnoreCase("empty") && identifier.equalsIgnoreCase("VideoGame")){
+
+            VideoGame videoGame = videoGameRepository.findVideoGameById(objectId);
+
+            return videoGame.getSellPrice();
         }
 
         else{
@@ -141,6 +168,46 @@ public class ConsoleServices {
         }
 
         return sellingPrice;
+    }
+
+
+    public Date convertFromStringToDateAndSetTheDate(String releasedDate, String identifier, Long objectId){
+
+        Date date = null;
+
+        if (releasedDate.equalsIgnoreCase("empty") && identifier.equalsIgnoreCase("VideoGame")){
+
+            VideoGame videoGame = videoGameRepository.findVideoGameById(objectId);
+
+            return videoGame.getReleasedDate();
+        }
+
+
+        if (releasedDate.equalsIgnoreCase("empty") && identifier.equalsIgnoreCase("ReleasedDate")){
+
+            Console console = consoleRepository.findConsoleById(objectId);
+
+            return console.getReleasedDate();
+        }
+
+
+        if (releasedDate.equalsIgnoreCase("empty") && identifier.equalsIgnoreCase("DiscontinuedDate")){
+
+            Console console = consoleRepository.findConsoleById(objectId);
+
+            return console.getDiscontinuedDate();
+        }
+
+
+        try {
+
+            date = new SimpleDateFormat("yyyy-MM-dd").parse(releasedDate);
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        return date;
     }
 
 
