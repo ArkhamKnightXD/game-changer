@@ -16,9 +16,6 @@
 
     </field>
 
-    <field name="buyer" class="java.lang.String">
-
-    </field>
 
     <field name="soldDate" class="java.sql.Timestamp">
 
@@ -80,15 +77,7 @@
                 </textElement>
                 <text><![CDATA[Id]]></text>
             </staticText>
-            <staticText>
-                <reportElement style="Column header" x="138" y="7" width="138" height="18" forecolor="#000000" uuid="764b9fb5-9209-42b0-913b-9961d7930a59">
-                    <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="80a93b79-768f-4e7a-b1c3-4c3e52cf4c74"/>
-                </reportElement>
-                <textElement>
-                    <font isBold="false"/>
-                </textElement>
-                <text><![CDATA[Client]]></text>
-            </staticText>
+
             <staticText>
                 <reportElement style="Column header" x="276" y="7" width="138" height="18" forecolor="#000000" uuid="1348ff5a-dfb1-4f5c-8a46-63e7e4019268">
                     <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="cb71b9d7-21ce-4d24-8959-99e75523bbe5"/>
@@ -124,15 +113,7 @@
                     </textElement>
                     <textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
                 </textField>
-                <textField isStretchWithOverflow="true">
-                    <reportElement style="Detail" positionType="Float" x="138" y="0" width="138" height="18" uuid="2a14dac0-d9e7-487e-94b5-4df83d0c40ec">
-                        <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="80a93b79-768f-4e7a-b1c3-4c3e52cf4c74"/>
-                    </reportElement>
-                    <textElement>
-                        <font size="14"/>
-                    </textElement>
-                    <textFieldExpression><![CDATA[$F{buyer.name}]]></textFieldExpression>
-                </textField>
+
                 <textField isStretchWithOverflow="true">
                     <reportElement style="Detail" positionType="Float" x="276" y="0" width="138" height="18" uuid="07d88350-edfd-4fd5-b2f4-65ccde2b2fc8">
                         <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="cb71b9d7-21ce-4d24-8959-99e75523bbe5"/>
