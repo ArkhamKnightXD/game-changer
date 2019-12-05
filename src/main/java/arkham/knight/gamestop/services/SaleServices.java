@@ -7,6 +7,7 @@ import arkham.knight.gamestop.repositories.SaleRepository;
 import arkham.knight.gamestop.repositories.VideoGameRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -91,5 +92,95 @@ public class SaleServices {
         }
 
         return total;
+    }
+
+
+    public List<Console> removeConsoleAndCalculateTotalFromTheSale(List<Console> consolesSoldList, List<Long> idConsoles, Sale devolutionSale){
+
+        int consoleStock = 0;
+
+        float salesTotal;
+
+        List<Console> consoleList = new ArrayList<>();
+
+
+        for (Console consoles : consolesSoldList) {
+
+            for (Long consolesIds: idConsoles) {
+
+                Console consoleToMakeADevolution = consoleRepository.findConsoleById(consolesIds);
+
+                if (consoles.getId() == consoleToMakeADevolution.getId()){
+
+                    salesTotal = devolutionSale.getTotal();
+
+                    salesTotal -= consoleToMakeADevolution.getSellPrice();
+
+                    devolutionSale.setTotal(salesTotal);
+
+                    consoleStock = consoleToMakeADevolution.getStock()+1;
+
+                    consoleToMakeADevolution.setStock(consoleStock);
+
+                    consoleRepository.save(consoleToMakeADevolution);
+
+                    saleRepository.save(devolutionSale);
+                }
+
+                else {
+
+                    consoleList.add(consoles);
+                }
+
+            }
+
+        }
+
+        return consoleList;
+    }
+
+
+    public List<VideoGame> removeVideoGameAndCalculateTotalFromTheSale(List<VideoGame> videoGameSoldList, List<Long> idVideoGames, Sale devolutionSale){
+
+        int videoGameStock = 0;
+
+        float salesTotal;
+
+        List<VideoGame> videoGameList = new ArrayList<>();
+
+
+        for (VideoGame videoGames : videoGameSoldList) {
+
+            for (Long videoGameIds: idVideoGames) {
+
+                VideoGame videoGameToMakeADevolution = videoGameRepository.findVideoGameById(videoGameIds);
+
+                if (videoGames.getId() == videoGameToMakeADevolution.getId()){
+
+                    salesTotal = devolutionSale.getTotal();
+
+                    salesTotal -= videoGameToMakeADevolution.getSellPrice();
+
+                    devolutionSale.setTotal(salesTotal);
+
+                    videoGameStock = videoGameToMakeADevolution.getStock()+1;
+
+                    videoGameToMakeADevolution.setStock(videoGameStock);
+
+                    videoGameRepository.save(videoGameToMakeADevolution);
+
+                    saleRepository.save(devolutionSale);
+                }
+
+                else {
+
+                    videoGameList.add(videoGames);
+                }
+
+            }
+
+        }
+
+        return videoGameList;
     }
 }

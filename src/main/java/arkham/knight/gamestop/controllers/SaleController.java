@@ -89,18 +89,15 @@ public class SaleController {
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
     public String edit(@RequestParam(name = "id") Long id, @RequestParam(name = "soldDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date soldDate, @RequestParam(required = false, name = "idConsoles") List<Long> idConsoles, @RequestParam(required = false, name = "idVideoGames") List<Long> idVideoGames, @RequestParam(name = "idClient") Long idClient){
 
-        float total;
-
         Client buyer = clientServices.findClientById(idClient);
 
         Sale saleToEdit = saleServices.findSaleById(id);
 
-       // total = saleServices.getTotalOfTheSalesAndCalculateTheStock(idVideoGames,idConsoles,identifier,saleToEdit);
+        //aun con fallas en la devolucion, voy a implementar otro metodo de devolucion ya que este no es muy eficiente
 
         saleToEdit.setSoldDate(soldDate);
-       // saleToEdit.setTotal(total);
-        saleToEdit.setConsoleListToSell(consoleServices.findAllConsolesById(idConsoles));
-        saleToEdit.setVideoGameListToSell(videoGameServices.findAllVideoGamesById(idVideoGames));
+        saleToEdit.setConsoleListToSell(saleServices.removeConsoleAndCalculateTotalFromTheSale(saleToEdit.getConsoleListToSell(),idConsoles,saleToEdit));
+        saleToEdit.setVideoGameListToSell(saleServices.removeVideoGameAndCalculateTotalFromTheSale(saleToEdit.getVideoGameListToSell(),idVideoGames,saleToEdit));
         saleToEdit.setBuyer(buyer);
 
         saleServices.createSale(saleToEdit);

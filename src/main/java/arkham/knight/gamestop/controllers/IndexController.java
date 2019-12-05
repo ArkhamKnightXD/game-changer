@@ -78,7 +78,9 @@ public class IndexController {
     @RequestMapping("/report/{format}")
     public String salesReport(@PathVariable String format) throws FileNotFoundException, JRException {
 
-        return reportServices.exportReport(format);
+         reportServices.exportReport(format);
+
+         return "redirect:/admin/";
     }
 
 

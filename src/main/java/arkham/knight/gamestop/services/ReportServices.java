@@ -19,11 +19,12 @@ public class ReportServices {
     private SaleRepository saleRepository;
 
 
-    public String exportReport(String reportFormat) throws FileNotFoundException, JRException {
+    public void exportReport(String reportFormat) throws FileNotFoundException, JRException {
 
-        String path = "C:\\Usuarios\\karvi\\Escritorio\\Report";
+        String path = "C:\\Reports";
 
         List<Sale> salesToShowInTheReport = saleRepository.findAll();
+
 
         File fileForTheReport = ResourceUtils.getFile("classpath:sales.jrxml");
 
@@ -37,6 +38,7 @@ public class ReportServices {
 
         JasperPrint jasperPrint = JasperFillManager.fillReport(saleReport,parameters, reportDataSource);
 
+
         if (reportFormat.equalsIgnoreCase("html")){
 
             JasperExportManager.exportReportToHtmlFile(jasperPrint,path+"\\sales.html");
@@ -47,7 +49,5 @@ public class ReportServices {
 
             JasperExportManager.exportReportToPdfFile(jasperPrint,path+"\\sales.pdf");
         }
-
-        return "Report generated in path: " + path;
     }
 }

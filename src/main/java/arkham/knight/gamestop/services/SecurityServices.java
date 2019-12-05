@@ -37,6 +37,7 @@ public class SecurityServices implements UserDetailsService {
         rolRepository.save(rolUser);
 
         Rol rolAdmin = new Rol("ROLE_ADMIN");
+
         rolRepository.save(rolAdmin);
 
         rolList.add(rolUser);
@@ -54,6 +55,7 @@ public class SecurityServices implements UserDetailsService {
         List<GrantedAuthority> rolList = new ArrayList<>();
 
         User userAdminToFind = userRepository.findUserByUsername(username);
+
 
         for (Rol roles :userAdminToFind.getRolList()) {
 

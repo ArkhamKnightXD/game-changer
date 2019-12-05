@@ -78,15 +78,15 @@
                 </h6>
                 <ul class="nav flex-column mb-2">
                     <li class="nav-item">
-                        <a class="nav-link" href="/report/html">
+                        <a class="nav-link" href="/report/pdf">
                             <span data-feather="file-text"></span>
-                            Current month
+                            Current month pdf version
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="/report/html">
                             <span data-feather="file-text"></span>
-                            Last quarter
+                            Current month html version
                         </a>
                     </li>
                     <li class="nav-item">
