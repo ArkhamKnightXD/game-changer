@@ -52,9 +52,7 @@ public class SaleServices {
     }
 
 
-    public float getTotalOfTheSalesAndCalculateTheStock(List<Long> idVideoGames, List<Long> idConsoles, String identify, Sale sale){
-
-        // falla en la parte de devolution de esta funcion tanto para consola como para videojuego, ver como solucionar esto
+    public float getTotalOfTheSalesAndCalculateTheStock(List<Long> idVideoGames, List<Long> idConsoles){
 
         int consoleStock =0;
 
@@ -63,68 +61,33 @@ public class SaleServices {
         float total = 0;
 
 
-        for (Long videoGames: idVideoGames
+        for (Long videoGamesId: idVideoGames
         ) {
 
-            VideoGame videoGameToBuy = videoGameRepository.findVideoGameById(videoGames);
+                VideoGame videoGameToBuy = videoGameRepository.findVideoGameById(videoGamesId);
 
-            videoGameStock = videoGameToBuy.getStock();
-
-            if (identify.equalsIgnoreCase("sale")){
-
-                videoGameStock--;
+                videoGameStock = videoGameToBuy.getStock()-1;
 
                 videoGameToBuy.setStock(videoGameStock);
 
                 videoGameRepository.save(videoGameToBuy);
 
                 total+= videoGameToBuy.getSellPrice();
-            }
-
-            if (identify.equalsIgnoreCase("devolution")){
-
-                total = sale.getTotal();
-
-                videoGameStock++;
-
-                videoGameToBuy.setStock(videoGameStock);
-
-                videoGameRepository.save(videoGameToBuy);
-
-                total-= videoGameToBuy.getSellPrice();
-            }
-
         }
 
 
-        for (Long consoles: idConsoles
+        for (Long consolesId: idConsoles
         ) {
 
-            Console consolesToBuy = consoleRepository.findConsoleById(consoles);
+                Console consolesToBuy = consoleRepository.findConsoleById(consolesId);
 
-            consoleStock = consolesToBuy.getStock();
-
-            if (identify.equalsIgnoreCase("sale")){
-
-                consoleStock--;
+                consoleStock = consolesToBuy.getStock()-1;
 
                 consolesToBuy.setStock(consoleStock);
 
                 consoleRepository.save(consolesToBuy);
 
                 total+= consolesToBuy.getSellPrice();
-            }
-
-            if (identify.equalsIgnoreCase("devolution")){
-
-                consoleStock++;
-
-                consolesToBuy.setStock(consoleStock);
-
-                consoleRepository.save(consolesToBuy);
-
-                total-= consolesToBuy.getSellPrice();
-            }
         }
 
         return total;

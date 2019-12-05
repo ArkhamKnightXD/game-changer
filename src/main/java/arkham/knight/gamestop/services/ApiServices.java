@@ -17,10 +17,9 @@ public class ApiServices {
     public ApiServices() throws UnirestException {
     }
 
+
     public JsonNode getResponse() {
 
         return response.getBody();
     }
-
-
 }

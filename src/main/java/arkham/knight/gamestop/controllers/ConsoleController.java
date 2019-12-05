@@ -145,7 +145,6 @@ public class ConsoleController {
     public String showHomeConsoleDescription(Model model){
 
         model.addAttribute("title","Welcome to the game store");
-
         model.addAttribute("consoles",consoleServices.listConsolesByType("Home console"));
 
         return "/freemarker/homeConsoleInfo";

@@ -91,18 +91,6 @@ public class ClientController {
     }
 
 
-    @RequestMapping("/show")
-    public String showPage(Model model, @RequestParam(name = "id") Long id){
-
-        Client clientToShow = clientServices.findClientById(id);
-
-        model.addAttribute("title","Welcome to the game store");
-        model.addAttribute("client",clientToShow);
-
-        return "/freemarker/showClient";
-    }
-
-
     @RequestMapping("/delete")
     public String delete(@RequestParam(name = "id") Long id){
 

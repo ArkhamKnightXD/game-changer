@@ -1,5 +1,7 @@
 <!doctype html>
+
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -76,7 +78,7 @@
                 </h6>
                 <ul class="nav flex-column mb-2">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="/report/html">
                             <span data-feather="file-text"></span>
                             Current month
                         </a>
@@ -105,7 +107,7 @@
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-                <h1 class="h2">VideoGames Prices</h1>
+                <h1 class="h2">Sales total by client</h1>
                 <div class="btn-toolbar mb-2 mb-md-0">
                     <div class="btn-group mr-2">
                         <a class="btn btn-outline-primary my-2 my-sm-0" href="/default" role="button">Create default consoles</a>
@@ -120,7 +122,7 @@
 
             <canvas class="my-4" id="myChart" width="900" height="380"></canvas>
 
-            <h2>Last sold videogames</h2>
+            <h2>Last added videogames</h2>
             <div class="table-responsive">
                 <table class="table table-striped table-sm">
                     <thead>
@@ -169,14 +171,14 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
 <script>
 
-    var videoGamesNames = [];
-    var videoGamesUnitsSold = [];
+    var clientsNames = [];
+    var totalSales = [];
 
-    <#list videogames as videogame>
+    <#list sales as sale>
 
-    videoGamesNames.push("${videogame.name}");
+    clientsNames.push("${sale.buyer.name}");
 
-    videoGamesUnitsSold.push(${videogame.sellPrice})
+    totalSales.push(${sale.total})
 
     </#list>
 
@@ -184,11 +186,11 @@
     var myChart = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: videoGamesNames,
+            labels: clientsNames,
             datasets: [
                 {
 
-                data: videoGamesUnitsSold,
+                data: totalSales,
                 lineTension: 0,
                 backgroundColor: 'transparent',
                 borderColor: '#007bff',
@@ -200,7 +202,7 @@
             scales: {
                 yAxes: [{
                     ticks: {
-                        beginAtZero: false
+                        beginAtZero: true
                     }
                 }]
             },

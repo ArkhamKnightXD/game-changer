@@ -23,12 +23,6 @@ public class UserServices {
     }
 
 
-    public void saveAllUsers(List<User> users){
-
-        userRepository.saveAll(users);
-    }
-
-
     public List<User> listAllUsers(){
 
         return userRepository.findAll();
@@ -50,12 +44,6 @@ public class UserServices {
     public List<Rol> findAllRolesById(List<Long> idRoles){
 
         return rolRepository.findAllById(idRoles);
-    }
-
-
-    public Rol findRoleById(long id){
-
-        return rolRepository.findRolById(id);
     }
 
 

@@ -3,10 +3,15 @@ import arkham.knight.gamestop.models.Console;
 import arkham.knight.gamestop.models.User;
 import arkham.knight.gamestop.models.VideoGame;
 import arkham.knight.gamestop.services.*;
+import net.sf.jasperreports.engine.JRException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -25,7 +30,13 @@ public class IndexController {
     private UserServices userServices;
 
     @Autowired
+    private SaleServices saleServices;
+
+    @Autowired
     private SecurityServices securityServices;
+
+    @Autowired
+    private ReportServices reportServices;
 
 
     @RequestMapping("/")
@@ -60,8 +71,16 @@ public class IndexController {
 
         model.addAttribute("title","Welcome to the game store");
         model.addAttribute("videogames", videoGameServices.listAllVideoGames());
+        model.addAttribute("sales", saleServices.listAllSales());
 
         return "/freemarker/adminPage";
+    }
+
+
+    @RequestMapping("/report/{format}")
+    public String salesReport(@PathVariable String format) throws FileNotFoundException, JRException {
+
+        return reportServices.exportReport(format);
     }
 
 

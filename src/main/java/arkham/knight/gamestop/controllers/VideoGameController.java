@@ -27,7 +27,6 @@ public class VideoGameController {
     @Autowired
     private FileUploadServices fileUploadServices;
 
-
     public static String uploadDirectory = System.getProperty("user.dir")+"/src/main/resources/static/bootstrap-4.3.1/assets/img";
 
 
@@ -135,7 +134,6 @@ public class VideoGameController {
     public String showVideoGameDescription(Model model){
 
         model.addAttribute("title","Welcome to the game store");
-
         model.addAttribute("videogames",videoGameServices.listAllVideoGames());
 
         return "/freemarker/videogameInfo";

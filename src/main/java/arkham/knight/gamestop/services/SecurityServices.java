@@ -55,8 +55,7 @@ public class SecurityServices implements UserDetailsService {
 
         User userAdminToFind = userRepository.findUserByUsername(username);
 
-        for (Rol roles :userAdminToFind.getRolList()
-             ) {
+        for (Rol roles :userAdminToFind.getRolList()) {
 
             rolList.add(new SimpleGrantedAuthority(roles.getRole()));
         }

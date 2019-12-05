@@ -33,7 +33,6 @@ public class UserController {
         model.addAttribute("title","Welcome to the game store");
         model.addAttribute("users",userServices.listAllUsers());
 
-
         return "/freemarker/users";
     }
 
@@ -94,18 +93,6 @@ public class UserController {
         userServices.createUser(userToEdit);
 
         return "redirect:/users/";
-    }
-
-
-    @RequestMapping("/show")
-    public String showPage(Model model, @RequestParam(name = "id") Long id){
-
-        User userToShow = userServices.findUserById(id);
-
-        model.addAttribute("title","Welcome to the game store");
-        model.addAttribute("user",userToShow);
-
-        return "/freemarker/showUser";
     }
 
 

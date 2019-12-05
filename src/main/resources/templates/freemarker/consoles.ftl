@@ -1,6 +1,8 @@
 <!doctype html>
 <html lang="en">
+
   <head>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -126,5 +128,7 @@
     <script>window.jQuery || document.write('<script src="../../bootstrap-4.3.1/assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
     <script src="../../bootstrap-4.3.1/assets/js/vendor/popper.min.js"></script>
     <script src="../../bootstrap-4.3.1/dist/js/bootstrap.min.js"></script>
+
   </body>
+
 </html>
