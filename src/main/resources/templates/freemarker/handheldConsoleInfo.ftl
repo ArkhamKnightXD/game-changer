@@ -20,7 +20,7 @@
             <div class="row">
                 <div class="col-sm-8 col-md-7 py-4">
                     <h4 class="text-white">About</h4>
-                    <p class="text-muted">Add some information about the album below, the author, or any other background context. Make it a few sentences long so folks can pick up some informative tidbits. Then, link them off to some social networking sites or contact information.</p>
+                    <p class="text-muted">Full Stack Web Developer, I really enjoy playing videogames and I also like the videogame consoles.</p>
                 </div>
                 <div class="col-sm-4 offset-md-1 py-4">
                     <h4 class="text-white">Contact</h4>
@@ -57,7 +57,7 @@
 
     <section class="jumbotron text-center">
         <div class="container">
-            <h1 class="jumbotron-heading">Top handheldconsole</h1>
+            <h1 class="jumbotron-heading">Top handheld consoles</h1>
             <p class="lead text-muted">In this gallery, i'm going to show pictures of the top 9 best handheld console.</p>
             <p>
                 <a href="/consoles/showHomeConsole" class="btn btn-primary my-2">Go to the top console page</a>
@@ -66,7 +66,7 @@
         </div>
     </section>
 
-    <div class="album py-5 bg-light">
+    <div class="album">
         <div class="container">
 
 

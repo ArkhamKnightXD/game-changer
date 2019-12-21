@@ -19,6 +19,7 @@ html, body {
 
 .album {
 
+  padding-top: 5%;
   min-height: 100%;
 }
 
@@ -29,7 +30,7 @@ html, body {
   top: 40%;
   background: #303036;
   color: white;
-  height: 10%;
+  height: 15%;
   clear: both;
 }
 
@@ -41,7 +42,7 @@ html, body {
   top: 3%;
   background: #303036;
   color: white;
-  height: 10%;
+  height: 15%;
   clear: both;
 }
 

@@ -18,12 +18,6 @@ public class VideoGameServices {
     }
 
 
-    public void saveAllVideoGames(List<VideoGame> videoGames){
-
-        videoGameRepository.saveAll(videoGames);
-    }
-
-
     public List<VideoGame> listAllVideoGames(){
 
         return videoGameRepository.findAll();
@@ -60,15 +54,21 @@ public class VideoGameServices {
     }
 
 
-    public VideoGame findVideoGameByRating(float rating){
-
-        return videoGameRepository.findVideoGameByRating(rating);
-    }
-
-
     public VideoGame findVideoGameByUnitsSold(int units){
 
         return videoGameRepository.findVideoGameByUnitsSold(units);
+    }
+
+
+    public void deleteVideoGame(Long id){
+
+        videoGameRepository.deleteById(id);
+    }
+
+
+    public void deleteAllVideoGames(){
+
+        videoGameRepository.deleteAll();
     }
 
 
@@ -97,17 +97,5 @@ public class VideoGameServices {
 
             return ratingExtra;
         }
-    }
-
-
-    public void deleteVideoGame(Long id){
-
-        videoGameRepository.deleteById(id);
-    }
-
-
-    public void deleteAllVideoGames(){
-
-        videoGameRepository.deleteAll();
     }
 }

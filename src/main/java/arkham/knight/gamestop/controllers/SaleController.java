@@ -96,8 +96,8 @@ public class SaleController {
         //aun con fallas en la devolucion, voy a implementar otro metodo de devolucion ya que este no es muy eficiente
 
         saleToEdit.setSoldDate(soldDate);
-        saleToEdit.setConsoleListToSell(saleServices.removeConsoleAndCalculateTotalFromTheSale(saleToEdit.getConsoleListToSell(),idConsoles,saleToEdit));
-        saleToEdit.setVideoGameListToSell(saleServices.removeVideoGameAndCalculateTotalFromTheSale(saleToEdit.getVideoGameListToSell(),idVideoGames,saleToEdit));
+      //  saleToEdit.setConsoleListToSell(saleServices.removeConsoleAndCalculateTotalFromTheSale(saleToEdit.getConsoleListToSell(),idConsoles,saleToEdit));
+       // saleToEdit.setVideoGameListToSell(saleServices.removeVideoGameAndCalculateTotalFromTheSale(saleToEdit.getVideoGameListToSell(),idVideoGames,saleToEdit));
         saleToEdit.setBuyer(buyer);
 
         saleServices.createSale(saleToEdit);

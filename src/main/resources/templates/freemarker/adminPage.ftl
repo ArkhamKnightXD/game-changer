@@ -80,13 +80,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/report/pdf">
                             <span data-feather="file-text"></span>
-                            Current month pdf version
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/report/html">
-                            <span data-feather="file-text"></span>
-                            Current month html version
+                            Sales report
                         </a>
                     </li>
                     <li class="nav-item">
@@ -122,26 +116,25 @@
 
             <canvas class="my-4" id="myChart" width="900" height="380"></canvas>
 
-            <h2>Last added videogames</h2>
+            <h2>Last sales</h2>
             <div class="table-responsive">
                 <table class="table table-striped table-sm">
                     <thead>
                     <tr>
                         <th>#</th>
-                        <th>Name</th>
-                        <th>Developer</th>
-                        <th>Genre</th>
-                        <th>Selling price</th>
+                        <th>Buyer</th>
+                        <th>Sold Date</th>
+                        <th>Total</th>
+
                     </tr>
                     </thead>
-                    <#list videogames as videogame >
+                    <#list sales as sale >
                     <tbody>
                     <tr>
-                        <td>${videogame.id}</td>
-                        <td>${videogame.name}</td>
-                        <td>${videogame.developer}</td>
-                        <td>${videogame.genre}</td>
-                        <td>${videogame.sellPrice}</td>
+                        <td>${sale.id}</td>
+                        <td>${sale.buyer.name}</td>
+                        <td>${sale.soldDate}</td>
+                        <td>${sale.total}</td>
                     </tr>
 
                     </tbody>

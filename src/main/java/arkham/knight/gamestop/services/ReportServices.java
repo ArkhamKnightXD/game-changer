@@ -39,12 +39,6 @@ public class ReportServices {
         JasperPrint jasperPrint = JasperFillManager.fillReport(saleReport,parameters, reportDataSource);
 
 
-        if (reportFormat.equalsIgnoreCase("html")){
-
-            JasperExportManager.exportReportToHtmlFile(jasperPrint,path+"\\sales.html");
-        }
-
-
         if (reportFormat.equalsIgnoreCase("pdf")){
 
             JasperExportManager.exportReportToPdfFile(jasperPrint,path+"\\sales.pdf");

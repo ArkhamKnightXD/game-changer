@@ -51,12 +51,6 @@ public class ConsoleServices {
     }
 
 
-    public Console findConsoleByUnitsSold(int units){
-
-        return consoleRepository.findConsoleByUnitsSold(units);
-    }
-
-
     public Console findConsoleById(Long id){
 
         if (id != null){
@@ -105,7 +99,6 @@ public class ConsoleServices {
 
         int units = 0;
 
-
         if (unitSold.equalsIgnoreCase("empty") && identifier.equalsIgnoreCase("Console")){
 
             Console consoleToEdit = consoleRepository.findConsoleById(objectId);
@@ -113,12 +106,14 @@ public class ConsoleServices {
             return consoleToEdit.getUnitsSold();
         }
 
+
         if (unitSold.equalsIgnoreCase("empty") && identifier.equalsIgnoreCase("VideoGame")){
 
             VideoGame videoGame = videoGameRepository.findVideoGameById(objectId);
 
             return videoGame.getUnitsSold();
         }
+
 
         else{
 
@@ -154,6 +149,7 @@ public class ConsoleServices {
 
             return videoGame.getSellPrice();
         }
+
 
         else{
 

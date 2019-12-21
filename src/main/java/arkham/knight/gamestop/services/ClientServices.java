@@ -36,12 +36,6 @@ public class ClientServices {
     }
 
 
-    public Client findClientByNameAndLastName(String name, String lastName){
-
-        return clientRepository.findClientByNameAndLastName(name,lastName);
-    }
-
-
     public void deleteClient(Long id){
 
         clientRepository.deleteById(id);
