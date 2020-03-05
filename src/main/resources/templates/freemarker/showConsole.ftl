@@ -46,14 +46,7 @@
             <li class="nav-item">
                 <a class="nav-link " href="/admin">Admin</a>
             </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sort by</a>
-                <div class="dropdown-menu" aria-labelledby="dropdown01">
-                    <a class="dropdown-item" href="/videogames/showVideogame">Best selling games</a>
-                    <a class="dropdown-item" href="/consoles/showHandheldConsole">Best selling handheld consoles</a>
-                    <a class="dropdown-item" href="/consoles/showHomeConsole">Best selling home consoles</a>
-                </div>
-            </li>
+
         </ul>
     </div>
 </nav>
