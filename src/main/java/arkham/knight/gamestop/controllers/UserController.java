@@ -1,7 +1,7 @@
 package arkham.knight.gamestop.controllers;
 import arkham.knight.gamestop.models.User;
-import arkham.knight.gamestop.services.FileUploadServices;
-import arkham.knight.gamestop.services.UserServices;
+import arkham.knight.gamestop.services.FileUploadService;
+import arkham.knight.gamestop.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -17,10 +17,10 @@ import java.util.List;
 public class UserController {
 
     @Autowired
-    private UserServices userServices;
+    private UserService userService;
 
     @Autowired
-    private FileUploadServices fileUploadServices;
+    private FileUploadService fileUploadService;
 
     private BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
 
@@ -31,7 +31,7 @@ public class UserController {
     public String index(Model model){
 
         model.addAttribute("title","Welcome to the game store");
-        model.addAttribute("users",userServices.listAllUsers());
+        model.addAttribute("users", userService.listAllUsers());
 
         return "/freemarker/users";
     }
@@ -41,7 +41,7 @@ public class UserController {
     public String creationPage(Model model){
 
         model.addAttribute("title","Welcome to the game store");
-        model.addAttribute("roles", userServices.listAllRoles());
+        model.addAttribute("roles", userService.listAllRoles());
 
         return "/freemarker/createUser";
     }
@@ -50,11 +50,11 @@ public class UserController {
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public String create(@RequestParam(name = "username") String username, @RequestParam(name = "password") String password, @RequestParam(name = "image") MultipartFile[] image, @RequestParam(name = "idRoles") List<Long> idRoles){
 
-        String imageName = fileUploadServices.storeAndCleanImage(image,uploadDirectory);
+        String imageName = fileUploadService.storeAndCleanImage(image,uploadDirectory);
 
-        User userToCreate = new User(username,bCryptPasswordEncoder.encode(password),true,imageName,userServices.findAllRolesById(idRoles));
+        User userToCreate = new User(username,bCryptPasswordEncoder.encode(password),true,imageName, userService.findAllRolesById(idRoles));
 
-        userServices.createUser(userToCreate);
+        userService.createUser(userToCreate);
 
         return "redirect:/users/";
     }
@@ -63,11 +63,11 @@ public class UserController {
     @RequestMapping("/edition")
     public String editionPage(Model model, @RequestParam(name = "id") Long id){
 
-        User userToCreate = userServices.findUserById(id);
+        User userToCreate = userService.findUserById(id);
 
         model.addAttribute("title","Welcome to the game store");
         model.addAttribute("user", userToCreate);
-        model.addAttribute("roles", userServices.listAllRoles());
+        model.addAttribute("roles", userService.listAllRoles());
 
         return "/freemarker/editUser";
     }
@@ -76,21 +76,21 @@ public class UserController {
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
     public String edit(@RequestParam(name = "id") Long id, @RequestParam(name = "username") String username, @RequestParam(name = "password") String password, @RequestParam(required = false, name = "image") MultipartFile[] image, @RequestParam(name = "idRoles") List<Long> idRoles){
 
-        String imageName = fileUploadServices.storeAndCleanImage(image,uploadDirectory);
+        String imageName = fileUploadService.storeAndCleanImage(image,uploadDirectory);
 
-        User userToEdit = userServices.findUserById(id);
+        User userToEdit = userService.findUserById(id);
 
         userToEdit.setUsername(username);
         userToEdit.setPassword(bCryptPasswordEncoder.encode(password));
         userToEdit.setAdmin(true);
-        userToEdit.setRolList(userServices.findAllRolesById(idRoles));
+        userToEdit.setRolList(userService.findAllRolesById(idRoles));
 
         if (imageName.endsWith("jpg")){
 
             userToEdit.setImage(imageName);
         }
 
-        userServices.createUser(userToEdit);
+        userService.createUser(userToEdit);
 
         return "redirect:/users/";
     }
@@ -99,7 +99,7 @@ public class UserController {
     @RequestMapping("/delete")
     public String delete(@RequestParam(name = "id") Long id){
 
-        userServices.deleteUser(id);
+        userService.deleteUser(id);
 
         return "redirect:/users/";
     }

@@ -1,10 +1,10 @@
 package arkham.knight.gamestop.controllers;
 import arkham.knight.gamestop.models.Client;
 import arkham.knight.gamestop.models.Sale;
-import arkham.knight.gamestop.services.ClientServices;
-import arkham.knight.gamestop.services.ConsoleServices;
-import arkham.knight.gamestop.services.SaleServices;
-import arkham.knight.gamestop.services.VideoGameServices;
+import arkham.knight.gamestop.services.ClientService;
+import arkham.knight.gamestop.services.ConsoleService;
+import arkham.knight.gamestop.services.SaleService;
+import arkham.knight.gamestop.services.VideoGameService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
@@ -20,23 +20,23 @@ import java.util.List;
 public class SaleController {
 
     @Autowired
-    private SaleServices saleServices;
+    private SaleService saleService;
 
     @Autowired
-    private ClientServices clientServices;
+    private ClientService clientService;
 
     @Autowired
-    private ConsoleServices consoleServices;
+    private ConsoleService consoleService;
 
     @Autowired
-    private VideoGameServices videoGameServices;
+    private VideoGameService videoGameService;
 
 
     @RequestMapping("/")
     public String index(Model model){
 
         model.addAttribute("title","Welcome to the game store");
-        model.addAttribute("sales", saleServices.listAllSales());
+        model.addAttribute("sales", saleService.listAllSales());
 
         return "/freemarker/sales";
     }
@@ -46,9 +46,9 @@ public class SaleController {
     public String creationPage(Model model ){
 
         model.addAttribute("title","Welcome to the game store");
-        model.addAttribute("clients", clientServices.listAllClients());
-        model.addAttribute("consoles", consoleServices.listAllConsoles());
-        model.addAttribute("videogames", videoGameServices.listAllVideoGames());
+        model.addAttribute("clients", clientService.listAllClients());
+        model.addAttribute("consoles", consoleService.listAllConsoles());
+        model.addAttribute("videogames", videoGameService.listAllVideoGames());
 
         return "/freemarker/createSale";
     }
@@ -59,13 +59,13 @@ public class SaleController {
 
         float total;
 
-        total = saleServices.getTotalOfTheSalesAndCalculateTheStock(idVideoGames,idConsoles);
+        total = saleService.getTotalOfTheSalesAndCalculateTheStock(idVideoGames,idConsoles);
 
-        Client buyer = clientServices.findClientById(idClient);
+        Client buyer = clientService.findClientById(idClient);
 
-        Sale saleToCreate = new Sale(soldDate,total,consoleServices.findAllConsolesById(idConsoles),videoGameServices.findAllVideoGamesById(idVideoGames),buyer);
+        Sale saleToCreate = new Sale(soldDate,total, consoleService.findAllConsolesById(idConsoles), videoGameService.findAllVideoGamesById(idVideoGames),buyer);
 
-        saleServices.createSale(saleToCreate);
+        saleService.createSale(saleToCreate);
 
         return "redirect:/sales/";
     }
@@ -74,7 +74,7 @@ public class SaleController {
     @RequestMapping("/edition")
     public String editionPage(Model model, @RequestParam(name = "id") Long id){
 
-        Sale saleToEdit = saleServices.findSaleById(id);
+        Sale saleToEdit = saleService.findSaleById(id);
 
         model.addAttribute("title","Welcome to the game store");
         model.addAttribute("sale", saleToEdit);
@@ -89,9 +89,9 @@ public class SaleController {
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
     public String edit(@RequestParam(name = "id") Long id, @RequestParam(name = "soldDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date soldDate, @RequestParam(required = false, name = "idConsoles") List<Long> idConsoles, @RequestParam(required = false, name = "idVideoGames") List<Long> idVideoGames, @RequestParam(name = "idClient") Long idClient){
 
-        Client buyer = clientServices.findClientById(idClient);
+        Client buyer = clientService.findClientById(idClient);
 
-        Sale saleToEdit = saleServices.findSaleById(id);
+        Sale saleToEdit = saleService.findSaleById(id);
 
         //aun con fallas en la devolucion, voy a implementar otro metodo de devolucion ya que este no es muy eficiente
 
@@ -100,7 +100,7 @@ public class SaleController {
        // saleToEdit.setVideoGameListToSell(saleServices.removeVideoGameAndCalculateTotalFromTheSale(saleToEdit.getVideoGameListToSell(),idVideoGames,saleToEdit));
         saleToEdit.setBuyer(buyer);
 
-        saleServices.createSale(saleToEdit);
+        saleService.createSale(saleToEdit);
 
         return "redirect:/sales/";
     }
@@ -109,7 +109,7 @@ public class SaleController {
     @RequestMapping("/show")
     public String showPage(Model model, @RequestParam(name = "id") Long id){
 
-        Sale saleToShow = saleServices.findSaleById(id);
+        Sale saleToShow = saleService.findSaleById(id);
 
         model.addAttribute("title","Welcome to the game store");
         model.addAttribute("sale", saleToShow);
@@ -121,7 +121,7 @@ public class SaleController {
     @RequestMapping("/delete")
     public String delete(@RequestParam(name = "id") Long id){
 
-        saleServices.deleteSale(id);
+        saleService.deleteSale(id);
 
         return "redirect:/sales/";
     }

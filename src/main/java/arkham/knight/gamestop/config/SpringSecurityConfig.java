@@ -1,5 +1,5 @@
 package arkham.knight.gamestop.config;
-import arkham.knight.gamestop.services.SecurityServices;
+import arkham.knight.gamestop.services.SecurityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.context.annotation.Bean;
@@ -14,7 +14,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    private SecurityServices securityServices;
+    private SecurityService securityService;
 
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
@@ -31,7 +31,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 
         auth
-                .userDetailsService(securityServices)
+                .userDetailsService(securityService)
                 .passwordEncoder(bCryptPasswordEncoder);
     }
 

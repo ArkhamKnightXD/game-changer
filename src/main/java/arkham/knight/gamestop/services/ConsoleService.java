@@ -12,7 +12,7 @@ import java.util.Date;
 import java.util.List;
 
 @Service
-public class ConsoleServices {
+public class ConsoleService {
 
     @Autowired
     private ConsoleRepository consoleRepository;

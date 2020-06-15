@@ -7,12 +7,11 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 @Service
-public class FileUploadServices {
+public class FileUploadService {
 
     public String storeAndCleanImage(MultipartFile[] files, String uploadDirectory){
 
         StringBuilder fileNames = new StringBuilder();
-
 
         for (MultipartFile file: files) {
 
@@ -27,9 +26,7 @@ public class FileUploadServices {
 
                 e.printStackTrace();
             }
-
         }
-
         return fileNames.toString();
     }
 }

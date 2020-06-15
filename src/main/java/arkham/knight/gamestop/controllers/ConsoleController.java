@@ -1,8 +1,8 @@
 package arkham.knight.gamestop.controllers;
 import arkham.knight.gamestop.models.Console;
-import arkham.knight.gamestop.services.ConsoleServices;
-import arkham.knight.gamestop.services.FileUploadServices;
-import arkham.knight.gamestop.services.VideoGameServices;
+import arkham.knight.gamestop.services.ConsoleService;
+import arkham.knight.gamestop.services.FileUploadService;
+import arkham.knight.gamestop.services.VideoGameService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
@@ -18,13 +18,13 @@ import java.util.Date;
 public class ConsoleController {
 
     @Autowired
-    private ConsoleServices consoleServices;
+    private ConsoleService consoleService;
 
     @Autowired
-    private VideoGameServices videoGameServices;
+    private VideoGameService videoGameService;
 
     @Autowired
-    private FileUploadServices fileUploadServices;
+    private FileUploadService fileUploadService;
 
     public static String uploadDirectory = System.getProperty("user.dir")+"/src/main/resources/static/bootstrap-4.3.1/assets/img";
 
@@ -33,7 +33,7 @@ public class ConsoleController {
     public String index(Model model){
 
         model.addAttribute("title","Welcome to the game store");
-        model.addAttribute("consoles",consoleServices.listAllConsoles());
+        model.addAttribute("consoles", consoleService.listAllConsoles());
 
         return "/freemarker/homeConsoleInfo";
     }
@@ -43,7 +43,7 @@ public class ConsoleController {
     public String adminConsole(Model model){
 
         model.addAttribute("title","Welcome to the game store");
-        model.addAttribute("consoles",consoleServices.listAllConsoles());
+        model.addAttribute("consoles", consoleService.listAllConsoles());
 
         return "/freemarker/consoles";
     }
@@ -53,8 +53,8 @@ public class ConsoleController {
     public String creationPage(Model model){
 
         model.addAttribute("title","Welcome to the game store");
-        model.addAttribute("predecessorConsoles",consoleServices.listAllConsoles());
-        model.addAttribute("successorConsoles", consoleServices.listAllConsoles());
+        model.addAttribute("predecessorConsoles", consoleService.listAllConsoles());
+        model.addAttribute("successorConsoles", consoleService.listAllConsoles());
 
         return "/freemarker/createConsole";
     }
@@ -63,13 +63,13 @@ public class ConsoleController {
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public String create(@RequestParam(name = "name") String name, @RequestParam(name = "developer") String developer, @RequestParam(name = "consoleType") String consoleType, @RequestParam(name = "generation") int generation, @RequestParam(name = "unitsSold") int unitsSold, @RequestParam(name = "releasedDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date releasedDate, @RequestParam(name = "discontinuedDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date discontinuedDate, @RequestParam(name = "image") MultipartFile[] image,@RequestParam(required = false,name = "idPredecessorConsole") Long idPredecessorConsole, @RequestParam(required = false, name = "idSuccessorConsole")  Long idSuccessorConsole, @RequestParam(name = "sellPrice") float sellPrice, @RequestParam(name = "stock") int stock){
 
-        int lifeSpan = consoleServices.calculateLifeSpanOfTheConsole(releasedDate, discontinuedDate);
+        int lifeSpan = consoleService.calculateLifeSpanOfTheConsole(releasedDate, discontinuedDate);
 
-        String imageName = fileUploadServices.storeAndCleanImage(image,uploadDirectory);
+        String imageName = fileUploadService.storeAndCleanImage(image,uploadDirectory);
 
-        Console consoleToCreate = new Console(name,developer,consoleType,generation,releasedDate,discontinuedDate,lifeSpan,sellPrice,unitsSold,imageName,stock,videoGameServices.findAllVideoGamesByPlatformName(name),consoleServices.findConsoleById(idPredecessorConsole),consoleServices.findConsoleById(idSuccessorConsole));
+        Console consoleToCreate = new Console(name,developer,consoleType,generation,releasedDate,discontinuedDate,lifeSpan,sellPrice,unitsSold,imageName,stock, videoGameService.findAllVideoGamesByPlatformName(name), consoleService.findConsoleById(idPredecessorConsole), consoleService.findConsoleById(idSuccessorConsole));
 
-        consoleServices.createConsole(consoleToCreate);
+        consoleService.createConsole(consoleToCreate);
 
         return "redirect:/consoles/admin";
     }
@@ -78,12 +78,12 @@ public class ConsoleController {
     @RequestMapping("/edition")
     public String editionPage(Model model, @RequestParam(name = "id") Long id){
 
-        Console consoleToEdit = consoleServices.findConsoleById(id);
+        Console consoleToEdit = consoleService.findConsoleById(id);
 
         model.addAttribute("title","Welcome to the game store");
         model.addAttribute("console",consoleToEdit);
-        model.addAttribute("predecessorConsoles", consoleServices.listConsolesByGeneration(consoleToEdit.getGeneration()-1));
-        model.addAttribute("successorConsoles", consoleServices.listConsolesByGeneration(consoleToEdit.getGeneration()+1));
+        model.addAttribute("predecessorConsoles", consoleService.listConsolesByGeneration(consoleToEdit.getGeneration()-1));
+        model.addAttribute("successorConsoles", consoleService.listConsolesByGeneration(consoleToEdit.getGeneration()+1));
 
         return "/freemarker/editConsole";
     }
@@ -92,21 +92,21 @@ public class ConsoleController {
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
     public String edit(@RequestParam(name = "id") Long id ,@RequestParam(name = "name") String name, @RequestParam(name = "developer") String developer, @RequestParam(name = "consoleType") String consoleType, @RequestParam(name = "generation") int generation, @RequestParam(defaultValue = "empty", required = false, name = "unitsSold") String unitsSold, @RequestParam(defaultValue = "empty", required = false, name = "releasedDate") @DateTimeFormat(pattern = "yyyy-MM-dd") String releasedDate, @RequestParam(defaultValue = "empty", required = false, name = "discontinuedDate") @DateTimeFormat(pattern = "yyyy-MM-dd") String discontinuedDate, @RequestParam(required = false,name = "image") MultipartFile[] image, @RequestParam(required = false, name = "idPredecessorConsole") Long idPredecessorConsole, @RequestParam(required = false, name = "idSuccessorConsole")  Long idSuccessorConsole, @RequestParam(defaultValue = "empty", required = false, name = "sellPrice") String sellPrice, @RequestParam(name = "stock") int stock){
 
-        Date releasedDate1 = consoleServices.convertFromStringToDateAndSetTheDate(releasedDate,"ReleasedDate",id);
+        Date releasedDate1 = consoleService.convertFromStringToDateAndSetTheDate(releasedDate,"ReleasedDate",id);
 
-        Date discontinuedDate1 = consoleServices.convertFromStringToDateAndSetTheDate(discontinuedDate,"DiscontinuedDate",id);
+        Date discontinuedDate1 = consoleService.convertFromStringToDateAndSetTheDate(discontinuedDate,"DiscontinuedDate",id);
 
-        int lifeSpan = consoleServices.calculateLifeSpanOfTheConsole(releasedDate1,discontinuedDate1);
+        int lifeSpan = consoleService.calculateLifeSpanOfTheConsole(releasedDate1,discontinuedDate1);
 
-        Console consoleToEdit = consoleServices.findConsoleById(id);
+        Console consoleToEdit = consoleService.findConsoleById(id);
 
-        String imageName = fileUploadServices.storeAndCleanImage(image,uploadDirectory);
+        String imageName = fileUploadService.storeAndCleanImage(image,uploadDirectory);
 
         String identifier = "Console";
 
 
-        consoleToEdit.setSellPrice(consoleServices.convertFromStringToFloatAndSetThePrice(sellPrice,identifier,id));
-        consoleToEdit.setUnitsSold(consoleServices.convertFromStringToIntAndSetTheUnitsSold(unitsSold,identifier, id));
+        consoleToEdit.setSellPrice(consoleService.convertFromStringToFloatAndSetThePrice(sellPrice,identifier,id));
+        consoleToEdit.setUnitsSold(consoleService.convertFromStringToIntAndSetTheUnitsSold(unitsSold,identifier, id));
         consoleToEdit.setName(name);
         consoleToEdit.setDeveloper(developer);
         consoleToEdit.setConsoleType(consoleType);
@@ -115,15 +115,15 @@ public class ConsoleController {
         consoleToEdit.setDiscontinuedDate(discontinuedDate1);
         consoleToEdit.setLifespan(lifeSpan);
         consoleToEdit.setStock(stock);
-        consoleToEdit.setPredecessor(consoleServices.findConsoleById(idPredecessorConsole));
-        consoleToEdit.setSuccessor(consoleServices.findConsoleById(idSuccessorConsole));
+        consoleToEdit.setPredecessor(consoleService.findConsoleById(idPredecessorConsole));
+        consoleToEdit.setSuccessor(consoleService.findConsoleById(idSuccessorConsole));
 
         if (imageName.endsWith("jpg")){
 
             consoleToEdit.setImage(imageName);
         }
 
-        consoleServices.createConsole(consoleToEdit);
+        consoleService.createConsole(consoleToEdit);
 
         return "redirect:/consoles/admin";
     }
@@ -132,7 +132,7 @@ public class ConsoleController {
     @RequestMapping("/show")
     public String showPage(Model model, @RequestParam(name = "id") Long id){
 
-        Console consoleToShow = consoleServices.findConsoleById(id);
+        Console consoleToShow = consoleService.findConsoleById(id);
 
         model.addAttribute("title","Welcome to the game store");
         model.addAttribute("console",consoleToShow);
@@ -145,7 +145,7 @@ public class ConsoleController {
     public String showHomeConsoleDescription(Model model){
 
         model.addAttribute("title","Welcome to the game store");
-        model.addAttribute("consoles",consoleServices.listConsolesByType("Home console"));
+        model.addAttribute("consoles", consoleService.listConsolesByType("Home console"));
 
         return "/freemarker/homeConsoleInfo";
     }
@@ -155,7 +155,7 @@ public class ConsoleController {
     public String showHandheldConsoleDescription(Model model){
 
         model.addAttribute("title","Welcome to the game store");
-        model.addAttribute("consoles",consoleServices.listConsolesByType("Handheld console"));
+        model.addAttribute("consoles", consoleService.listConsolesByType("Handheld console"));
 
         return "/freemarker/handheldConsoleInfo";
     }
@@ -164,7 +164,7 @@ public class ConsoleController {
     @RequestMapping("/delete")
     public String delete(@RequestParam(name = "id") Long id){
 
-        consoleServices.deleteConsole(id);
+        consoleService.deleteConsole(id);
 
         return "redirect:/consoles/admin";
     }

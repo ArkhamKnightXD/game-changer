@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class VideoGameServices {
+public class VideoGameService {
 
     @Autowired
     private VideoGameRepository videoGameRepository;

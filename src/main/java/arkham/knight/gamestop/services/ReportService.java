@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 @Service
-public class ReportServices {
+public class ReportService {
 
     @Autowired
     private SaleRepository saleRepository;

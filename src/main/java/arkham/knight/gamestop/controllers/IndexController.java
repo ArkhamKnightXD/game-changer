@@ -19,22 +19,22 @@ import java.util.List;
 public class IndexController {
 
     @Autowired
-    private VideoGameServices videoGameServices;
+    private VideoGameService videoGameService;
 
     @Autowired
-    private ConsoleServices consoleServices;
+    private ConsoleService consoleService;
 
     @Autowired
-    private UserServices userServices;
+    private UserService userService;
 
     @Autowired
-    private SaleServices saleServices;
+    private SaleService saleService;
 
     @Autowired
-    private SecurityServices securityServices;
+    private SecurityService securityService;
 
     @Autowired
-    private ReportServices reportServices;
+    private ReportService reportService;
 
 
     @RequestMapping("/")
@@ -49,13 +49,13 @@ public class IndexController {
     @RequestMapping("/login")
     public String login(Model model){
 
-        User adminUser = userServices.findUserByUsername("admin");
+        User adminUser = userService.findUserByUsername("admin");
 
         if (adminUser == null){
 
-            userServices.deleteAllRoles();
+            userService.deleteAllRoles();
 
-            securityServices.createAdminUser();
+            securityService.createAdminUser();
         }
 
         model.addAttribute("title","Welcome to the game store");
@@ -68,8 +68,8 @@ public class IndexController {
     public String admin(Model model){
 
         model.addAttribute("title","Welcome to the game store");
-        model.addAttribute("videogames", videoGameServices.listAllVideoGames());
-        model.addAttribute("sales", saleServices.listAllSales());
+        model.addAttribute("videogames", videoGameService.listAllVideoGames());
+        model.addAttribute("sales", saleService.listAllSales());
 
         return "/freemarker/adminPage";
     }
@@ -78,7 +78,7 @@ public class IndexController {
     @RequestMapping("/report/{format}")
     public String salesReport(@PathVariable String format) throws FileNotFoundException, JRException {
 
-         reportServices.exportReport(format);
+         reportService.exportReport(format);
 
          return "redirect:/admin/";
     }
@@ -87,7 +87,7 @@ public class IndexController {
     @RequestMapping("/default")
     public String defaultCreatorConsoles(){
 
-        consoleServices.deleteAllConsoles();
+        consoleService.deleteAllConsoles();
 
         Calendar calendar = Calendar.getInstance();
 
@@ -140,13 +140,13 @@ public class IndexController {
         Date ps4Date2 = calendar8.getTime();
 
 
-        int lifeSpanPs1 = consoleServices.calculateLifeSpanOfTheConsole(ps1Date1,ps1Date2);
+        int lifeSpanPs1 = consoleService.calculateLifeSpanOfTheConsole(ps1Date1,ps1Date2);
 
-        int lifeSpanPs2 = consoleServices.calculateLifeSpanOfTheConsole(ps2Date1,ps2Date2);
+        int lifeSpanPs2 = consoleService.calculateLifeSpanOfTheConsole(ps2Date1,ps2Date2);
 
-        int lifeSpanPs3 = consoleServices.calculateLifeSpanOfTheConsole(ps3Date1,ps3Date2);
+        int lifeSpanPs3 = consoleService.calculateLifeSpanOfTheConsole(ps3Date1,ps3Date2);
 
-        int lifeSpanPs4 = consoleServices.calculateLifeSpanOfTheConsole(ps4Date1,ps4Date2);
+        int lifeSpanPs4 = consoleService.calculateLifeSpanOfTheConsole(ps4Date1,ps4Date2);
 
 
         Console consolePredecessor = new Console("PlayStation 1","Sony","Home Console",5, ps1Date1,ps1Date2,lifeSpanPs1,2500,100000000,"ps1.jpg",5 );
@@ -157,17 +157,17 @@ public class IndexController {
 
         Console lastConsole = new Console("PlayStation 4","Sony","Home Console",8, ps4Date1,ps4Date2,lifeSpanPs4,3500.99f,100000000,"ps4.jpg" ,5);
 
-        consoleServices.createConsole(consolePredecessor);
+        consoleService.createConsole(consolePredecessor);
 
-        consoleServices.createConsole(consoleSuccessor);
+        consoleService.createConsole(consoleSuccessor);
 
-        consoleServices.createConsole(lastConsole);
+        consoleService.createConsole(lastConsole);
 
         console.setPredecessor(consolePredecessor);
 
         console.setSuccessor(consoleSuccessor);
 
-        consoleServices.createConsole(console);
+        consoleService.createConsole(console);
 
         return "redirect:/admin/";
     }
@@ -176,7 +176,7 @@ public class IndexController {
     @RequestMapping("/default2")
     public String defaultCreatorVideoGames(){
 
-        videoGameServices.deleteAllVideoGames();
+        videoGameService.deleteAllVideoGames();
 
         Calendar calendar = Calendar.getInstance();
 
@@ -239,9 +239,9 @@ public class IndexController {
 
         List<Console> consoleList1 = new ArrayList<>();
 
-        Console ps2 = consoleServices.findConsoleByName("PlayStation 2");
+        Console ps2 = consoleService.findConsoleByName("PlayStation 2");
 
-        Console ps3 = consoleServices.findConsoleByName("PlayStation 3");
+        Console ps3 = consoleService.findConsoleByName("PlayStation 3");
 
         consoleList.add(ps2);
 
@@ -267,15 +267,15 @@ public class IndexController {
 
         VideoGame videoGame9 = new VideoGame("Kingdom Hearts II","Square Enix",date9,"JRPG", 4000000,"Single-player",9.5f,1550,"kh 2.jpg",5,consoleList1);
 
-        videoGameServices.createVideoGame(videoGame1);
-        videoGameServices.createVideoGame(videoGame2);
-        videoGameServices.createVideoGame(videoGame3);
-        videoGameServices.createVideoGame(videoGame4);
-        videoGameServices.createVideoGame(videoGame5);
-        videoGameServices.createVideoGame(videoGame6);
-        videoGameServices.createVideoGame(videoGame7);
-        videoGameServices.createVideoGame(videoGame8);
-        videoGameServices.createVideoGame(videoGame9);
+        videoGameService.createVideoGame(videoGame1);
+        videoGameService.createVideoGame(videoGame2);
+        videoGameService.createVideoGame(videoGame3);
+        videoGameService.createVideoGame(videoGame4);
+        videoGameService.createVideoGame(videoGame5);
+        videoGameService.createVideoGame(videoGame6);
+        videoGameService.createVideoGame(videoGame7);
+        videoGameService.createVideoGame(videoGame8);
+        videoGameService.createVideoGame(videoGame9);
 
         return "redirect:/admin/";
     }
