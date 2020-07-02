@@ -1,8 +1,12 @@
 package arkham.knight.gamestop.services;
 import arkham.knight.gamestop.models.Client;
 import arkham.knight.gamestop.repositories.ClientRepository;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
 @Service
@@ -18,9 +22,20 @@ public class ClientService {
     }
 
 
-    public void saveAllClients(List<Client> clients){
+    public void saveAllClients(ObjectMapper objectMapper, InputStream inputStream, TypeReference<List<Client>> typeReference){
 
-        clientRepository.saveAll(clients);
+        try {
+            List<Client> clients = objectMapper.readValue(inputStream,typeReference);
+
+            clientRepository.saveAll(clients);
+
+            System.out.println("Clients Saved!");
+
+        } catch (IOException e){
+
+            System.out.println("Unable to save clients: " + e.getMessage());
+        }
+
     }
 
 
