@@ -39,13 +39,13 @@ public class GameChangerApplication {
     CommandLineRunner runner(ClientService clientService){
         return args -> {
 
-            ObjectMapper mapper = new ObjectMapper();
+
 
             TypeReference<List<Client>> typeReference = new TypeReference<List<Client>>(){};
 
             InputStream inputStream = TypeReference.class.getResourceAsStream("/json/clients.json");
 
-            //clientService.saveAllClients(mapper,inputStream,typeReference);
+          //  clientService.saveAllClients(inputStream,typeReference);
         };
     };
 }

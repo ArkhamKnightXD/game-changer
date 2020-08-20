@@ -22,7 +22,9 @@ public class ClientService {
     }
 
 
-    public void saveAllClients(ObjectMapper objectMapper, InputStream inputStream, TypeReference<List<Client>> typeReference){
+    public void saveAllClients(InputStream inputStream, TypeReference<List<Client>> typeReference){
+
+        ObjectMapper objectMapper = new ObjectMapper();
 
         try {
             List<Client> clients = objectMapper.readValue(inputStream,typeReference);
