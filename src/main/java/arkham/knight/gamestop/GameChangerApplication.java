@@ -6,7 +6,6 @@ import arkham.knight.gamestop.controllers.VideoGameController;
 import arkham.knight.gamestop.models.Client;
 import arkham.knight.gamestop.services.ClientService;
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -39,13 +38,11 @@ public class GameChangerApplication {
     CommandLineRunner runner(ClientService clientService){
         return args -> {
 
-
-
-            TypeReference<List<Client>> typeReference = new TypeReference<List<Client>>(){};
+         /*   TypeReference<List<Client>> typeReference = new TypeReference<List<Client>>(){};
 
             InputStream inputStream = TypeReference.class.getResourceAsStream("/json/clients.json");
 
-          //  clientService.saveAllClients(inputStream,typeReference);
+            clientService.saveAllClients(inputStream,typeReference);*/
         };
     };
 }
