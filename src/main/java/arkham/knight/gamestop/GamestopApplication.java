@@ -1,23 +1,18 @@
 package arkham.knight.gamestop;
+
 import arkham.knight.gamestop.controllers.ClientController;
 import arkham.knight.gamestop.controllers.ConsoleController;
 import arkham.knight.gamestop.controllers.UserController;
 import arkham.knight.gamestop.controllers.VideoGameController;
-import arkham.knight.gamestop.models.Client;
-import arkham.knight.gamestop.services.ClientService;
-import com.fasterxml.jackson.core.type.TypeReference;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+
 import java.io.File;
-import java.io.InputStream;
-import java.util.List;
 
 @SpringBootApplication
 @ComponentScan({"arkham.knight.gamestop","arkham.knight.gamestop.controllers"})
-public class GameChangerApplication {
+public class GamestopApplication {
 
     public static void main(String[] args) {
 
@@ -29,20 +24,7 @@ public class GameChangerApplication {
 
         new File(ClientController.uploadDirectory).mkdir();
 
-        SpringApplication.run(GameChangerApplication.class, args);
-
+        SpringApplication.run(GamestopApplication.class, args);
     }
 
-
-    @Bean
-    CommandLineRunner runner(ClientService clientService){
-        return args -> {
-
-         /*   TypeReference<List<Client>> typeReference = new TypeReference<List<Client>>(){};
-
-            InputStream inputStream = TypeReference.class.getResourceAsStream("/json/clients.json");
-
-            clientService.saveAllClients(inputStream,typeReference);*/
-        };
-    };
 }
